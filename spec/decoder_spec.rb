@@ -74,12 +74,20 @@ RSpec.describe Proinsias::Decoder::Automaton do
       end
     end
 
-    context 'producing (' do
-      it 'can be achieved by issuing the character "("'
+    context 'producing lparen' do
+      it 'can be achieved by issuing the character "("' do
+        the_decoder.issue('(')
+
+        expect(the_consumer).to have_received(:call).with('lparen')
+      end
     end
 
-    context 'producing )' do
-      it 'can be achieved by issuing the character ")"'
+    context 'producing rparen' do
+      it 'can be achieved by issuing the character ")"' do
+        the_decoder.issue(')')
+
+        expect(the_consumer).to have_received(:call).with('rparen')
+      end
     end
 
     context 'producing a constant' do
