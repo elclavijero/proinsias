@@ -108,4 +108,14 @@ RSpec.describe Proinsias::Decoder::Automaton do
       end
     end
   end
+
+  context 'handling whitespace' do
+    it 'ignores whitespace' do
+      " t  r\nu \t  \t e  ".each_char do |c|
+        the_decoder.issue(c)
+      end
+
+      expect(the_consumer).to have_received(:call).with('constant')
+    end
+  end
 end

@@ -32,6 +32,8 @@ module Proinsias
     """
     
     class Automaton < Moory::Logistic::Unit
+      IGNORE = [' ', "\t", "\n"]
+
       def initialize(consumer)
         @consumer = consumer
         super(rules: RULES)
@@ -40,6 +42,10 @@ module Proinsias
 
       def produce(output)
         @consumer.call(output)
+      end
+
+      def issue(stimulus)
+        super(stimulus) unless IGNORE.include?(stimulus)
       end
     end
   end
