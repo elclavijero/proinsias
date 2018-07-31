@@ -4,6 +4,9 @@ module Proinsias
   module Decoder
     RULES = """
     ^ : p / variable / produce : ^
+    ^ : q / variable / produce : ^
+    ^ : r / variable / produce : ^
+    ^ : s / variable / produce : ^
     """
     
     class Automaton < Moory::Logistic::Unit

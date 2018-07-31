@@ -15,11 +15,23 @@ RSpec.describe Proinsias::Decoder::Automaton do
         expect(the_consumer).to have_received(:call).with('variable')
       end
 
-      it 'can be achieved by issuing the character "q"'
+      it 'can be achieved by issuing the character "q"' do
+        the_decoder.issue('q')
 
-      it 'can be achieved by issuing the character "r"'
+        expect(the_consumer).to have_received(:call).with('variable')
+      end
 
-      it 'can be achieved by issuing the character "s"'
+      it 'can be achieved by issuing the character "r"' do
+        the_decoder.issue('r')
+
+        expect(the_consumer).to have_received(:call).with('variable')
+      end
+
+      it 'can be achieved by issuing the character "s"' do
+        the_decoder.issue('s')
+
+        expect(the_consumer).to have_received(:call).with('variable')
+      end
     end
 
     context 'producing a prefix' do
