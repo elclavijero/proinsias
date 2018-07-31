@@ -11,6 +11,10 @@ module Proinsias
     ^ : ¬ / prefix / produce : ^
 
     ^ : ≡ / infix / produce : ^
+    ^ : ∧ / infix / produce : ^
+    ^ : ∨ / infix / produce : ^
+    ^ : ⇒ / infix / produce : ^
+    ^ : ⇐ / infix / produce : ^
     """
     
     class Automaton < Moory::Logistic::Unit

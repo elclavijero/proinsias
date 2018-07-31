@@ -49,13 +49,29 @@ RSpec.describe Proinsias::Decoder::Automaton do
         expect(the_consumer).to have_received(:call).with('infix')
       end
 
-      it 'can be achieved by issuing the character "∧"'
+      it 'can be achieved by issuing the character "∧"' do
+        the_decoder.issue('∧')
 
-      it 'can be achieved by issuing the character "∨"'
+        expect(the_consumer).to have_received(:call).with('infix')
+      end
 
-      it 'can be achieved by issuing the character "⇒"'
+      it 'can be achieved by issuing the character "∨"' do
+        the_decoder.issue('∨')
 
-      it 'can be achieved by issuing the character "⇐"'
+        expect(the_consumer).to have_received(:call).with('infix')
+      end
+
+      it 'can be achieved by issuing the character "⇒"' do
+        the_decoder.issue('⇒')
+
+        expect(the_consumer).to have_received(:call).with('infix')
+      end
+
+      it 'can be achieved by issuing the character "⇐"' do
+        the_decoder.issue('⇐')
+
+        expect(the_consumer).to have_received(:call).with('infix')
+      end
     end
 
     context 'producing (' do
