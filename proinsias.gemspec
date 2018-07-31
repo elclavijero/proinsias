@@ -10,7 +10,7 @@ Gem::Specification.new do |spec|
   spec.email         = ["adam_grnt@yahoo.co.uk"]
 
   spec.summary       = %q{Manipulate formulae of the Propositional Calculus.}
-  spec.homepage      = "TODO: Put your gem's website or public repo URL here."
+  spec.homepage      = "https://github.com/elclavijero/proinsias"
   spec.license       = "MIT"
 
   # Prevent pushing this gem to RubyGems.org. To allow pushes either set the 'allowed_push_host'
