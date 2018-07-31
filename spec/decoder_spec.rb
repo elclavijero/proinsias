@@ -110,11 +110,13 @@ RSpec.describe Proinsias::Decoder::Automaton do
   end
 
   context 'handling whitespace' do
-    it 'ignores whitespace' do
-      " t  r\nu \t  \t e  ".each_char do |c|
+    it 'ignores whitespace between productions' do
+      " ¬\tp  ∨\t\ttrue\t \t ".each_char do |c|
         the_decoder.issue(c)
       end
 
+      expect(the_consumer).to have_received(:call).with('variable')
+      expect(the_consumer).to have_received(:call).with('infix')
       expect(the_consumer).to have_received(:call).with('constant')
     end
   end
