@@ -91,9 +91,15 @@ RSpec.describe Proinsias::Decoder::Automaton do
     end
 
     context 'producing a constant' do
-      it 'can be achieved by issuing the character sequence: "true"'
+      it 'can be achieved by issuing, successively, the characters: %w{ t r u e }' do
+        %w{ t r u e }.each do |c|
+          the_decoder.issue(c)
+        end
 
-      it 'can be achieved by issuing the character sequence: "false"'
+        expect(the_consumer).to have_received(:call).with('constant')
+      end
+
+      it 'can be achieved by issuing, successively, the characters: %w{ f a l s e }'
     end
   end
 end

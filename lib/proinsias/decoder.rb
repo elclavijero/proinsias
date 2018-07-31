@@ -18,6 +18,11 @@ module Proinsias
 
     ^ : ( / lparen / produce : ^
     ^ : ) / rparen / produce : ^
+
+    ^ : t : 0
+    0 : r : 1
+    1 : u : 2
+    2 : e / constant / produce : ^
     """
     
     class Automaton < Moory::Logistic::Unit
