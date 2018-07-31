@@ -99,7 +99,13 @@ RSpec.describe Proinsias::Decoder::Automaton do
         expect(the_consumer).to have_received(:call).with('constant')
       end
 
-      it 'can be achieved by issuing, successively, the characters: %w{ f a l s e }'
+      it 'can be achieved by issuing, successively, the characters: %w{ f a l s e }' do
+        %w{ f a l s e }.each do |c|
+          the_decoder.issue(c)
+        end
+
+        expect(the_consumer).to have_received(:call).with('constant')
+      end
     end
   end
 end

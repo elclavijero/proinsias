@@ -23,6 +23,12 @@ module Proinsias
     0 : r : 1
     1 : u : 2
     2 : e / constant / produce : ^
+
+    ^ : f : 3
+    3 : a : 4
+    4 : l : 5
+    5 : s : 6
+    6 : e / constant / produce : ^
     """
     
     class Automaton < Moory::Logistic::Unit
