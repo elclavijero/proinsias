@@ -7,6 +7,8 @@ module Proinsias
     ^ : q / variable / produce : ^
     ^ : r / variable / produce : ^
     ^ : s / variable / produce : ^
+
+    ^ : ¬ / prefix / produce : ^
     """
     
     class Automaton < Moory::Logistic::Unit

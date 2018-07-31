@@ -35,7 +35,11 @@ RSpec.describe Proinsias::Decoder::Automaton do
     end
 
     context 'producing a prefix' do
-      it 'can be achieved by issuing the character "¬"'
+      it 'can be achieved by issuing the character "¬"' do
+        the_decoder.issue('¬')
+
+        expect(the_consumer).to have_received(:call).with('prefix')
+      end
     end
 
     context 'producing an infix' do
