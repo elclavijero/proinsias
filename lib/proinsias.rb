@@ -5,6 +5,7 @@ require "proinsias/configurations"
 require "proinsias/sieve"
 require "proinsias/receiver"
 require "proinsias/assembler"
+require "proinsias/atoms"
 
 module Proinsias
   # Your code goes here...
