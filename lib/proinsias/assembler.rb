@@ -5,7 +5,12 @@ module Proinsias
 
       if vacancy = left.vacancy
         vacancy.receive(right)
-        left
+        return left
+      end
+
+      if vacancy = right.vacancy
+        vacancy.receive(left)
+        return right
       end
     end
   end
