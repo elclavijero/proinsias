@@ -44,13 +44,16 @@ module Proinsias
     }
 
     class Unit
-      def initialize(consumer)
-        @consumer = consumer
-        @filter = Moory::Logistic::Controller.new(CONFIG)
+      def initialize(consumer:, quarantine:nil)
+        @consumer   = consumer
+        @quarantine = quarantine
+        @filter     = Moory::Logistic::Controller.new(CONFIG)
       end
 
       def issue(role:, glyph:)
-        release(role: role, glyph: glyph) if fits?(role)
+        fits?(role) ?
+          release(role: role, glyph: glyph) :
+          quarantine(role: role, glyph: glyph)
       end
 
       private
@@ -61,6 +64,10 @@ module Proinsias
 
       def release(role:, glyph:)
         @consumer.call(role: role, glyph: glyph)
+      end
+
+      def quarantine(role:, glyph:)
+        @quarantine.call(role: role, glyph: glyph) if @quarantine
       end
     end
   end

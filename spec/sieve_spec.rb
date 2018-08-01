@@ -1,10 +1,17 @@
 RSpec.describe Proinsias::Sieve::Unit do
   let(:the_sieve) do
-    Proinsias::Sieve::Unit.new(the_consumer)
+    Proinsias::Sieve::Unit.new(
+      consumer:   the_consumer,
+      quarantine: the_quarantine
+    )
   end
 
   let(:the_consumer) do
     spy("the consumer")
+  end
+
+  let(:the_quarantine) do
+    spy("the quarantine")
   end
 
   describe '#issue' do
@@ -69,6 +76,12 @@ RSpec.describe Proinsias::Sieve::Unit do
             the_sieve.issue(token)
     
             expect(the_consumer).not_to have_received(:call)
+          end
+
+          it 'will quarantine that token' do
+            the_sieve.issue(token)
+
+            expect(the_quarantine).to have_received(:call).with(token)
           end
         end
 
