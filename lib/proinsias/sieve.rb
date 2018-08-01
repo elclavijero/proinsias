@@ -50,24 +50,24 @@ module Proinsias
         @filter     = Moory::Logistic::Controller.new(CONFIG)
       end
 
-      def issue(role:, glyph:)
-        fits?(role) ?
-          release(role: role, glyph: glyph) :
-          quarantine(role: role, glyph: glyph)
+      def issue(token)
+        fits?(token) ?
+          release(token) :
+          quarantine(token)
       end
 
       private
 
-      def fits?(role)
-        @filter.issue(role)
+      def fits?(token)
+        @filter.issue(token.role)
       end
 
-      def release(role:, glyph:)
-        @consumer.call(role: role, glyph: glyph)
+      def release(token)
+        @consumer.call(token)
       end
 
-      def quarantine(role:, glyph:)
-        @quarantine.call(role: role, glyph: glyph) if @quarantine
+      def quarantine(token)
+        @quarantine.call(token) if @quarantine
       end
     end
   end
