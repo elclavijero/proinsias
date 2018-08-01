@@ -47,10 +47,10 @@ module Proinsias
 
       def produce(output)
         @consumer.call(
-          {
+          Token.new(
             glyph: @buffer,
             role:  output
-          }
+          )
         )
         @buffer = ""
       end

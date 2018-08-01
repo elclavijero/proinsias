@@ -1,4 +1,5 @@
 require "proinsias/version"
+require "proinsias/token"
 require "proinsias/decoder"
 require "proinsias/sieve"
 
