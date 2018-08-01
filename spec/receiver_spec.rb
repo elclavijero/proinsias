@@ -43,14 +43,10 @@ RSpec.describe Proinsias::Receiver do
       end
     end
 
-    context 'having received capacity' do
+    context 'having received capacity, ' do
       before do
         the_receiver.receive(a_guest)
         the_receiver.receive(another_guest)
-      end
-
-      it 'will return nil' do
-        expect(the_receiver.vacancy).not_to be
       end
     end
   end

@@ -11,7 +11,9 @@ module Proinsias
     end
 
     def vacancy
-      expectant? ? self : nil
+      expectant? ? 
+        self :
+        nil
     end
 
     def receive(guest)
