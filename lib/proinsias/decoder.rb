@@ -52,10 +52,12 @@ module Proinsias
       end
 
       def issue(stimulus)
-        (
-          @buffer << stimulus
-          super(stimulus)
-        ) unless IGNORE.include?(stimulus)
+        return if IGNORE.include?(stimulus)
+        
+        @buffer << stimulus
+        unless success = super(stimulus)
+          produce(nil)
+        end
       end
     end
   end
