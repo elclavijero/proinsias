@@ -9,15 +9,53 @@ RSpec.describe Proinsias::Sieve::Unit do
 
   describe '#issue' do
     describe 'issuing some singleton token sequences' do
-      context 'when given a token whose role is "constant"' do
-        let(:constant_token) do
-          { role: 'constant', glyph: 'true' }
+      describe 'a token that fits' do
+        context 'has role "constant"' do
+          let(:token) do
+            { role: 'constant', glyph: 'true' }
+          end
+          
+          it 'will pass that token to the consumer' do
+            the_sieve.issue(token)
+  
+            expect(the_consumer).to have_received(:call).with(token)
+          end
         end
-        
-        it 'will pass that token to the consumer' do
-          the_sieve.issue(constant_token)
+  
+        context 'has role "variable"' do
+          let(:token) do
+            { role: 'variable', glyph: 'p' }
+          end
+          
+          it 'will pass that token to the consumer' do
+            the_sieve.issue(token)
+  
+            expect(the_consumer).to have_received(:call).with(token)
+          end
+        end
 
-          expect(the_consumer).to have_received(:call).with(constant_token)
+        context 'has role "prefix"' do
+          let(:token) do
+            { role: 'prefix', glyph: '¬' }
+          end
+          
+          it 'will pass that token to the consumer' do
+            the_sieve.issue(token)
+    
+            expect(the_consumer).to have_received(:call).with(token)
+          end
+        end
+
+        context 'has role "lparen"' do
+          let(:token) do
+            { role: 'lparen', glyph: '(' }
+          end
+          
+          it 'will pass that token to the consumer' do
+            the_sieve.issue(token)
+    
+            expect(the_consumer).to have_received(:call).with(token)
+          end
         end
       end
     end

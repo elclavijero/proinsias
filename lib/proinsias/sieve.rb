@@ -10,7 +10,7 @@ module Proinsias
           ^ : constant : $
           ^ : variable : $
           ^ : prefix / open          / defer : Δ
-          ^ : (      / parenthetical / defer : Δ
+          ^ : lparen / parenthetical / defer : Δ
           $ : infix  / open          / defer : Δ
           
           Δ : term : $
@@ -21,7 +21,7 @@ module Proinsias
           ^ : constant / term          / reconvene : $
           ^ : variable / term          / reconvene : $
           ^ : prefix   / open          / defer : Δ
-          ^ : (        / parenthetical / defer : Δ
+          ^ : lparen   / parenthetical / defer : Δ
           $ : infix    / open          / defer : Δ
           
           Δ : term     / term          / reconvene : $
@@ -32,10 +32,10 @@ module Proinsias
           ^ : constant : C
           ^ : variable : C
           ^ : prefix / open          / defer : Δ
-          ^ : (      / parenthetical / defer : Δ
-          ^ : )      / void          / reconvene : $
+          ^ : lparen / parenthetical / defer : Δ
+          ^ : rparen / void          / reconvene : $
           C : infix  / open          / defer : Δ
-          C : )      / term          / reconvene : $
+          C : rparen / term          / reconvene : $
           
           Δ : term : C
           """
