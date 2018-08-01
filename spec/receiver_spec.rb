@@ -11,6 +11,10 @@ RSpec.describe Proinsias::Receiver do
     it 'exposes #receive' do
       expect(the_receiver).to respond_to(:receive)
     end
+
+    it 'exposes #guests' do
+      expect(the_receiver).to respond_to(:guests)
+    end
   end
 
   describe '#vacancy - ' do
