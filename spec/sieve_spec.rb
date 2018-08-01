@@ -1,6 +1,6 @@
-RSpec.describe Proinsias::Sieve::Unit do
+RSpec.describe Proinsias::Sieve do
   let(:the_sieve) do
-    Proinsias::Sieve::Unit.new(
+    Proinsias::Sieve.new(
       filter:     the_filter,
       consumer:   the_consumer,
       quarantine: the_quarantine
