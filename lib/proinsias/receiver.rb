@@ -8,7 +8,9 @@ module Proinsias
       self
     end
 
-    def guests;end
+    def guests
+      []
+    end
 
     def receive;end
   end

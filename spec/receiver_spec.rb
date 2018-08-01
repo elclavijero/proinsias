@@ -17,6 +17,14 @@ RSpec.describe Proinsias::Receiver do
     end
   end
 
+  describe '#guests' do
+    context 'before anything has been received - ' do
+      it 'will return an empty collection' do
+        expect(the_receiver.guests).to be_empty
+      end
+    end
+  end
+
   describe '#vacancy - ' do
     context 'before anything has been received - ' do
       it 'will return self' do
