@@ -1,5 +1,5 @@
 module Proinsias
-  class Receiver
+  module Receiver
     attr_reader :guests, :capacity
 
     def capacity=(nat)
