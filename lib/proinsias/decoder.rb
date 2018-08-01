@@ -35,17 +35,27 @@ module Proinsias
       IGNORE = [' ', "\t", "\n"]
 
       def initialize(consumer)
+        @buffer = ""
         @consumer = consumer
         super(rules: RULES)
         repertoire.learn(name: 'produce', item: method(:produce))
       end
 
       def produce(output)
-        @consumer.call(output)
+        @consumer.call(
+          {
+            glyph: @buffer,
+            role:  output
+          }
+        )
+        @buffer = ""
       end
 
       def issue(stimulus)
-        super(stimulus) unless IGNORE.include?(stimulus)
+        (
+          @buffer << stimulus
+          super(stimulus)
+        ) unless IGNORE.include?(stimulus)
       end
     end
   end

@@ -12,25 +12,33 @@ RSpec.describe Proinsias::Decoder::Automaton do
       it 'can be achieved by issuing the character "p"' do
         the_decoder.issue('p')
 
-        expect(the_consumer).to have_received(:call).with('variable')
+        expect(the_consumer).to have_received(:call).with(
+          { role: 'variable', glyph: 'p' }
+        )
       end
 
       it 'can be achieved by issuing the character "q"' do
         the_decoder.issue('q')
 
-        expect(the_consumer).to have_received(:call).with('variable')
+        expect(the_consumer).to have_received(:call).with(
+          { role: 'variable', glyph: 'q' }
+        )
       end
 
       it 'can be achieved by issuing the character "r"' do
         the_decoder.issue('r')
 
-        expect(the_consumer).to have_received(:call).with('variable')
+        expect(the_consumer).to have_received(:call).with(
+          { role: 'variable', glyph: 'r' }
+        )
       end
 
       it 'can be achieved by issuing the character "s"' do
         the_decoder.issue('s')
 
-        expect(the_consumer).to have_received(:call).with('variable')
+        expect(the_consumer).to have_received(:call).with(
+          { role: 'variable', glyph: 's' }
+        )
       end
     end
 
@@ -38,7 +46,9 @@ RSpec.describe Proinsias::Decoder::Automaton do
       it 'can be achieved by issuing the character "¬"' do
         the_decoder.issue('¬')
 
-        expect(the_consumer).to have_received(:call).with('prefix')
+        expect(the_consumer).to have_received(:call).with(
+          { role: 'prefix', glyph: '¬' }
+        )
       end
     end
 
@@ -46,31 +56,41 @@ RSpec.describe Proinsias::Decoder::Automaton do
       it 'can be achieved by issuing the character "≡"' do
         the_decoder.issue('≡')
 
-        expect(the_consumer).to have_received(:call).with('infix')
+        expect(the_consumer).to have_received(:call).with(
+          { role: 'infix', glyph: '≡' }
+        )
       end
 
       it 'can be achieved by issuing the character "∧"' do
         the_decoder.issue('∧')
 
-        expect(the_consumer).to have_received(:call).with('infix')
+        expect(the_consumer).to have_received(:call).with(
+          { role: 'infix', glyph: '∧' }
+        )
       end
 
       it 'can be achieved by issuing the character "∨"' do
         the_decoder.issue('∨')
 
-        expect(the_consumer).to have_received(:call).with('infix')
+        expect(the_consumer).to have_received(:call).with(
+          { role: 'infix', glyph: '∨' }
+        )
       end
 
       it 'can be achieved by issuing the character "⇒"' do
         the_decoder.issue('⇒')
 
-        expect(the_consumer).to have_received(:call).with('infix')
+        expect(the_consumer).to have_received(:call).with(
+          { role: 'infix', glyph: '⇒' }
+        )
       end
 
       it 'can be achieved by issuing the character "⇐"' do
         the_decoder.issue('⇐')
 
-        expect(the_consumer).to have_received(:call).with('infix')
+        expect(the_consumer).to have_received(:call).with(
+          { role: 'infix', glyph: '⇐' }
+        )
       end
     end
 
@@ -78,7 +98,9 @@ RSpec.describe Proinsias::Decoder::Automaton do
       it 'can be achieved by issuing the character "("' do
         the_decoder.issue('(')
 
-        expect(the_consumer).to have_received(:call).with('lparen')
+        expect(the_consumer).to have_received(:call).with(
+          { role: 'lparen', glyph: '(' }
+        )
       end
     end
 
@@ -86,7 +108,9 @@ RSpec.describe Proinsias::Decoder::Automaton do
       it 'can be achieved by issuing the character ")"' do
         the_decoder.issue(')')
 
-        expect(the_consumer).to have_received(:call).with('rparen')
+        expect(the_consumer).to have_received(:call).with(
+          { role: 'rparen', glyph: ')' }
+        )
       end
     end
 
@@ -96,7 +120,9 @@ RSpec.describe Proinsias::Decoder::Automaton do
           the_decoder.issue(c)
         end
 
-        expect(the_consumer).to have_received(:call).with('constant')
+        expect(the_consumer).to have_received(:call).with(
+          {role:'constant', glyph: 'true' }
+        )
       end
 
       it 'can be achieved by issuing, successively, the characters: %w{ f a l s e }' do
@@ -104,7 +130,9 @@ RSpec.describe Proinsias::Decoder::Automaton do
           the_decoder.issue(c)
         end
 
-        expect(the_consumer).to have_received(:call).with('constant')
+        expect(the_consumer).to have_received(:call).with(
+          {role:'constant', glyph: 'false' }
+        )
       end
     end
   end
@@ -115,9 +143,10 @@ RSpec.describe Proinsias::Decoder::Automaton do
         the_decoder.issue(c)
       end
 
-      expect(the_consumer).to have_received(:call).with('variable')
-      expect(the_consumer).to have_received(:call).with('infix')
-      expect(the_consumer).to have_received(:call).with('constant')
+      expect(the_consumer).to have_received(:call).with({role:'prefix',   glyph: '¬' })
+      expect(the_consumer).to have_received(:call).with({role:'variable', glyph: 'p' })
+      expect(the_consumer).to have_received(:call).with({role:'infix',    glyph: '∨' })
+      expect(the_consumer).to have_received(:call).with({role:'constant', glyph: 'true' })
     end
   end
 end
