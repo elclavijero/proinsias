@@ -1,6 +1,6 @@
 RSpec.describe Proinsias::Receiver do
   let(:the_receiver) do
-    Proinsias::Receiver.new
+    Proinsias::Receiver.new(capacity: 2)
   end
 
   describe 'its interface' do
@@ -10,6 +10,14 @@ RSpec.describe Proinsias::Receiver do
 
     it 'exposes #receive' do
       expect(the_receiver).to respond_to(:receive)
+    end
+  end
+
+  describe '#vacancy - ' do
+    context 'before anything has been received - ' do
+      it 'will return self' do
+        expect(the_receiver.vacancy).to equal(the_receiver)
+      end
     end
   end
 end
