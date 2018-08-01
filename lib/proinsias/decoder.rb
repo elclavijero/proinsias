@@ -38,6 +38,10 @@ module Proinsias
         @buffer = ""
         @consumer = consumer
         super(rules: RULES)
+      end
+
+      def configure(rules)
+        super
         repertoire.learn(name: 'produce', item: method(:produce))
       end
 
