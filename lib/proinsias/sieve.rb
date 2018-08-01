@@ -46,9 +46,20 @@ module Proinsias
     class Unit
       def initialize(consumer)
         @consumer = consumer
+        @filter = Moory::Logistic::Controller.new(CONFIG)
       end
 
       def issue(role:, glyph:)
+        release(role: role, glyph: glyph) if fits?(role)
+      end
+
+      private
+
+      def fits?(role)
+        @filter.issue(role)
+      end
+
+      def release(role:, glyph:)
         @consumer.call(role: role, glyph: glyph)
       end
     end

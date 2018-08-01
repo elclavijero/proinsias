@@ -8,7 +8,7 @@ RSpec.describe Proinsias::Sieve::Unit do
   end
 
   describe '#issue' do
-    describe 'issuing some simple token sequences' do
+    describe 'issuing some singleton token sequences' do
       context 'when given a token whose role is "constant"' do
         let(:constant_token) do
           { role: 'constant', glyph: 'true' }
