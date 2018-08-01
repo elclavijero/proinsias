@@ -4,7 +4,10 @@ module Proinsias
 
     def initialize(capacity:0)
       @capacity = [0,capacity].max
-      @guests = []
+    end
+
+    def guests
+      @guests ||= []
     end
 
     def vacancy
