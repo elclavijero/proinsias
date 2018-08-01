@@ -27,10 +27,11 @@ RSpec.describe Proinsias::Assembler do
         spy("right")
       end
 
+      let(:a_vacancy) do
+        spy("a vacancy")
+      end
+      
       context 'and left offers a vacancy' do
-        let(:a_vacancy) do
-          spy("a vacancy")
-        end
 
         before do
           allow(left).to receive(:vacancy).and_return(a_vacancy)
@@ -43,7 +44,8 @@ RSpec.describe Proinsias::Assembler do
         end
       end
 
-      context 'and left offers no vacancy'
+      context 'and left offers no vacancy' do
+      end
     end
   end
 end
