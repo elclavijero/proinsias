@@ -3,6 +3,14 @@ RSpec.describe Proinsias::Receiver do
     Proinsias::Receiver.new(capacity: 2)
   end
 
+  let(:a_guest) do
+    spy("a guest")
+  end
+
+  let(:another_guest) do
+    spy("another guest")
+  end
+
   describe 'its interface' do
     it 'exposes #vacancy' do
       expect(the_receiver).to respond_to(:vacancy)
@@ -26,9 +34,34 @@ RSpec.describe Proinsias::Receiver do
   end
 
   describe '#vacancy - ' do
-    context 'before reception - ' do
+    context 'before reception of capacity - ' do
       it 'will return self' do
         expect(the_receiver.vacancy).to equal(the_receiver)
+      end
+    end
+
+    context 'having received capacity' do
+      before do
+        the_receiver.receive(a_guest)
+        the_receiver.receive(another_guest)
+      end
+
+      it 'will return nil' do
+        expect(the_receiver.vacancy).not_to be
+      end
+    end
+  end
+
+  describe '#receive' do
+    context 'providing there is a vacancy' do
+      it 'will return the received guest' do
+        expect(the_receiver.receive(a_guest)).to equal(a_guest)
+      end
+
+      it 'will include the guest among its #guests' do
+        the_receiver.receive(a_guest)
+
+        expect(the_receiver.guests).to include(a_guest)
       end
     end
   end

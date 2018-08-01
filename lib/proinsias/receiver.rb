@@ -1,18 +1,29 @@
 module Proinsias
   class Receiver
-    def initialize(capacity:)
+    attr_reader :guests, :capacity
+
+    def initialize(capacity:0)
       @capacity = [0,capacity].max
-      @receptors = Array.new(@capacity)
+      @guests = []
     end
 
     def vacancy
-      self
+      expectant? ? self : nil
     end
 
-    def guests
-      @receptors.compact
+    def receive(guest)
+      (guests << guest
+      guest) unless full?
     end
 
-    def receive;end
+    private
+
+    def expectant?
+      guests.count < capacity
+    end
+
+    def full?
+      ! expectant?
+    end
   end
 end
