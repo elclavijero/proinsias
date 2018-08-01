@@ -30,9 +30,8 @@ RSpec.describe Proinsias::Assembler do
       let(:a_vacancy) do
         spy("a vacancy")
       end
-      
-      context 'and left offers a vacancy' do
 
+      context 'and left offers a vacancy' do
         before do
           allow(left).to receive(:vacancy).and_return(a_vacancy)
         end
@@ -42,9 +41,14 @@ RSpec.describe Proinsias::Assembler do
 
           expect(a_vacancy).to have_received(:receive).with(right)
         end
-      end
 
-      context 'and left offers no vacancy' do
+        it 'will return left' do
+          expect(
+            Proinsias::Assembler.join(left: left, right: right)
+          ).to equal(
+            left
+          )
+        end
       end
     end
   end
