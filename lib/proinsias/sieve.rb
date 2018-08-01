@@ -1,8 +1,8 @@
 require 'moory'
 
 module Proinsias
-  module Sieve
-    CONFIG = {
+  module Configurations
+    PIP = {
       basis: 'basis',
       specs: {
         'basis' => {
@@ -42,12 +42,14 @@ module Proinsias
         }
       }
     }
+  end
 
+  module Sieve
     class Unit
-      def initialize(consumer:, quarantine:nil)
+      def initialize(filter:, consumer:, quarantine:nil)
         @consumer   = consumer
         @quarantine = quarantine
-        @filter     = Moory::Logistic::Controller.new(CONFIG)
+        @filter     = filter
       end
 
       def issue(token)

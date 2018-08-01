@@ -1,8 +1,15 @@
 RSpec.describe Proinsias::Sieve::Unit do
   let(:the_sieve) do
     Proinsias::Sieve::Unit.new(
+      filter:     the_filter,
       consumer:   the_consumer,
       quarantine: the_quarantine
+    )
+  end
+
+  let(:the_filter) do
+    Moory::Logistic::Controller.new(
+      Proinsias::Configurations::PIP
     )
   end
 
