@@ -13,7 +13,7 @@ module Proinsias
     def vacancy
       expectant? ? 
         self :
-        nil
+        guests.detect { |g| g.vacancy }
     end
 
     def receive(guest)

@@ -48,6 +48,18 @@ RSpec.describe Proinsias::Receiver do
         the_receiver.receive(a_guest)
         the_receiver.receive(another_guest)
       end
+
+      context 'and its first guest offers no vacancy' do
+        before do
+          allow(a_guest).to receive(:vacancy).and_return(nil)
+        end
+
+        context 'but its second offers itself as a vacancy' do
+          it 'will offer its second guest as a vacancy' do
+            expect(the_receiver.vacancy).to eq(another_guest)
+          end
+        end
+      end
     end
   end
 
