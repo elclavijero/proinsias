@@ -2,8 +2,8 @@ module Proinsias
   class Receiver
     attr_reader :guests, :capacity
 
-    def initialize(capacity:0)
-      @capacity = [0,capacity].max
+    def capacity=(nat)
+      @capacity = [0,nat].max
     end
 
     def guests
