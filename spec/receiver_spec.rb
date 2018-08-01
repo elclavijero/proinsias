@@ -2,7 +2,7 @@ RSpec.describe Proinsias::Receiver do
   let(:the_receiver) do
     Object.new.tap do |rcv|
       rcv.extend(Proinsias::Receiver)
-      rcv.capacity = 2
+      rcv.instance_variable_set(:@capacity, 2)
     end
   end
 
