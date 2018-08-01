@@ -2,6 +2,7 @@ module Proinsias
   class Receiver
     def initialize(capacity:)
       @capacity = [0,capacity].max
+      @receptors = Array.new(@capacity)
     end
 
     def vacancy
@@ -9,7 +10,7 @@ module Proinsias
     end
 
     def guests
-      []
+      @receptors.compact
     end
 
     def receive;end
