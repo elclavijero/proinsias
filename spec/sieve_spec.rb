@@ -95,6 +95,12 @@ RSpec.describe Proinsias::Sieve::Unit do
     
             expect(the_consumer).not_to have_received(:call)
           end
+
+          it 'will quarantine that token' do
+            the_sieve.issue(token)
+
+            expect(the_quarantine).to have_received(:call).with(token)
+          end
         end
 
         context 'has role "rparen"' do
@@ -106,6 +112,12 @@ RSpec.describe Proinsias::Sieve::Unit do
             the_sieve.issue(token)
     
             expect(the_consumer).not_to have_received(:call)
+          end
+
+          it 'will quarantine that token' do
+            the_sieve.issue(token)
+
+            expect(the_quarantine).to have_received(:call).with(token)
           end
         end
       end
