@@ -58,6 +58,32 @@ RSpec.describe Proinsias::Sieve::Unit do
           end
         end
       end
+
+      describe 'a token that does not fit' do
+        context 'has role "infix"' do
+          let(:token) do
+            { role: 'infix', glyph: '∧' }
+          end
+
+          it 'will NOT pass that token to the consumer' do
+            the_sieve.issue(token)
+    
+            expect(the_consumer).not_to have_received(:call)
+          end
+        end
+
+        context 'has role "rparen"' do
+          let(:token) do
+            { role: 'rparen', glyph: ')' }
+          end
+
+          it 'will NOT pass that token to the consumer' do
+            the_sieve.issue(token)
+    
+            expect(the_consumer).not_to have_received(:call)
+          end
+        end
+      end
     end
   end
 end
