@@ -1,15 +1,6 @@
 module Proinsias
   module SyntacticRoles
-    class Variable
-      include Proinsias::Receiver
-
-      def initialize(glyph)
-        @glyph = glyph
-        @capacity = 0
-      end
-    end
-
-    class Constant
+    class Terminal
       include Proinsias::Receiver
 
       def initialize(glyph)

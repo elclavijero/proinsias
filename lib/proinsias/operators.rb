@@ -1,4 +1,30 @@
 module Proinsias
+  module Atoms
+    module Atom
+      include Comparable
+
+      def <=>(other)
+        1
+      end
+    end
+
+    class Constant < SyntacticRoles::Terminal
+      include Atom
+
+      def initialize(name)
+        super(name)
+      end
+    end
+
+    class Variable < SyntacticRoles::Terminal
+      include Atom
+
+      def initialize(name)
+        super(name)
+      end
+    end
+  end
+
   module Operators
     module Operator
       include Comparable
