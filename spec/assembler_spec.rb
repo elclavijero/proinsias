@@ -19,12 +19,30 @@ RSpec.describe Proinsias::Assembler do
     end
 
     context 'when left is not nil,' do
-      context 'when right is full'
+      context 'when right is full,' do
+        it 'will ask left to seek a vacancy'
 
-      context 'when right is expectant' do
-        context 'when left is at least right'
+        context 'if a vacancy is found,' do
+          it 'will ask the vacancy to receive right'
+        end
 
-        context 'when left is strictly less than right'
+        context 'if a vacancy is not found'
+      end
+
+      context 'when right is expectant, ' do
+        context 'and left is at least right,' do
+          it 'will ask right to receive left'
+        end
+
+        context 'when left is strictly less than right' do
+          it 'will ask left to seek a seam'
+
+          context 'if a seam is found,' do
+            it 'will splice right into the seam'
+          end
+
+          context 'if a seam is not found'
+        end
       end
     end
   end
