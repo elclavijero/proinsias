@@ -24,6 +24,14 @@ module Proinsias
         @glyph = glyph
         @capacity = 0
       end
+
+      def name
+        @glyph
+      end
+
+      def direct(visitor)
+        visitor.inform(self)
+      end
     end
 
     class Prefix
