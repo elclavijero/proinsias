@@ -1,19 +1,19 @@
-RSpec.describe Proinsias::Assembler do
+RSpec.describe Proinsias::TreeSurgeon do
   describe 'its interface' do
     it 'exposes join' do
-      expect(Proinsias::Assembler).to respond_to(:join)
+      expect(Proinsias::TreeSurgeon).to respond_to(:join)
     end
 
     it 'exposes cleave' do
-      expect(Proinsias::Assembler).to respond_to(:cleave)
+      expect(Proinsias::TreeSurgeon).to respond_to(:cleave)
     end
 
     it 'exposes splice' do
-      expect(Proinsias::Assembler).to respond_to(:splice)
+      expect(Proinsias::TreeSurgeon).to respond_to(:splice)
     end
   end
 
-  describe 'Assembler.join' do
+  describe 'TreeSurgeon.join' do
     let(:stock) do
       spy("stock")
     end
@@ -25,7 +25,7 @@ RSpec.describe Proinsias::Assembler do
     context 'when stock is nil,' do
       it 'will return scion' do
         expect(
-          Proinsias::Assembler.join(stock: nil, scion: scion)
+          Proinsias::TreeSurgeon.join(stock: nil, scion: scion)
         ).to equal(
           scion
         )
@@ -61,7 +61,7 @@ RSpec.describe Proinsias::Assembler do
     end
   end
 
-  describe 'Assembler.cleave' do
+  describe 'TreeSurgeon.cleave' do
     context 'given a Receiver:' do
       let(:the_receiver) do
         double("the receiver")
@@ -78,7 +78,7 @@ RSpec.describe Proinsias::Assembler do
 
         describe 'the returned Cutting' do
           let(:the_cutting) do
-            Proinsias::Assembler.cleave(the_receiver)
+            Proinsias::TreeSurgeon.cleave(the_receiver)
           end
   
           it ":stock will map to the given Receiver" do

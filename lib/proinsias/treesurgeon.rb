@@ -1,17 +1,17 @@
 module Proinsias
-  class Assembler
-    def Assembler.join(stock:, scion:)
+  class TreeSurgeon
+    def TreeSurgeon.join(stock:, scion:)
       return scion if stock.nil?
     end
 
-    def Assembler.cleave(stock)
+    def TreeSurgeon.cleave(stock)
       Cutting.new(
         stock: stock,
         scion: stock.nodes.pop
       )
     end
 
-    def Assembler.splice;end
+    def TreeSurgeon.splice;end
 
     Cutting = Struct.new(:stock, :scion, keyword_init: true)
   end

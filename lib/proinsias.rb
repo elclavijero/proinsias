@@ -4,7 +4,7 @@ require "proinsias/decoder"
 require "proinsias/configurations"
 require "proinsias/sieve"
 require "proinsias/receiver"
-require "proinsias/assembler"
+require "proinsias/treesurgeon"
 require "proinsias/atoms"
 
 module Proinsias
