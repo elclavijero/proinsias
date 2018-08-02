@@ -19,16 +19,16 @@ module Proinsias
         refer(inspector)
     end
 
-    private
-
     def expectant?
       guests.count < capacity
     end
-
+    
     def full?
       ! expectant?
     end
-
+    
+    private
+    
     def refer(inspector)
       guests.last.seek(inspector) if guests.count > 0
     end

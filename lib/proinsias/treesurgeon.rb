@@ -11,10 +11,10 @@ module Proinsias
 
       if scion.expectant?
         if stock >= scion
-          scion.receive(left)
+          scion.receive(stock)
           return scion
         else
-          seam = stock.seek(Inspectors[:seam][left])
+          seam = stock.seek(Inspectors[:seam][scion])
           cutting = cleave(seam)
           scion.receive(cutting.scion)
           cutting.stock.receive(scion)
@@ -32,7 +32,7 @@ module Proinsias
 
     Inspectors = {
       vacancy: lambda { |node| node.expectant? },
-      seam:    lambda { |stock, scion| stock.nodes.last > scion }.curry
+      seam:    lambda { |scion, stock| stock.nodes.last > scion }.curry
     }
 
     Cutting = Struct.new(:stock, :scion, keyword_init: true)
