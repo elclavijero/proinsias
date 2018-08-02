@@ -15,9 +15,9 @@ RSpec.describe Proinsias::Receiver do
   end
 
   describe 'its interface' do
-    it 'exposes #vacancy' do
-      expect(the_receiver).to respond_to(:vacancy)
-    end
+    # it 'exposes #vacancy' do
+    #   expect(the_receiver).to respond_to(:vacancy)
+    # end
 
     it 'exposes #receive' do
       expect(the_receiver).to respond_to(:receive)
@@ -27,52 +27,15 @@ RSpec.describe Proinsias::Receiver do
       expect(the_receiver).to respond_to(:guests)
     end
 
-    it 'exposes #direct' do
-      expect(the_receiver).to respond_to(:direct)
-    end
+    # it 'exposes #direct' do
+    #   expect(the_receiver).to respond_to(:direct)
+    # end
   end
 
   describe '#guests' do
     context 'before reception - ' do
       it 'will return an empty collection' do
         expect(the_receiver.guests).to be_empty
-      end
-    end
-  end
-
-  describe '#vacancy - ' do
-    context 'before reception of capacity - ' do
-      it 'will return self' do
-        expect(the_receiver.vacancy).to equal(the_receiver)
-      end
-    end
-
-    context 'having received capacity, ' do
-      before do
-        the_receiver.receive(a_guest)
-        the_receiver.receive(another_guest)
-      end
-
-      context 'and its first guest offers no vacancy,' do
-        before do
-          allow(a_guest).to receive(:vacancy).and_return(nil)
-        end
-
-        context 'but its second offers itself as a vacancy, ' do
-          it 'will offer its second guest as a vacancy' do
-            expect(the_receiver.vacancy).to eq(another_guest)
-          end
-        end
-
-        context 'and neither does its second, ' do
-          before do
-            allow(another_guest).to receive(:vacancy).and_return(nil)
-          end
-
-          it 'will offer nil' do
-            expect(the_receiver.vacancy).to be_nil
-          end
-        end
       end
     end
   end
