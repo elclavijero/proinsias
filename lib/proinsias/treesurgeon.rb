@@ -11,8 +11,6 @@ module Proinsias
       )
     end
 
-    def TreeSurgeon.splice;end
-
     Cutting = Struct.new(:stock, :scion, keyword_init: true)
   end
 end

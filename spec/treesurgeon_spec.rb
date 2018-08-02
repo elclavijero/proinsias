@@ -7,10 +7,6 @@ RSpec.describe Proinsias::TreeSurgeon do
     it 'exposes cleave' do
       expect(Proinsias::TreeSurgeon).to respond_to(:cleave)
     end
-
-    it 'exposes splice' do
-      expect(Proinsias::TreeSurgeon).to respond_to(:splice)
-    end
   end
 
   describe 'TreeSurgeon.join' do
