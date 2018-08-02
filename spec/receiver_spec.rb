@@ -15,10 +15,6 @@ RSpec.describe Proinsias::Receiver do
   end
 
   describe 'its interface' do
-    # it 'exposes #vacancy' do
-    #   expect(the_receiver).to respond_to(:vacancy)
-    # end
-
     it 'exposes #receive' do
       expect(the_receiver).to respond_to(:receive)
     end
@@ -26,10 +22,6 @@ RSpec.describe Proinsias::Receiver do
     it 'exposes #guests' do
       expect(the_receiver).to respond_to(:guests)
     end
-
-    # it 'exposes #direct' do
-    #   expect(the_receiver).to respond_to(:direct)
-    # end
   end
 
   describe '#guests' do
