@@ -26,6 +26,10 @@ RSpec.describe Proinsias::Receiver do
     it 'exposes #guests' do
       expect(the_receiver).to respond_to(:guests)
     end
+
+    it 'exposes #direct' do
+      expect(the_receiver).to respond_to(:direct)
+    end
   end
 
   describe '#guests' do
