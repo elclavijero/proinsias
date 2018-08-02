@@ -22,6 +22,10 @@ RSpec.describe Proinsias::Receiver do
     it 'exposes #guests' do
       expect(the_receiver).to respond_to(:guests)
     end
+    
+    it 'exposes #seek' do
+      expect(the_receiver).to respond_to(:seek)
+    end
   end
 
   describe '#guests' do

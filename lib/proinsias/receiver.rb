@@ -23,6 +23,8 @@ module Proinsias
       guest) unless full?
     end
 
+    def seek;end
+
     private
 
     def expectant?
