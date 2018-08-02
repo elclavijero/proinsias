@@ -14,39 +14,39 @@ RSpec.describe Proinsias::Assembler do
   end
 
   describe 'Assembler.join' do
-    context 'when left is nil,' do
-      it 'will return right' do
-        right = spy("right")
+    context 'when stock is nil,' do
+      it 'will return scion' do
+        scion = spy("scion")
 
         expect(
-          Proinsias::Assembler.join(left: nil, right: right)
+          Proinsias::Assembler.join(stock: nil, scion: scion)
         ).to equal(
-          right
+          scion
         )
       end
     end
 
-    context 'when left is not nil,' do
-      context 'when right is full,' do
-        it 'will ask left to seek a vacancy'
+    context 'when stock is not nil,' do
+      context 'when scion is full,' do
+        it 'will ask stock to seek a vacancy'
 
         context 'if a vacancy is found,' do
-          it 'will ask the vacancy to receive right'
+          it 'will ask the vacancy to receive scion'
         end
 
         context 'if a vacancy is not found'
       end
 
-      context 'when right is expectant, ' do
-        context 'and left is at least right,' do
-          it 'will ask right to receive left'
+      context 'when scion is expectant, ' do
+        context 'and stock is at least scion,' do
+          it 'will ask scion to receive stock'
         end
 
-        context 'when left is strictly less than right' do
-          it 'will ask left to seek a seam'
+        context 'when stock is strictly less than scion' do
+          it 'will ask stock to seek a seam'
 
           context 'if a seam is found,' do
-            it 'will splice right into the seam'
+            it 'will splice scion into the seam'
           end
 
           context 'if a seam is not found'

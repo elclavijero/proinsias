@@ -1,7 +1,7 @@
 module Proinsias
   class Assembler
-    def Assembler.join(left:, right:)
-      return right if left.nil?
+    def Assembler.join(stock:, scion:)
+      return scion if stock.nil?
     end
 
     def Assembler.cleave;end
