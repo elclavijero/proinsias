@@ -3,6 +3,14 @@ RSpec.describe Proinsias::Assembler do
     it 'exposes join' do
       expect(Proinsias::Assembler).to respond_to(:join)
     end
+
+    it 'exposes cleave' do
+      expect(Proinsias::Assembler).to respond_to(:cleave)
+    end
+
+    it 'exposes splice' do
+      expect(Proinsias::Assembler).to respond_to(:splice)
+    end
   end
 
   describe 'Assembler.join' do
