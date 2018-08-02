@@ -6,75 +6,25 @@ RSpec.describe Proinsias::Assembler do
   end
 
   describe 'Assembler.join' do
-    context 'when left is nil' do
+    context 'when left is nil,' do
       it 'will return right' do
-        some_object = spy("some object")
+        right = spy("right")
 
         expect(
-          Proinsias::Assembler.join(left: nil, right: some_object)
+          Proinsias::Assembler.join(left: nil, right: right)
         ).to equal(
-          some_object
+          right
         )
       end
     end
 
-    context 'when left is not nil' do
-      let(:left) do
-        spy("left")
-      end
+    context 'when left is not nil,' do
+      context 'when right is full'
 
-      let(:right) do
-        spy("right")
-      end
+      context 'when right is expectant' do
+        context 'when left is at least right'
 
-      let(:a_vacancy) do
-        spy("a vacancy")
-      end
-
-      context 'and left offers a vacancy, ' do
-        before do
-          allow(left).to receive(:vacancy).and_return(a_vacancy)
-        end
-
-        it 'will ask left to receive right' do
-          Proinsias::Assembler.join(left: left, right: right)
-
-          expect(a_vacancy).to have_received(:receive).with(right)
-        end
-
-        it 'will return left' do
-          expect(
-            Proinsias::Assembler.join(left: left, right: right)
-          ).to equal(
-            left
-          )
-        end
-      end
-
-      context 'but left offers no vacancy, ' do
-        before do
-          allow(left).to receive(:vacancy).and_return(nil)
-        end
-
-        context 'yet right offers a vacancy, ' do
-          before do
-            allow(right).to receive(:vacancy).and_return(a_vacancy)
-          end
-
-          it 'will ask right to receive left' do
-            Proinsias::Assembler.join(left: left, right: right)
-  
-            expect(a_vacancy).to have_received(:receive).with(left)
-          end
-
-          it 'will return right' do
-            expect(
-              Proinsias::Assembler.join(left: left, right: right)
-            ).to equal(
-              right
-            )
-          end
-        end
+        context 'when left is strictly less than right'
       end
     end
   end
