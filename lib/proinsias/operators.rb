@@ -2,7 +2,7 @@ module Proinsias
   module Operators
     module Operator
       include Comparable
-      
+
       attr_reader :precedence
 
       def <=>(other)
@@ -10,7 +10,7 @@ module Proinsias
       end
     end
 
-    class Equivalence < Atoms::Infix
+    class Equivalence < SyntacticRoles::Infix
       include Operator
 
       def initialize
@@ -19,7 +19,7 @@ module Proinsias
       end
     end
 
-    class Negation < Atoms::Prefix
+    class Negation < SyntacticRoles::Prefix
       include Operator
 
       def initialize
@@ -28,7 +28,7 @@ module Proinsias
       end
     end
 
-    class Disjunction < Atoms::Infix
+    class Disjunction < SyntacticRoles::Infix
       include Operator
 
       def initialize
@@ -37,7 +37,7 @@ module Proinsias
       end
     end
 
-    class Conjunction < Atoms::Infix
+    class Conjunction < SyntacticRoles::Infix
       include Operator
 
       def initialize

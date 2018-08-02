@@ -1,5 +1,5 @@
 module Proinsias
-  module Atoms
+  module SyntacticRoles
     class Variable
       include Proinsias::Receiver
 

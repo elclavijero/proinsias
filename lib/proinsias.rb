@@ -5,7 +5,7 @@ require "proinsias/configurations"
 require "proinsias/sieve"
 require "proinsias/receiver"
 require "proinsias/treesurgeon"
-require "proinsias/atoms"
+require "proinsias/syntacticroles"
 require "proinsias/operators"
 
 module Proinsias
