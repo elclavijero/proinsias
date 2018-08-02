@@ -1,7 +1,15 @@
 module Proinsias
   module Operators
-    class Equivalence < Atoms::Infix
+    module Operator
       attr_reader :precedence
+
+      def <=>(other)
+        precedence <=> other.precedence
+      end
+    end
+
+    class Equivalence < Atoms::Infix
+      include Operator
 
       def initialize
         super('≡')
@@ -10,7 +18,7 @@ module Proinsias
     end
 
     class Negation < Atoms::Prefix
-      attr_reader :precedence
+      include Operator
 
       def initialize
         super('¬')
@@ -19,7 +27,7 @@ module Proinsias
     end
 
     class Disjunction < Atoms::Infix
-      attr_reader :precedence
+      include Operator
 
       def initialize
         super('∨')
@@ -28,7 +36,7 @@ module Proinsias
     end
 
     class Conjunction < Atoms::Infix
-      attr_reader :precedence
+      include Operator
 
       def initialize
         super('∧')
