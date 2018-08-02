@@ -76,17 +76,17 @@ RSpec.describe Proinsias::Assembler do
           spy("the guest")
         end
 
-        describe 'the returned Hash' do
-          let(:the_returned) do
+        describe 'the returned Cutting' do
+          let(:the_cutting) do
             Proinsias::Assembler.cleave(the_receiver)
           end
   
           it ":stock will map to the given Receiver" do
-            expect(the_returned).to include(:stock => the_receiver)
+            expect(the_cutting.stock).to equal(the_receiver)
           end
   
           it ":scion will map to the given Receiver's last guest" do
-            expect(the_returned).to include(:scion => the_guest)
+            expect(the_cutting.scion).to equal(the_guest)
           end
         end
 
