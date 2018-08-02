@@ -14,10 +14,16 @@ RSpec.describe Proinsias::Assembler do
   end
 
   describe 'Assembler.join' do
+    let(:stock) do
+      spy("stock")
+    end
+
+    let(:scion) do
+      spy("scion")
+    end
+
     context 'when stock is nil,' do
       it 'will return scion' do
-        scion = spy("scion")
-
         expect(
           Proinsias::Assembler.join(stock: nil, scion: scion)
         ).to equal(
