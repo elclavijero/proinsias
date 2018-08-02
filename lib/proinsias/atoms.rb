@@ -14,6 +14,7 @@ module Proinsias
 
       def direct(visitor)
         visitor.remember(self)
+        guests.last.direct(visitor) if capacity > 0
       end
     end
 
@@ -31,6 +32,7 @@ module Proinsias
 
       def direct(visitor)
         visitor.remember(self)
+        guests.last.direct(visitor) if capacity > 0
       end
     end
 
@@ -48,7 +50,7 @@ module Proinsias
 
       def direct(visitor)
         visitor.remember(self)
-        guests.last.direct(visitor)
+        guests.last.direct(visitor) if capacity > 0
       end
     end
 
@@ -66,7 +68,7 @@ module Proinsias
 
       def direct(visitor)
         visitor.remember(self)
-        guests.last.direct(visitor)
+        guests.last.direct(visitor) if capacity > 0
       end
     end
   end
