@@ -10,6 +10,8 @@ module Proinsias
   module Receiver
     attr_reader :guests, :capacity
 
+    alias nodes guests
+
     using NilRefinement
 
     def guests

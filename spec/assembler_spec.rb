@@ -67,13 +67,13 @@ RSpec.describe Proinsias::Assembler do
         double("the receiver")
       end
 
-      context 'providing the receiver has a last guest' do
+      context 'providing the receiver has a last node' do
         before do
-          allow(the_receiver).to receive(:guests).and_return( [ the_guest ] )
+          allow(the_receiver).to receive(:nodes).and_return( [ the_node ] )
         end
 
-        let(:the_guest) do
-          spy("the guest")
+        let(:the_node) do
+          spy("the node")
         end
 
         describe 'the returned Cutting' do
@@ -85,13 +85,13 @@ RSpec.describe Proinsias::Assembler do
             expect(the_cutting.stock).to equal(the_receiver)
           end
   
-          it ":scion will map to the given Receiver's last guest" do
-            expect(the_cutting.scion).to equal(the_guest)
+          it ":scion will map to the given Receiver's last node" do
+            expect(the_cutting.scion).to equal(the_node)
           end
         end
 
         describe 'the modifications to the given Receiver' do
-          it "will separate the Receiver from its last guest"
+          it "will separate the Receiver from its last node"
         end
       end
 
