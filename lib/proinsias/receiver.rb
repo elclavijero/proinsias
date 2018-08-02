@@ -1,6 +1,16 @@
 module Proinsias
+  module NilRefinement
+    refine NilClass do
+      def direct(visitor)
+        visitor.remember(nil)
+      end
+    end
+  end
+
   module Receiver
     attr_reader :guests, :capacity
+
+    using NilRefinement
 
     def guests
       @guests ||= []

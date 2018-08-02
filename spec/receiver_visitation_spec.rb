@@ -48,6 +48,14 @@ RSpec.describe Proinsias::Receiver do
           expect(a_guest).to have_received(:direct).with(the_visitor)
         end
       end
+
+      context 'if a guest has not yet been received' do
+        it 'asks the visitor to remember self' do
+          the_receiver.direct(the_visitor)
+    
+          expect(the_visitor).to have_received(:remember).with(nil)
+        end
+      end
     end
   end
 end
