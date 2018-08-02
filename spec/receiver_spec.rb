@@ -51,6 +51,18 @@ RSpec.describe Proinsias::Receiver do
   end
 
   describe '#seek' do
-    
+    context 'when the inspector evaluates to true for the subject' do
+      it 'will return the subject'
+    end
+
+    context 'when the inspector evaluates to false for the subject,' do
+      context 'and the subject has a guest' do
+        it 'will refer the inspector to the last guest'
+      end
+
+      context 'but the subject does not have a guest' do
+        it 'wil return nil'
+      end
+    end
   end
 end
