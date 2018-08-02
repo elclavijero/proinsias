@@ -26,20 +26,22 @@ RSpec.describe Proinsias::Atoms::Prefix do
       spy("a guest")
     end
 
-    before do
-      the_prefix.receive(a_guest)
-    end
-
-    it 'asks the visitor to remember self' do
-      the_prefix.direct(the_visitor)
-
-      expect(the_visitor).to have_received(:remember).with(the_prefix)
-    end
-
-    it 'will ask the last of #guests to #direct the visitor' do
-      the_prefix.direct(the_visitor)
-
-      expect(a_guest).to have_received(:direct).with(the_visitor)
+    context 'providing a guest has been received' do
+      before do
+        the_prefix.receive(a_guest)
+      end
+  
+      it 'asks the visitor to remember self' do
+        the_prefix.direct(the_visitor)
+  
+        expect(the_visitor).to have_received(:remember).with(the_prefix)
+      end
+  
+      it 'will ask the last of #guests to #direct the visitor' do
+        the_prefix.direct(the_visitor)
+  
+        expect(a_guest).to have_received(:direct).with(the_visitor)
+      end
     end
   end
 end
