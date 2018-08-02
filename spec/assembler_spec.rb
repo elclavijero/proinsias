@@ -89,6 +89,10 @@ RSpec.describe Proinsias::Assembler do
             expect(the_returned).to include(:scion => the_guest)
           end
         end
+
+        describe 'the modifications to the given Receiver' do
+          it "will separate the Receiver from its last guest"
+        end
       end
 
     end

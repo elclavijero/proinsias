@@ -7,7 +7,7 @@ module Proinsias
     def Assembler.cleave(stock)
       {
         stock: stock,
-        scion: stock.guests.last
+        scion: stock.guests.pop
       }
     end
 
