@@ -11,11 +11,6 @@ module Proinsias
       def name
         @glyph
       end
-
-      def direct(visitor)
-        visitor.remember(self)
-        guests.last.direct(visitor) if capacity > 0
-      end
     end
 
     class Constant
@@ -28,11 +23,6 @@ module Proinsias
 
       def name
         @glyph
-      end
-
-      def direct(visitor)
-        visitor.remember(self)
-        guests.last.direct(visitor) if capacity > 0
       end
     end
 
@@ -47,11 +37,6 @@ module Proinsias
       def name
         @glyph
       end
-
-      def direct(visitor)
-        visitor.remember(self)
-        guests.last.direct(visitor) if capacity > 0
-      end
     end
 
     class Infix
@@ -64,11 +49,6 @@ module Proinsias
 
       def name
         @glyph
-      end
-
-      def direct(visitor)
-        visitor.remember(self)
-        guests.last.direct(visitor) if capacity > 0
       end
     end
   end

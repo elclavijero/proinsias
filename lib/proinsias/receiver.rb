@@ -17,6 +17,11 @@ module Proinsias
       guest) unless full?
     end
 
+    def direct(visitor)
+      visitor.remember(self)
+      guests.last.direct(visitor) if capacity > 0
+    end
+
     private
 
     def expectant?
