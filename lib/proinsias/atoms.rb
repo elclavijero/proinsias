@@ -7,10 +7,6 @@ module Proinsias
         @glyph = glyph
         @capacity = 0
       end
-
-      def name
-        @glyph
-      end
     end
 
     class Constant
@@ -19,10 +15,6 @@ module Proinsias
       def initialize(glyph)
         @glyph = glyph
         @capacity = 0
-      end
-
-      def name
-        @glyph
       end
     end
 
@@ -33,10 +25,6 @@ module Proinsias
         @glyph = glyph
         @capacity = 1
       end
-
-      def name
-        @glyph
-      end
     end
 
     class Infix
@@ -45,10 +33,6 @@ module Proinsias
       def initialize(glyph)
         @glyph = glyph
         @capacity = 2
-      end
-
-      def name
-        @glyph
       end
     end
   end
