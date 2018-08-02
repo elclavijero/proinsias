@@ -18,12 +18,12 @@ RSpec.describe Proinsias::Atoms::Variable do
   end
 
   describe '#direct' do
-    it 'informs the visitor by supplying itself' do
+    it 'asks the visitor to remember self' do
       the_visitor = spy("the visitor")
 
       the_variable.direct(the_visitor)
 
-      expect(the_visitor).to have_received(:inform).with(the_variable)
+      expect(the_visitor).to have_received(:remember).with(the_variable)
     end
   end
 end

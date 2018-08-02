@@ -13,7 +13,7 @@ module Proinsias
       end
 
       def direct(visitor)
-        visitor.inform(self)
+        visitor.remember(self)
       end
     end
 
@@ -30,7 +30,7 @@ module Proinsias
       end
 
       def direct(visitor)
-        visitor.inform(self)
+        visitor.remember(self)
       end
     end
 
