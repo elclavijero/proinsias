@@ -37,7 +37,7 @@ RSpec.describe Proinsias::Receiver do
   end
 
   describe '#receive' do
-    context 'providing there is a vacancy' do
+    context 'providing there is capacity' do
       it 'will return the received guest' do
         expect(the_receiver.receive(a_guest)).to equal(a_guest)
       end
