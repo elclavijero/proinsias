@@ -1,18 +1,8 @@
 module Proinsias
-  module NilRefinement
-    refine NilClass do
-      def direct(visitor)
-        visitor.remember(nil)
-      end
-    end
-  end
-
   module Receiver
     attr_reader :guests, :capacity
 
     alias nodes guests
-
-    using NilRefinement
 
     def guests
       @guests ||= []
@@ -23,7 +13,11 @@ module Proinsias
       guest) unless full?
     end
 
-    def seek;end
+    def seek(inspector)
+      inspector.call(self) ?
+        self :
+        refer(inspector)
+    end
 
     private
 
@@ -33,6 +27,10 @@ module Proinsias
 
     def full?
       ! expectant?
+    end
+
+    def refer(inspector)
+      guests.last.seek(inspector) if guests.count > 0
     end
   end
 end

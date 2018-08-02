@@ -49,4 +49,8 @@ RSpec.describe Proinsias::Receiver do
       end
     end
   end
+
+  describe '#seek' do
+    
+  end
 end

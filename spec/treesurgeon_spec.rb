@@ -29,7 +29,7 @@ RSpec.describe Proinsias::TreeSurgeon do
     end
 
     context 'when stock is not nil,' do
-      context 'when scion is full,' do
+      context 'and scion is full,' do
         it 'will ask stock to seek a vacancy'
 
         context 'if a vacancy is found,' do
@@ -39,12 +39,12 @@ RSpec.describe Proinsias::TreeSurgeon do
         context 'if a vacancy is not found'
       end
 
-      context 'when scion is expectant, ' do
+      context 'scion is expectant, ' do
         context 'and stock is at least scion,' do
           it 'will ask scion to receive stock'
         end
 
-        context 'when stock is strictly less than scion' do
+        context 'and stock is strictly less than scion,' do
           it 'will ask stock to seek a seam'
 
           context 'if a seam is found,' do
