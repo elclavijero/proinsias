@@ -1,6 +1,8 @@
 module Proinsias
   module Operators
     module Operator
+      include Comparable
+      
       attr_reader :precedence
 
       def <=>(other)
