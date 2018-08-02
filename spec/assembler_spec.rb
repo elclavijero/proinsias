@@ -60,4 +60,37 @@ RSpec.describe Proinsias::Assembler do
       end
     end
   end
+
+  describe 'Assembler.cleave' do
+    context 'given a Receiver:' do
+      let(:the_receiver) do
+        double("the receiver")
+      end
+
+      context 'providing the receiver has a last guest' do
+        before do
+          allow(the_receiver).to receive(:guests).and_return( [ the_guest ] )
+        end
+
+        let(:the_guest) do
+          spy("the guest")
+        end
+
+        describe 'the returned Hash' do
+          let(:the_returned) do
+            Proinsias::Assembler.cleave(the_receiver)
+          end
+  
+          it ":stock will map to the given Receiver" do
+            expect(the_returned).to include(:stock => the_receiver)
+          end
+  
+          it ":scion will map to the given Receiver's last guest" do
+            expect(the_returned).to include(:scion => the_guest)
+          end
+        end
+      end
+
+    end
+  end
 end

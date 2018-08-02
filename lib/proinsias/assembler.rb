@@ -4,7 +4,12 @@ module Proinsias
       return scion if stock.nil?
     end
 
-    def Assembler.cleave;end
+    def Assembler.cleave(stock)
+      {
+        stock: stock,
+        scion: stock.guests.last
+      }
+    end
 
     def Assembler.splice;end
   end
