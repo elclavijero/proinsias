@@ -15,6 +15,8 @@ module Proinsias
       plant(incoming) unless tree
       
       @opening = incoming if incoming.expectant?
+
+      tree
     end
 
     private
