@@ -85,7 +85,9 @@ RSpec.describe Proinsias::Receiver do
       end
 
       context 'but the subject does not have a guest' do
-        it 'wil return nil'
+        it 'wil return nil' do
+          expect(the_receiver.seek(the_inspector)).to be_nil
+        end
       end
     end
   end

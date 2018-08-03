@@ -30,7 +30,9 @@ module Proinsias
     private
     
     def refer(inspector)
-      guests.last.seek(inspector) if guests.count > 0
+      guests.count > 0 ?
+        guests.last.seek(inspector) :
+        nil
     end
   end
 end
