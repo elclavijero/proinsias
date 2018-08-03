@@ -15,16 +15,36 @@ RSpec.describe Proinsias::TreeSurgeon do
     end
 
     context 'upon creation' do
-      it '#tree will become the incoming' do
-        expect {
-          the_tree_surgeon.join(incoming)
-        }.to change {
-          the_tree_surgeon.tree
-        }.from(
-          nil
-        ).to(
-          incoming
-        )
+      context 'and given incoming,' do
+        it '#tree will become the incoming' do
+          expect {
+            the_tree_surgeon.join(incoming)
+          }.to change {
+            the_tree_surgeon.tree
+          }.from(
+            nil
+          ).to(
+            incoming
+          )
+        end
+
+        context 'if incoming is expectant,' do
+          before do
+            allow(incoming).to receive(:expectant?).and_return(true)
+          end
+
+          it '#vacancy will become incoming' do
+            expect {
+              the_tree_surgeon.join(incoming)
+            }.to change {
+              the_tree_surgeon.vacancy
+            }.from(
+              nil
+            ).to(
+              incoming
+            )
+          end
+        end
       end
     end
   end
