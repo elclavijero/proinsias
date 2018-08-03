@@ -51,8 +51,18 @@ RSpec.describe Proinsias::Receiver do
   end
 
   describe '#seek' do
+    let(:the_inspector) do
+      spy("the inspector")
+    end
+
     context 'when the inspector evaluates to true for the subject' do
-      it 'will return the subject'
+      before do
+        allow(the_inspector).to receive(:call).with(the_receiver).and_return(true)
+      end
+
+      it 'will return the subject' do
+        expect(the_receiver.seek(the_inspector)).to equal(the_receiver)
+      end
     end
 
     context 'when the inspector evaluates to false for the subject,' do
