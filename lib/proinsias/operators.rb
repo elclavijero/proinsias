@@ -14,6 +14,10 @@ module Proinsias
       def initialize(name)
         super(name)
       end
+
+      def to_ast
+        @glyph
+      end
     end
 
     class Variable < SyntacticRoles::Terminal
@@ -21,6 +25,10 @@ module Proinsias
 
       def initialize(name)
         super(name)
+      end
+
+      def to_ast
+        @glyph
       end
     end
   end
@@ -36,8 +44,33 @@ module Proinsias
       end
     end
 
-    class Equivalence < SyntacticRoles::Infix
+    module BinaryOperator
       include Operator
+
+      def to_ast
+        {
+          @glyph => [
+            arguments[0].to_ast,
+            arguments[1].to_ast
+          ]
+        }
+      end
+    end
+
+    module UnaryOperator
+      include Operator
+
+      def to_ast
+        {
+          @glyph => [
+            arguments[0].to_ast
+          ]
+        }
+      end
+    end
+
+    class Equivalence < SyntacticRoles::Infix
+      include BinaryOperator
 
       def initialize
         super('≡')
@@ -46,7 +79,7 @@ module Proinsias
     end
 
     class Equality < SyntacticRoles::Infix
-      include Operator
+      include BinaryOperator
 
       def initialize
         super('=')
@@ -55,7 +88,7 @@ module Proinsias
     end
 
     class Negation < SyntacticRoles::Prefix
-      include Operator
+      include UnaryOperator
 
       def initialize
         super('¬')
@@ -64,7 +97,7 @@ module Proinsias
     end
 
     class Disjunction < SyntacticRoles::Infix
-      include Operator
+      include BinaryOperator
 
       def initialize
         super('∨')
@@ -73,7 +106,7 @@ module Proinsias
     end
 
     class Conjunction < SyntacticRoles::Infix
-      include Operator
+      include BinaryOperator
 
       def initialize
         super('∧')

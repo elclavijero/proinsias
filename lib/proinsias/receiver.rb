@@ -3,6 +3,7 @@ module Proinsias
     attr_reader :guests, :capacity
 
     alias nodes guests
+    alias arguments guests
 
     def guests
       @guests ||= []
