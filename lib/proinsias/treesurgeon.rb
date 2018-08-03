@@ -2,7 +2,7 @@ module Proinsias
   class TreeSurgeon
     attr_reader :tree
 
-    def join(incoming:)
+    def join(incoming)
       return (@tree = incoming) unless @tree
     end
 
