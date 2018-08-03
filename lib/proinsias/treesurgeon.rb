@@ -12,7 +12,7 @@ module Proinsias
     Cutting = Struct.new(:stock, :scion, keyword_init: true)
 
     def join(incoming)
-      plant(incoming) unless tree
+      return seed(incoming) unless tree
 
       if opening
         opening.receive(incoming)
@@ -25,12 +25,22 @@ module Proinsias
         end
       end
       
-      @opening = incoming.expectant? ? incoming : nil
+      look_for_opening(incoming)
 
       tree
     end
 
     private
+
+    def seed(incoming)
+      plant(incoming)
+      look_for_opening(incoming)
+      tree
+    end
+
+    def look_for_opening(incoming)
+      @opening = incoming.expectant? ? incoming : nil
+    end
 
     def plant(tree)
       @tree = tree
