@@ -16,18 +16,21 @@ module Proinsias
 
       if opening
         opening.receive(incoming)
+        # tree doesn't change
       else
         if tree >= incoming
           incoming.receive(tree)
+          @tree = incoming
         else
           target = tree.chink(incoming)
           cutting = TreeSurgeon.cleave(target)
           incoming.receive(cutting.scion)
           cutting.stock.receive(incoming)
+          # tree doesn't change
         end
       end
       
-      @opening = incoming if incoming.expectant?
+      @opening = incoming.expectant? ? incoming : nil
 
       tree
     end
