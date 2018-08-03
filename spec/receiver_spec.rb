@@ -124,11 +124,11 @@ RSpec.describe Proinsias::Receiver do
     end
 
     context 'given a Disjunction' do
-      it 'will return only a part' do
+      it 'will return the whole' do
         expect(
           whole.chink(Proinsias::Operators::Disjunction.new)
         ).to equal(
-          part
+          whole
         )
       end
     end
