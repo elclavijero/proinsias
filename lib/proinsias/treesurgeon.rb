@@ -13,6 +13,19 @@ module Proinsias
 
     def join(incoming)
       plant(incoming) unless tree
+
+      if opening
+        opening.receive(incoming)
+      else
+        if tree >= incoming
+          incoming.receive(tree)
+        else
+          target = tree.chink(incoming)
+          cutting = TreeSurgeon.cleave(target)
+          incoming.receive(cutting.scion)
+          cutting.stock.receive(incoming)
+        end
+      end
       
       @opening = incoming if incoming.expectant?
 
