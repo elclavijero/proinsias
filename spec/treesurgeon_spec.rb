@@ -33,11 +33,11 @@ RSpec.describe Proinsias::TreeSurgeon do
             allow(incoming).to receive(:expectant?).and_return(true)
           end
 
-          it '#vacancy will become incoming' do
+          it '#opening will become incoming' do
             expect {
               the_tree_surgeon.join(incoming)
             }.to change {
-              the_tree_surgeon.vacancy
+              the_tree_surgeon.opening
             }.from(
               nil
             ).to(
@@ -51,11 +51,11 @@ RSpec.describe Proinsias::TreeSurgeon do
             allow(incoming).to receive(:expectant?).and_return(false)
           end
 
-          it '#vacancy will remain nil' do
+          it '#opening will remain nil' do
             expect {
               the_tree_surgeon.join(incoming)
             }.not_to change {
-              the_tree_surgeon.vacancy
+              the_tree_surgeon.opening
             }.from(
               nil
             )
