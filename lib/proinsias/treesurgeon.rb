@@ -12,33 +12,35 @@ module Proinsias
     Cutting = Struct.new(:stock, :scion, keyword_init: true)
 
     def join(incoming)
-      return seed(incoming) unless tree
+      tree ?
+        plant( graft(incoming) ) :
+        seed(incoming)
 
-      if opening
-        opening.receive(incoming)
-      else
-        if tree < incoming
-          splice(incoming)
-        else
-          incoming.receive(tree)
-          plant(incoming)
-        end
-      end
-      
-      look_for_opening(incoming)
+      new_opening(incoming)
 
       tree
     end
 
     private
 
-    def seed(incoming)
-      plant(incoming)
-      look_for_opening(incoming)
+    def graft(incoming)
+      opening ?
+          fill_opening(incoming) :
+          tree.integrate(incoming)
+    end
+
+    def fill_opening(incoming)
+      opening.receive(incoming)
       tree
     end
 
-    def look_for_opening(incoming)
+    def seed(incoming)
+      plant(incoming)
+      new_opening(incoming)
+      tree
+    end
+
+    def new_opening(incoming)
       @opening = incoming.expectant? ? incoming : nil
     end
 

@@ -33,6 +33,24 @@ module Proinsias
         proc { |candidate| candidate.guests.last >= wedge }
       )
     end
+
+    def integrate(incoming)
+      if self < incoming
+        splice(incoming)
+        self
+      else
+        incoming.receive(self)
+        incoming
+      end
+    end
+
+    def splice(incoming)
+      target = chink(incoming)
+      cutting = TreeSurgeon.cleave(target)
+      incoming.receive(cutting.scion)
+      cutting.stock.receive(incoming)
+      self
+    end
     
     private
     
