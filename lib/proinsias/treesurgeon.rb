@@ -12,9 +12,9 @@ module Proinsias
     Cutting = Struct.new(:stock, :scion, keyword_init: true)
 
     def join(incoming)
-      tree ?
-        plant( graft(incoming) ) :
-        seed(incoming)
+      plant(
+        tree ? graft(incoming) : incoming
+      )
 
       new_opening(incoming)
 
@@ -25,18 +25,12 @@ module Proinsias
 
     def graft(incoming)
       opening ?
-          fill_opening(incoming) :
-          tree.integrate(incoming)
+        fill_opening(incoming) :
+        tree.integrate(incoming)
     end
 
     def fill_opening(incoming)
       opening.receive(incoming)
-      tree
-    end
-
-    def seed(incoming)
-      plant(incoming)
-      new_opening(incoming)
       tree
     end
 
