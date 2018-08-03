@@ -45,7 +45,7 @@ module Proinsias
     end
 
     def splice(incoming)
-      cleave(chink(incoming)).tap do |unplugged|
+      unplug(chink(incoming)).tap do |unplugged|
         incoming.receive(unplugged.plug)
         unplugged.receiver.receive(incoming)
       end
@@ -53,7 +53,7 @@ module Proinsias
       self
     end
     
-    def cleave(stock)
+    def unplug(stock)
       Unplugged.new(
         receiver: stock,
         plug:     stock.nodes.pop
