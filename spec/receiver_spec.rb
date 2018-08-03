@@ -93,18 +93,6 @@ RSpec.describe Proinsias::Receiver do
   end
 
   describe '#chink' do
-    let(:whole) do
-      eqv.receive(p)
-      eqv.receive(part)
-      eqv
-    end
-
-    let(:part) do
-      dis.receive(q)
-      dis.receive(r)
-      dis
-    end
-
     let(:eqv) { Proinsias::Operators::Equivalence.new }
     let(:equ) { Proinsias::Operators::Equality.new }
     let(:neg) { Proinsias::Operators::Negation.new }
@@ -113,33 +101,46 @@ RSpec.describe Proinsias::Receiver do
     let(:q) { Proinsias::Atoms::Variable.new('q') }
     let(:r) { Proinsias::Atoms::Variable.new('r') }
 
-    context 'given an Equivalence' do
-      it 'will return the whole' do
-        expect(
-          whole.chink(Proinsias::Operators::Equivalence.new)
-        ).to equal(
-          whole
-        )
+    context 'when the whole has a deep last branch' do
+      let(:whole) do
+        eqv.receive(p)
+        eqv.receive(part)
+        eqv
       end
-    end
-
-    context 'given a Disjunction' do
-      it 'will return the whole' do
-        expect(
-          whole.chink(Proinsias::Operators::Disjunction.new)
-        ).to equal(
-          whole
-        )
+  
+      let(:part) do
+        dis.receive(q)
+        dis.receive(r)
+        dis
       end
-    end
-
-    context 'given an Equality' do
-      it 'will return only a part' do
-        expect(
-          whole.chink(Proinsias::Operators::Equality.new)
-        ).to equal(
-          part
-        )
+      context 'given an Equivalence' do
+        it 'will return the whole' do
+          expect(
+            whole.chink(Proinsias::Operators::Equivalence.new)
+          ).to equal(
+            whole
+          )
+        end
+      end
+  
+      context 'given a Disjunction' do
+        it 'will return the whole' do
+          expect(
+            whole.chink(Proinsias::Operators::Disjunction.new)
+          ).to equal(
+            whole
+          )
+        end
+      end
+  
+      context 'given an Equality' do
+        it 'will return only a part' do
+          expect(
+            whole.chink(Proinsias::Operators::Equality.new)
+          ).to equal(
+            part
+          )
+        end
       end
     end
   end

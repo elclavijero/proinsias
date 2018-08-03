@@ -29,7 +29,7 @@ module Proinsias
 
     def chink(wedge)
       seek(
-        proc { |candidate| candidate.guests.last > wedge }
+        proc { |candidate| candidate.guests.last >= wedge }
       )
     end
     
