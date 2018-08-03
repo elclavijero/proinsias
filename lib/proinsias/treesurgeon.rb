@@ -2,15 +2,6 @@ module Proinsias
   class TreeSurgeon
     attr_reader :tree, :opening
 
-    def TreeSurgeon.cleave(stock)
-      Cutting.new(
-        stock: stock,
-        scion: stock.nodes.pop
-      )
-    end
-    
-    Cutting = Struct.new(:stock, :scion, keyword_init: true)
-
     def join(incoming)
       plant(
         tree ? graft(incoming) : incoming

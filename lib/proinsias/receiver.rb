@@ -45,13 +45,23 @@ module Proinsias
     end
 
     def splice(incoming)
-      target = chink(incoming)
-      cutting = TreeSurgeon.cleave(target)
-      incoming.receive(cutting.scion)
-      cutting.stock.receive(incoming)
+      cleave(chink(incoming)).tap do |unplugged|
+        incoming.receive(unplugged.plug)
+        unplugged.receiver.receive(incoming)
+      end
+
       self
     end
     
+    def cleave(stock)
+      Unplugged.new(
+        receiver: stock,
+        plug:     stock.nodes.pop
+      )
+    end
+
+    Unplugged = Struct.new(:receiver, :plug, keyword_init: true)
+
     private
     
     def refer(inspector)
