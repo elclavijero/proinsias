@@ -10,8 +10,5 @@ module Proinsias
         scion: stock.nodes.pop
       )
     end
-
-    def TreeSurgeon.find_seam(stock:, incoming:)
-    end
   end
 end
