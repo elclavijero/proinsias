@@ -1,61 +1,9 @@
 RSpec.describe Proinsias::TreeSurgeon do
-  describe 'its interface' do
-    it 'exposes join' do
-      expect(Proinsias::TreeSurgeon).to respond_to(:join)
-    end
-
-    it 'exposes cleave' do
-      expect(Proinsias::TreeSurgeon).to respond_to(:cleave)
-    end
+  let(:the_tree_surgeon) do
+    Proinsias::TreeSurgeon.new
   end
 
-  describe 'TreeSurgeon.join' do
-    let(:stock) do
-      spy("stock")
-    end
-
-    let(:scion) do
-      spy("scion")
-    end
-
-    context 'when stock is nil,' do
-      it 'will return scion' do
-        expect(
-          Proinsias::TreeSurgeon.join(stock: nil, scion: scion)
-        ).to equal(
-          scion
-        )
-      end
-    end
-
-    context 'when stock is not nil,' do
-      context 'and scion is full,' do
-        it 'will ask stock to seek a vacancy'
-
-        context 'if a vacancy is found,' do
-          it 'will ask the vacancy to receive scion'
-        end
-
-        context 'if a vacancy is not found'
-      end
-
-      context 'scion is expectant, ' do
-        context 'and stock is at least scion,' do
-          it 'will ask scion to receive stock'
-        end
-
-        context 'and stock is strictly less than scion,' do
-          it 'will ask stock to seek a seam'
-
-          context 'if a seam is found,' do
-            it 'will splice scion into the seam'
-          end
-
-          context 'if a seam is not found'
-        end
-      end
-    end
-  end
+  describe '#join'
 
   describe 'TreeSurgeon.cleave' do
     context 'given a Receiver:' do
@@ -90,7 +38,6 @@ RSpec.describe Proinsias::TreeSurgeon do
           it "will separate the Receiver from its last node"
         end
       end
-
     end
   end
 end

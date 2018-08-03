@@ -1,28 +1,9 @@
 module Proinsias
   class TreeSurgeon
-    def TreeSurgeon.join(stock:, scion:)
-      return scion if stock.nil?
+    def join(incoming:);end
 
-      if scion.full?
-        vacancy = stock.seek(Inspectors[:vacancy])
-        vacancy.receive(scion)
-        return stock
-      end
-
-      if scion.expectant?
-        if stock >= scion
-          scion.receive(stock)
-          return scion
-        else
-          seam = stock.seek(Inspectors[:seam][scion])
-          cutting = cleave(seam)
-          scion.receive(cutting.scion)
-          cutting.stock.receive(scion)
-          return stock
-        end
-      end
-    end
-
+    Cutting = Struct.new(:stock, :scion, keyword_init: true)
+    
     def TreeSurgeon.cleave(stock)
       Cutting.new(
         stock: stock,
@@ -30,11 +11,7 @@ module Proinsias
       )
     end
 
-    Inspectors = {
-      vacancy: lambda { |node| node.expectant? },
-      seam:    lambda { |scion, stock| stock.nodes.last > scion }.curry
-    }
-
-    Cutting = Struct.new(:stock, :scion, keyword_init: true)
+    def TreeSurgeon.find_seam(stock:, incoming:)
+    end
   end
 end
