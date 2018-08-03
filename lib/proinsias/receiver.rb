@@ -36,21 +36,18 @@ module Proinsias
 
     def integrate(incoming)
       if self < incoming
-        splice(incoming)
+        unplug(chink(incoming)).tap do |unplugged|
+          incoming.receive(unplugged.plug)
+          unplugged.receiver.receive(incoming)
+        end
         self
-      else
+      elsif self == incoming
+        incoming.receive(self)
+        incoming
+      elsif self > incoming
         incoming.receive(self)
         incoming
       end
-    end
-
-    def splice(incoming)
-      unplug(chink(incoming)).tap do |unplugged|
-        incoming.receive(unplugged.plug)
-        unplugged.receiver.receive(incoming)
-      end
-
-      self
     end
     
     def unplug(stock)
