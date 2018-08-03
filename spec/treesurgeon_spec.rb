@@ -45,6 +45,22 @@ RSpec.describe Proinsias::TreeSurgeon do
             )
           end
         end
+
+        context 'if incoming is full,' do
+          before do
+            allow(incoming).to receive(:expectant?).and_return(false)
+          end
+
+          it '#vacancy will remain nil' do
+            expect {
+              the_tree_surgeon.join(incoming)
+            }.not_to change {
+              the_tree_surgeon.vacancy
+            }.from(
+              nil
+            )
+          end
+        end
       end
     end
   end
