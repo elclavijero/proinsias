@@ -27,7 +27,7 @@ module Proinsias
         refer(inspector)
     end
 
-    def chink(wedge:)
+    def chink(wedge)
       seek(
         proc { |candidate| candidate.guests.last > wedge }
       )

@@ -91,4 +91,56 @@ RSpec.describe Proinsias::Receiver do
       end
     end
   end
+
+  describe '#chink' do
+    let(:whole) do
+      eqv.receive(p)
+      eqv.receive(part)
+      eqv
+    end
+
+    let(:part) do
+      dis.receive(q)
+      dis.receive(r)
+      dis
+    end
+
+    let(:eqv) { Proinsias::Operators::Equivalence.new }
+    let(:equ) { Proinsias::Operators::Equality.new }
+    let(:neg) { Proinsias::Operators::Negation.new }
+    let(:dis) { Proinsias::Operators::Disjunction.new }
+    let(:p) { Proinsias::Atoms::Variable.new('p') }
+    let(:q) { Proinsias::Atoms::Variable.new('q') }
+    let(:r) { Proinsias::Atoms::Variable.new('r') }
+
+    context 'given an Equivalence' do
+      it 'will return the whole' do
+        expect(
+          whole.chink(Proinsias::Operators::Equivalence.new)
+        ).to equal(
+          whole
+        )
+      end
+    end
+
+    context 'given a Disjunction' do
+      it 'will return only a part' do
+        expect(
+          whole.chink(Proinsias::Operators::Disjunction.new)
+        ).to equal(
+          part
+        )
+      end
+    end
+
+    context 'given an Equality' do
+      it 'will return only a part' do
+        expect(
+          whole.chink(Proinsias::Operators::Equality.new)
+        ).to equal(
+          part
+        )
+      end
+    end
+  end
 end
