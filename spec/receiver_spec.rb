@@ -94,14 +94,13 @@ RSpec.describe Proinsias::Receiver do
 
   describe '#chink' do
     let(:eqv) { Proinsias::Operators::Equivalence.new }
-    let(:equ) { Proinsias::Operators::Equality.new }
-    let(:neg) { Proinsias::Operators::Negation.new }
+    let(:equ) { Proinsias::Operators::Equality.new    }
     let(:dis) { Proinsias::Operators::Disjunction.new }
-    let(:p) { Proinsias::Atoms::Variable.new('p') }
-    let(:q) { Proinsias::Atoms::Variable.new('q') }
-    let(:r) { Proinsias::Atoms::Variable.new('r') }
+    let(:p)   { Proinsias::Atoms::Variable.new('p') }
+    let(:q)   { Proinsias::Atoms::Variable.new('q') }
+    let(:r)   { Proinsias::Atoms::Variable.new('r') }
 
-    context 'when the whole has a deep last branch' do
+    context 'when the whole has a deep part' do
       let(:whole) do
         eqv.receive(p)
         eqv.receive(part)
@@ -113,6 +112,7 @@ RSpec.describe Proinsias::Receiver do
         dis.receive(r)
         dis
       end
+
       context 'given an Equivalence' do
         it 'will return the whole' do
           expect(
@@ -139,6 +139,24 @@ RSpec.describe Proinsias::Receiver do
             whole.chink(Proinsias::Operators::Equality.new)
           ).to equal(
             part
+          )
+        end
+      end
+    end
+
+    context 'when the whole is simple' do
+      let(:whole) do
+        eqv.receive(p)
+        eqv.receive(q)
+        eqv
+      end
+
+      context 'given any Operator' do
+        it 'will return the whole' do
+          expect(
+            whole.chink(Proinsias::Operators::Equality.new)
+          ).to equal(
+            whole
           )
         end
       end
