@@ -36,6 +36,7 @@ RSpec.describe Proinsias::TreeSurgeon do
 
         describe 'the modifications to the given Receiver' do
           it "will separate the Receiver from its last node"
+          # i.e. the stock will not include the scion
         end
       end
     end
