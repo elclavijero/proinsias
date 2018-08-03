@@ -28,20 +28,22 @@ module Proinsias
         refer(inspector)
     end
 
-    def chink(wedge)
+    def step_up(mark)
       seek(
-        proc { |candidate| candidate.guests.last >= wedge }
+        proc { |candidate| candidate.guests.last >= mark }
       )
     end
 
     def integrate(incoming)
       if self < incoming
-        unplug(chink(incoming)).tap do |unplugged|
+        unplug(step_up(incoming)).tap do |unplugged|
           incoming.receive(unplugged.plug)
           unplugged.receiver.receive(incoming)
         end
         self
       elsif self == incoming
+        # This is where we will have to consider "contrary" receivers
+        # which we don't yet have.
         incoming.receive(self)
         incoming
       elsif self > incoming
