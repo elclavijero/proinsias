@@ -9,7 +9,25 @@ RSpec.describe Proinsias::TreeSurgeon do
     end
   end
 
-  describe '#join'
+  describe '#join' do
+    let(:incoming) do
+      spy("incoming")
+    end
+
+    context 'upon creation' do
+      it '#tree will become the incoming' do
+        expect {
+          the_tree_surgeon.join(incoming)
+        }.to change {
+          the_tree_surgeon.tree
+        }.from(
+          nil
+        ).to(
+          incoming
+        )
+      end
+    end
+  end
 
   describe 'TreeSurgeon.cleave' do
     context 'given a Receiver:' do
