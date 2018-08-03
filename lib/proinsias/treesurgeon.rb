@@ -16,17 +16,12 @@ module Proinsias
 
       if opening
         opening.receive(incoming)
-        # tree doesn't change
       else
-        if tree >= incoming
-          incoming.receive(tree)
-          @tree = incoming
+        if tree < incoming
+          splice(incoming)
         else
-          target = tree.chink(incoming)
-          cutting = TreeSurgeon.cleave(target)
-          incoming.receive(cutting.scion)
-          cutting.stock.receive(incoming)
-          # tree doesn't change
+          incoming.receive(tree)
+          plant(incoming)
         end
       end
       
@@ -37,8 +32,15 @@ module Proinsias
 
     private
 
-    def plant(incoming)
-      @tree = incoming
+    def plant(tree)
+      @tree = tree
+    end
+
+    def splice(incoming)
+      target = tree.chink(incoming)
+      cutting = TreeSurgeon.cleave(target)
+      incoming.receive(cutting.scion)
+      cutting.stock.receive(incoming)
     end
   end
 end
