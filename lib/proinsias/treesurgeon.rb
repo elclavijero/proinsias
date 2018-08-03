@@ -1,6 +1,6 @@
 module Proinsias
   class TreeSurgeon
-    attr_reader :tree
+    attr_reader :tree, :vacancy
 
     def TreeSurgeon.cleave(stock)
       Cutting.new(
@@ -13,6 +13,8 @@ module Proinsias
 
     def join(incoming)
       plant(incoming) unless tree
+      
+      @vacancy = incoming if incoming.expectant?
     end
 
     private
