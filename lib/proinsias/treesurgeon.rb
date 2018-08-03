@@ -17,8 +17,6 @@ module Proinsias
       )
 
       new_opening(incoming)
-
-      tree
     end
 
     private
@@ -34,19 +32,12 @@ module Proinsias
       tree
     end
 
-    def new_opening(incoming)
-      @opening = incoming.expectant? ? incoming : nil
+    def new_opening(candidate)
+      @opening = candidate.expectant? ? candidate : nil
     end
 
     def plant(tree)
       @tree = tree
-    end
-
-    def splice(incoming)
-      target = tree.chink(incoming)
-      cutting = TreeSurgeon.cleave(target)
-      incoming.receive(cutting.scion)
-      cutting.stock.receive(incoming)
     end
   end
 end
