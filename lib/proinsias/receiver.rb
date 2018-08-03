@@ -13,18 +13,24 @@ module Proinsias
       guest) unless full?
     end
 
+    def full?
+      ! expectant?
+    end
+
+    def expectant?
+      guests.count < capacity
+    end
+
     def seek(inspector)
       inspector.call(self) ?
         self :
         refer(inspector)
     end
 
-    def expectant?
-      guests.count < capacity
-    end
-    
-    def full?
-      ! expectant?
+    def chink(wedge:)
+      seek(
+        proc { |candidate| candidate.guests.last > wedge }
+      )
     end
     
     private

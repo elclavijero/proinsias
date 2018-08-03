@@ -45,6 +45,15 @@ module Proinsias
       end
     end
 
+    class Equality < SyntacticRoles::Infix
+      include Operator
+
+      def initialize
+        super('=')
+        @precedence = 3
+      end
+    end
+
     class Negation < SyntacticRoles::Prefix
       include Operator
 
