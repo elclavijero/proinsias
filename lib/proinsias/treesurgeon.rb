@@ -1,14 +1,18 @@
 module Proinsias
   class TreeSurgeon
-    def join(incoming:);end
+    attr_reader :tree
 
-    Cutting = Struct.new(:stock, :scion, keyword_init: true)
-    
+    def join(incoming:)
+      return (@tree = incoming) unless @tree
+    end
+
     def TreeSurgeon.cleave(stock)
       Cutting.new(
         stock: stock,
         scion: stock.nodes.pop
       )
     end
+    
+    Cutting = Struct.new(:stock, :scion, keyword_init: true)
   end
 end

@@ -3,6 +3,12 @@ RSpec.describe Proinsias::TreeSurgeon do
     Proinsias::TreeSurgeon.new
   end
 
+  context 'upon creation' do
+    it 'will be without a #tree' do
+      expect(the_tree_surgeon.tree).not_to be
+    end
+  end
+
   describe '#join'
 
   describe 'TreeSurgeon.cleave' do
