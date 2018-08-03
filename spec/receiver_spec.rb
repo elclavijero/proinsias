@@ -66,8 +66,22 @@ RSpec.describe Proinsias::Receiver do
     end
 
     context 'when the inspector evaluates to false for the subject,' do
+      before do
+        allow(the_inspector).to receive(:call).with(the_receiver).and_return(false)
+      end
+
       context 'and the subject has a guest' do
-        it 'will refer the inspector to the last guest'
+        before do
+          the_receiver.receive(a_guest)
+
+          allow(a_guest).to receive(:seek)
+        end
+
+        it 'will refer the inspector to the last guest' do
+          the_receiver.seek(the_inspector)
+
+          expect(a_guest).to have_received(:seek).with(the_inspector)
+        end
       end
 
       context 'but the subject does not have a guest' do
