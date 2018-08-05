@@ -1,6 +1,6 @@
 module Proinsias
   module Receiver
-    attr_reader :received
+    attr_reader :received, :capacity
 
     alias nodes received
     alias arguments received

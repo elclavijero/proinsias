@@ -1,48 +1,50 @@
 module Proinsias
-  module Inferior
-    attr_reader :strength
-    include Comparable
-
-    def <=>(other)
-      -1
+  module Competitor
+    module Inferior
+      attr_reader :strength
+      include Comparable
+  
+      def <=>(other)
+        -1
+      end
     end
-  end
-
-  module Superior
-    attr_reader :strength
-    include Comparable
-
-    def <=>(other)
-      1
+  
+    module Superior
+      attr_reader :strength
+      include Comparable
+  
+      def <=>(other)
+        1
+      end
     end
-  end
-
-  module Optimistic
-    attr_reader :strength
-    include Comparable
-
-    def <=>(other)
-      return  1 if strength >= other.strength
-      return  1 if strength == other.strength
-      return -1 if strength <  other.strength
+  
+    module Optimistic
+      attr_reader :strength
+      include Comparable
+  
+      def <=>(other)
+        return  1 if strength >= other.strength
+        return  1 if strength == other.strength
+        return -1 if strength <  other.strength
+      end
     end
-  end
-
-  module Pessimistic
-    attr_reader :strength
-    include Comparable
-
-    def <=>(other)
-      return  1 if strength >= other.strength
-      return -1 if strength == other.strength
-      return -1 if strength <  other.strength
+  
+    module Pessimistic
+      attr_reader :strength
+      include Comparable
+  
+      def <=>(other)
+        return  1 if strength >= other.strength
+        return -1 if strength == other.strength
+        return -1 if strength <  other.strength
+      end
     end
   end
 
   module Atoms
     class Atom
       include Receiver
-      include Inferior
+      include Competitor::Inferior
 
       def initialize(glyph)
         @glyph = glyph
@@ -59,41 +61,34 @@ module Proinsias
   end
 
   module Operators
-    module BinaryOperator
-      include Proinsias::Receiver
-
-      def capacity
-        2
-      end
-
+    class Operator
       def to_ast
         {
-          @glyph => [
-            arguments[0].to_ast,
-            arguments[1].to_ast
-          ]
+          @glyph => arguments.collect { |a| a.to_ast }
         }
       end
     end
 
-    module UnaryOperator
+    class BinaryOperator < Operator
       include Proinsias::Receiver
 
-      def capacity
-        1
-      end
-
-      def to_ast
-        {
-          @glyph => [
-            arguments[0].to_ast
-          ]
-        }
+      def initialize(glyph)
+        @glyph = glyph
+        @capacity = 2
       end
     end
 
-    class Equivalence
-      include Superior
+    class UnaryOperator < Operator
+      include Proinsias::Receiver
+
+      def initialize(glyph)
+        @glyph = glyph
+        @capacity = 1
+      end
+    end
+
+    class Equivalence < BinaryOperator
+      include Competitor::Superior
 
       def initialize
         @glyph = '≡'
@@ -101,8 +96,8 @@ module Proinsias
       end
     end
 
-    class Equality
-      include Optimistic
+    class Equality < BinaryOperator
+      include Competitor::Optimistic
 
       def initialize
         @glyph = '='
@@ -110,8 +105,8 @@ module Proinsias
       end
     end
 
-    class Negation
-      include Pessimistic
+    class Negation < UnaryOperator
+      include Competitor::Pessimistic
 
       def initialize
         @glyph = '¬'
@@ -119,8 +114,8 @@ module Proinsias
       end
     end
 
-    class Disjunction
-      include Optimistic
+    class Disjunction < BinaryOperator
+      include Competitor::Optimistic
 
       def initialize
         @glyph = '∨'
@@ -128,8 +123,8 @@ module Proinsias
       end
     end
 
-    class Conjunction
-      include Optimistic
+    class Conjunction < BinaryOperator
+      include Competitor::Optimistic
 
       def initialize
         @glyph = '∧'
