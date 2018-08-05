@@ -8,6 +8,15 @@ module Proinsias
     end
   end
 
+  module Supreme
+    attr_reader :strength
+    include Comparable
+
+    def <=>(other)
+      1
+    end
+  end
+
   module Optimistic
     attr_reader :strength
     include Comparable
@@ -31,44 +40,31 @@ module Proinsias
   end
 
   module Atoms
-    class Constant < SyntacticRoles::Terminal
+    class Atom
+      include Receiver
       include Diminutive
 
-      def initialize(name)
-        super(name)
+      def initialize(glyph)
+        @glyph = glyph
+        @capacity = 0
       end
 
       def to_ast
         @glyph
       end
     end
-
-    class Variable < SyntacticRoles::Terminal
-      include Diminutive
-
-      def initialize(name)
-        super(name)
-      end
-
-      def to_ast
-        @glyph
-      end
-    end
+    
+    Constant = Atom
+    Variable = Atom
   end
 
   module Operators
-    module Operator
-      include Comparable
-
-      attr_reader :strength
-
-      def <=>(other)
-        strength <=> other.strength
-      end
-    end
-
     module BinaryOperator
-      include Operator
+      include Proinsias::Receiver
+
+      def capacity
+        2
+      end
 
       def to_ast
         {
@@ -81,7 +77,11 @@ module Proinsias
     end
 
     module UnaryOperator
-      include Operator
+      include Proinsias::Receiver
+
+      def capacity
+        1
+      end
 
       def to_ast
         {
@@ -92,48 +92,48 @@ module Proinsias
       end
     end
 
-    class Equivalence < SyntacticRoles::Infix
-      include BinaryOperator
+    class Equivalence
+      include Supreme
 
       def initialize
-        super('≡')
-        @strength = 0
+        @glyph = '≡'
+        @strength = 12
       end
     end
 
-    class Equality < SyntacticRoles::Infix
-      include BinaryOperator
+    class Equality
+      include Optimistic
 
       def initialize
-        super('=')
-        @strength = 3
+        @glyph = '='
+        @strength = 9
       end
     end
 
-    class Negation < SyntacticRoles::Prefix
-      include UnaryOperator
+    class Negation
+      include Pessimistic
 
       def initialize
-        super('¬')
+        @glyph = '¬'
+        @strength = 2
+      end
+    end
+
+    class Disjunction
+      include Optimistic
+
+      def initialize
+        @glyph = '∨'
         @strength = 10
       end
     end
 
-    class Disjunction < SyntacticRoles::Infix
-      include BinaryOperator
+    class Conjunction
+      include Optimistic
 
       def initialize
-        super('∨')
-        @strength = 2
-      end
-    end
-
-    class Conjunction < SyntacticRoles::Infix
-      include BinaryOperator
-
-      def initialize
-        super('∧')
-        @strength = 2
+        @glyph = '∧'
+        @strength = 10
       end
     end
   end
