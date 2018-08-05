@@ -66,18 +66,12 @@ module Proinsias
     Unplugged = Struct.new(:receiver, :plug, keyword_init: true)
 
     # new interface
-    def join(other)
-      other >= self ?
-        other.receive(self) :
-        absorb(other)
-    end
-
     def accommodates?(other)
       other > last
     end
 
-    def absorb
-      fits?(other) ?
+    def absorb(other)
+      accommodates?(other) ?
         splice(other) :
         last.absorb(other)
     end

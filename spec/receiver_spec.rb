@@ -29,10 +29,6 @@ RSpec.describe Proinsias::Receiver do
     end
 
     # new interface
-    it 'exposes #join' do
-      expect(the_receiver).to respond_to(:join)
-    end
-
     it 'exposes #accommodates?' do
       expect(the_receiver).to respond_to(:accommodates?)
     end
