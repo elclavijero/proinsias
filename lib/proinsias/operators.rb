@@ -1,29 +1,11 @@
 module Proinsias
   module Competitor
-    module Inferior
-      attr_reader :strength
-      include Comparable
-  
-      def <=>(other)
-        -1
-      end
-    end
-  
-    module Superior
-      attr_reader :strength
-      include Comparable
-  
-      def <=>(other)
-        1
-      end
-    end
-  
     module Optimistic
       attr_reader :strength
       include Comparable
   
       def <=>(other)
-        return  1 if strength >= other.strength
+        return  1 if strength >  other.strength
         return  1 if strength == other.strength
         return -1 if strength <  other.strength
       end
@@ -34,7 +16,7 @@ module Proinsias
       include Comparable
   
       def <=>(other)
-        return  1 if strength >= other.strength
+        return  1 if strength >  other.strength
         return -1 if strength == other.strength
         return -1 if strength <  other.strength
       end
@@ -44,11 +26,12 @@ module Proinsias
   module Atoms
     class Atom
       include Receiver
-      include Competitor::Inferior
+      include Competitor::Pessimistic
 
       def initialize(glyph)
         @glyph = glyph
         @capacity = 0
+        @strength = 0
       end
 
       def to_ast
@@ -97,11 +80,29 @@ module Proinsias
     end
 
     class Equivalence < BinaryOperator
-      include Competitor::Superior
+      include Competitor::Optimistic
 
       def initialize
         super('≡')
         @strength = 12
+      end
+    end
+
+    class Consequence < BinaryOperator
+      include Competitor::Optimistic
+
+      def initialize
+        super('⇐')
+        @strength = 11
+      end
+    end
+
+    class Implication < BinaryOperator
+      include Competitor::Pessimistic
+
+      def initialize
+        super('⇒')
+        @strength = 11
       end
     end
 
