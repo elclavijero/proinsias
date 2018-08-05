@@ -15,6 +15,7 @@ RSpec.describe Proinsias::Receiver do
   end
 
   describe 'its interface' do
+    # old interface
     it 'exposes #receive' do
       expect(the_receiver).to respond_to(:receive)
     end
@@ -25,6 +26,23 @@ RSpec.describe Proinsias::Receiver do
     
     it 'exposes #seek' do
       expect(the_receiver).to respond_to(:seek)
+    end
+
+    # new interface
+    it 'exposes #join' do
+      expect(the_receiver).to respond_to(:join)
+    end
+
+    it 'exposes #fits?' do
+      expect(the_receiver).to respond_to(:fits?)
+    end
+
+    it 'exposes #absorb' do
+      expect(the_receiver).to respond_to(:absorb)
+    end
+
+    it 'exposes #splice' do
+      expect(the_receiver).to respond_to(:splice)
     end
   end
 

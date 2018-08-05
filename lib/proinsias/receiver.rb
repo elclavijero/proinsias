@@ -61,6 +61,15 @@ module Proinsias
 
     Unplugged = Struct.new(:receiver, :plug, keyword_init: true)
 
+    # new interface
+    def join;end
+
+    def fits?;end
+
+    def absorb;end
+
+    def splice;end
+
     private
     
     def refer(inspector)
