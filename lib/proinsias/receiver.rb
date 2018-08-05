@@ -22,6 +22,10 @@ module Proinsias
       received.count < capacity
     end
 
+    def last
+      received.last
+    end
+
     def seek(inspector)
       inspector.call(self) ?
         self :
@@ -62,13 +66,26 @@ module Proinsias
     Unplugged = Struct.new(:receiver, :plug, keyword_init: true)
 
     # new interface
-    def join;end
+    def join(other)
+      other >= self ?
+        other.receive(self) :
+        absorb(other)
+    end
 
-    def fits?;end
+    def accommodates?(other)
+      other > last
+    end
 
-    def absorb;end
+    def absorb
+      fits?(other) ?
+        splice(other) :
+        last.absorb(other)
+    end
 
-    def splice;end
+    def splice(other)
+      other.receive(received.pop)
+      receive(other)
+    end
 
     private
     

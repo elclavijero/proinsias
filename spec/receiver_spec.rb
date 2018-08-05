@@ -33,8 +33,8 @@ RSpec.describe Proinsias::Receiver do
       expect(the_receiver).to respond_to(:join)
     end
 
-    it 'exposes #fits?' do
-      expect(the_receiver).to respond_to(:fits?)
+    it 'exposes #accommodates?' do
+      expect(the_receiver).to respond_to(:accommodates?)
     end
 
     it 'exposes #absorb' do
@@ -107,18 +107,6 @@ RSpec.describe Proinsias::Receiver do
           expect(the_receiver.seek(the_inspector)).to be_nil
         end
       end
-    end
-  end
-
-  # New Interface
-  describe '#fits?' do
-
-    context 'if other is strictly greater than #last,' do
-      it 'will return true'
-    end
-
-    context 'if other is NOT strictly greater than #last,' do
-      it 'will return false'
     end
   end
 end
