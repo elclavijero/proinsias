@@ -1,8 +1,12 @@
 RSpec.describe Proinsias::Receiver do
   let(:the_receiver) do
     Object.new.tap do |rcv|
-      rcv.extend(Proinsias::Receiver)
-      rcv.instance_variable_set(:@capacity, 2)
+      rcv.instance_eval do
+        extend(Proinsias::Receiver)
+        def capacity
+          2
+        end
+      end
     end
   end
 
@@ -112,6 +116,7 @@ RSpec.describe Proinsias::Receiver do
 
   # New Interface
   describe '#fits?' do
+
     context 'if other is strictly greater than #last,' do
       it 'will return true'
     end
