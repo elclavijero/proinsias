@@ -37,10 +37,10 @@ module Proinsias
     module Operator
       include Comparable
 
-      attr_reader :precedence
+      attr_reader :strength
 
       def <=>(other)
-        precedence <=> other.precedence
+        strength <=> other.strength
       end
     end
 
@@ -74,7 +74,7 @@ module Proinsias
 
       def initialize
         super('≡')
-        @precedence = 0
+        @strength = 0
       end
     end
 
@@ -83,7 +83,7 @@ module Proinsias
 
       def initialize
         super('=')
-        @precedence = 3
+        @strength = 3
       end
     end
 
@@ -92,7 +92,7 @@ module Proinsias
 
       def initialize
         super('¬')
-        @precedence = 10
+        @strength = 10
       end
     end
 
@@ -101,7 +101,7 @@ module Proinsias
 
       def initialize
         super('∨')
-        @precedence = 2
+        @strength = 2
       end
     end
 
@@ -110,7 +110,7 @@ module Proinsias
 
       def initialize
         super('∧')
-        @precedence = 2
+        @strength = 2
       end
     end
   end
