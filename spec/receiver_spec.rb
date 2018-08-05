@@ -109,4 +109,15 @@ RSpec.describe Proinsias::Receiver do
       end
     end
   end
+
+  # New Interface
+  describe '#fits?' do
+    context 'if other is strictly greater than #last,' do
+      it 'will return true'
+    end
+
+    context 'if other is NOT strictly greater than #last,' do
+      it 'will return false'
+    end
+  end
 end
