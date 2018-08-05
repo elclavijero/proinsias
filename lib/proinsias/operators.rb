@@ -1,15 +1,38 @@
 module Proinsias
-  module Atoms
-    module Atom
-      include Comparable
+  module Diminutive
+    attr_reader :strength
+    include Comparable
 
-      def <=>(other)
-        1
-      end
+    def <=>(other)
+      -1
     end
+  end
 
+  module Optimistic
+    attr_reader :strength
+    include Comparable
+
+    def <=>(other)
+      return  1 if strength >= other.strength
+      return  1 if strength == other.strength
+      return -1 if strength <  other.strength
+    end
+  end
+
+  module Pessimistic
+    attr_reader :strength
+    include Comparable
+
+    def <=>(other)
+      return  1 if strength >= other.strength
+      return -1 if strength == other.strength
+      return -1 if strength <  other.strength
+    end
+  end
+
+  module Atoms
     class Constant < SyntacticRoles::Terminal
-      include Atom
+      include Diminutive
 
       def initialize(name)
         super(name)
@@ -21,7 +44,7 @@ module Proinsias
     end
 
     class Variable < SyntacticRoles::Terminal
-      include Atom
+      include Diminutive
 
       def initialize(name)
         super(name)
