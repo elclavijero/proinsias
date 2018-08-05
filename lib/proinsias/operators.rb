@@ -1,5 +1,5 @@
 module Proinsias
-  module Diminutive
+  module Inferior
     attr_reader :strength
     include Comparable
 
@@ -8,7 +8,7 @@ module Proinsias
     end
   end
 
-  module Supreme
+  module Superior
     attr_reader :strength
     include Comparable
 
@@ -42,7 +42,7 @@ module Proinsias
   module Atoms
     class Atom
       include Receiver
-      include Diminutive
+      include Inferior
 
       def initialize(glyph)
         @glyph = glyph
@@ -93,7 +93,7 @@ module Proinsias
     end
 
     class Equivalence
-      include Supreme
+      include Superior
 
       def initialize
         @glyph = '≡'
