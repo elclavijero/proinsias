@@ -87,11 +87,20 @@ module Proinsias
       end
     end
 
+    class Negation < UnaryOperator
+      include Competitor::Pessimistic
+
+      def initialize
+        super('¬')
+        @strength = 2
+      end
+    end
+
     class Equivalence < BinaryOperator
       include Competitor::Superior
 
       def initialize
-        @glyph = '≡'
+        super('≡')
         @strength = 12
       end
     end
@@ -100,17 +109,8 @@ module Proinsias
       include Competitor::Optimistic
 
       def initialize
-        @glyph = '='
+        super('=')
         @strength = 9
-      end
-    end
-
-    class Negation < UnaryOperator
-      include Competitor::Pessimistic
-
-      def initialize
-        @glyph = '¬'
-        @strength = 2
       end
     end
 
@@ -118,7 +118,7 @@ module Proinsias
       include Competitor::Optimistic
 
       def initialize
-        @glyph = '∨'
+        super('∨')
         @strength = 10
       end
     end
@@ -127,7 +127,7 @@ module Proinsias
       include Competitor::Optimistic
 
       def initialize
-        @glyph = '∧'
+        super('∧')
         @strength = 10
       end
     end
