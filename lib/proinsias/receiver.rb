@@ -1,16 +1,16 @@
 module Proinsias
   module Receiver
-    attr_reader :guests, :capacity
+    attr_reader :received, :capacity
 
-    alias nodes guests
-    alias arguments guests
+    alias nodes received
+    alias arguments received
 
-    def guests
-      @guests ||= []
+    def received
+      @received ||= []
     end
 
     def receive(guest)
-      (guests << guest
+      (received << guest
       guest) unless full?
     end
 
@@ -19,7 +19,7 @@ module Proinsias
     end
 
     def expectant?
-      guests.count < capacity
+      received.count < capacity
     end
 
     def seek(inspector)
@@ -30,7 +30,7 @@ module Proinsias
 
     def step_up(mark)
       seek(
-        proc { |candidate| candidate.guests.last >= mark }
+        proc { |candidate| candidate.received.last >= mark }
       )
     end
 
@@ -64,8 +64,8 @@ module Proinsias
     private
     
     def refer(inspector)
-      guests.count > 0 ?
-        guests.last.seek(inspector) :
+      received.count > 0 ?
+        received.last.seek(inspector) :
         nil
     end
   end

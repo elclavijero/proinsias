@@ -19,8 +19,8 @@ RSpec.describe Proinsias::Receiver do
       expect(the_receiver).to respond_to(:receive)
     end
 
-    it 'exposes #guests' do
-      expect(the_receiver).to respond_to(:guests)
+    it 'exposes #received' do
+      expect(the_receiver).to respond_to(:received)
     end
     
     it 'exposes #seek' do
@@ -28,10 +28,10 @@ RSpec.describe Proinsias::Receiver do
     end
   end
 
-  describe '#guests' do
+  describe '#received' do
     context 'before reception - ' do
       it 'will return an empty collection' do
-        expect(the_receiver.guests).to be_empty
+        expect(the_receiver.received).to be_empty
       end
     end
   end
@@ -42,10 +42,10 @@ RSpec.describe Proinsias::Receiver do
         expect(the_receiver.receive(a_guest)).to equal(a_guest)
       end
 
-      it 'will include the guest among its #guests' do
+      it 'will include the guest among its #received' do
         the_receiver.receive(a_guest)
 
-        expect(the_receiver.guests).to include(a_guest)
+        expect(the_receiver.received).to include(a_guest)
       end
     end
   end
