@@ -23,10 +23,6 @@ RSpec.describe Proinsias::Receiver do
     it 'exposes #received' do
       expect(the_receiver).to respond_to(:received)
     end
-    
-    it 'exposes #seek' do
-      expect(the_receiver).to respond_to(:seek)
-    end
 
     # new interface
     it 'exposes #accommodates?' do
@@ -60,48 +56,6 @@ RSpec.describe Proinsias::Receiver do
         the_receiver.receive(a_guest)
 
         expect(the_receiver.received).to include(a_guest)
-      end
-    end
-  end
-
-  describe '#seek' do
-    let(:the_inspector) do
-      spy("the inspector")
-    end
-
-    context 'when the inspector evaluates to true for the subject' do
-      before do
-        allow(the_inspector).to receive(:call).with(the_receiver).and_return(true)
-      end
-
-      it 'will return the subject' do
-        expect(the_receiver.seek(the_inspector)).to equal(the_receiver)
-      end
-    end
-
-    context 'when the inspector evaluates to false for the subject,' do
-      before do
-        allow(the_inspector).to receive(:call).with(the_receiver).and_return(false)
-      end
-
-      context 'and the subject has a guest' do
-        before do
-          the_receiver.receive(a_guest)
-
-          allow(a_guest).to receive(:seek)
-        end
-
-        it 'will refer the inspector to the last guest' do
-          the_receiver.seek(the_inspector)
-
-          expect(a_guest).to have_received(:seek).with(the_inspector)
-        end
-      end
-
-      context 'but the subject does not have a guest' do
-        it 'wil return nil' do
-          expect(the_receiver.seek(the_inspector)).to be_nil
-        end
       end
     end
   end
