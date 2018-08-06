@@ -30,15 +30,17 @@ module Proinsias
       other > last
     end
 
-    def absorb(other)
+    def insert(other)
       accommodates?(other) ?
         splice(other) :
-        last.absorb(other)
+        last.insert(other)
     end
 
     def splice(other)
       other.receive(received.pop)
       receive(other)
     end
+
+    def superpose(other);end
   end
 end
