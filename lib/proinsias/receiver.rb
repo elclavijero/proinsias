@@ -41,6 +41,8 @@ module Proinsias
       receive(other)
     end
 
-    def superpose(other);end
+    def superpose(other)
+      received.each { |r| other.receive(r) }
+    end
   end
 end

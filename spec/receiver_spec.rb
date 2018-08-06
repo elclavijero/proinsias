@@ -61,4 +61,25 @@ RSpec.describe Proinsias::Receiver do
       end
     end
   end
+
+  describe '#superpose' do
+    describe 'the other Receiver after superposition' do
+      before do
+        the_receiver.receive(a_guest)
+        the_receiver.receive(another_guest)
+        the_receiver.superpose(other)
+      end
+
+      let(:other) do
+        Object.new.tap do |rcv|
+          rcv.extend(Proinsias::Receiver)
+          rcv.instance_variable_set(:@capacity, the_receiver.capacity)
+        end
+      end
+
+      it 'will have #received those #received by the subject' do
+        expect(the_receiver.received).to eq(other.received)
+      end
+    end
+  end
 end
