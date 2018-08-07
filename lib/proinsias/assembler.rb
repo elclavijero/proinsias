@@ -7,22 +7,24 @@ module Proinsias
         connect(incoming) :
         @receiver = incoming
 
-      @opening = incoming.expectant? ? incoming : nil
+      look_for_opening(incoming)
     end
 
     def connect(incoming)
+      @receiver = route(incoming)
+    end
+
+    def route(incoming)
       if opening
         opening.receive(incoming)
-        return @receiver
+        receiver
+      else
+        receiver.integrate(incoming)
       end
-      if incoming > receiver
-        incoming.receive(receiver)
-        return @receiver = incoming
-      end
-      if incoming < receiver
-        receiver.insert(incoming)
-        return @receiver
-      end
+    end
+
+    def look_for_opening(incoming)
+      @opening = incoming.expectant? ? incoming : nil
     end
   end
 end

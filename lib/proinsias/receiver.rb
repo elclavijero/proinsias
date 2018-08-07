@@ -36,6 +36,17 @@ module Proinsias
     def last
       received.last
     end
+
+    def integrate(other)
+      if other > self
+        other.receive(self)
+        return other
+      end
+      if other < self
+        self.insert(other)
+        return self
+      end
+    end
     
     def insert(other)
       accommodates?(other) ?
