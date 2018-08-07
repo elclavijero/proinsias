@@ -9,9 +9,9 @@ module Proinsias
       @received ||= []
     end
 
-    def receive(guest, expand=false)
-      make_room if expand
-      
+    def receive(guest, flexible=false)
+      make_room if flexible
+
       (received << guest
       guest) unless full?
     end
