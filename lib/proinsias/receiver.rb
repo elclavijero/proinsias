@@ -2,9 +2,6 @@ module Proinsias
   module Receiver
     attr_accessor :received, :capacity, :flexible
 
-    alias nodes received
-    alias arguments received
-
     def received
       @received ||= []
     end
@@ -12,8 +9,10 @@ module Proinsias
     def receive(guest)
       make_room if flexible
 
-      (received << guest
-      guest) unless full?
+      (
+        received << guest
+        guest
+      ) unless full?
     end
 
     def capacity

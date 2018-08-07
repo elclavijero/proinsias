@@ -1,5 +1,5 @@
 module Proinsias
-  module Competitor
+  module Disposition
     module Optimistic
       attr_reader :strength
       include Comparable
@@ -26,7 +26,7 @@ module Proinsias
   module Atoms
     class Atom
       include Receiver
-      include Competitor::Pessimistic
+      include Disposition::Pessimistic
 
       def initialize(glyph)
         @glyph = glyph
@@ -45,6 +45,10 @@ module Proinsias
 
   module Operators
     class Operator
+      include Proinsias::Receiver
+      
+      alias arguments received
+      
       def to_ast
         {
           @glyph => arguments.collect { |a| a.to_ast }
@@ -53,8 +57,6 @@ module Proinsias
     end
 
     class BinaryOperator < Operator
-      include Proinsias::Receiver
-
       def initialize(glyph)
         @glyph = glyph
         @capacity = 2
@@ -62,8 +64,6 @@ module Proinsias
     end
 
     class UnaryOperator < Operator
-      include Proinsias::Receiver
-
       def initialize(glyph)
         @glyph = glyph
         @capacity = 1
@@ -71,7 +71,7 @@ module Proinsias
     end
 
     class Negation < UnaryOperator
-      include Competitor::Pessimistic
+      include Disposition::Pessimistic
 
       def initialize
         super('¬')
@@ -80,7 +80,7 @@ module Proinsias
     end
 
     class Equivalence < BinaryOperator
-      include Competitor::Optimistic
+      include Disposition::Optimistic
 
       def initialize
         super('≡')
@@ -89,7 +89,7 @@ module Proinsias
     end
 
     class Consequence < BinaryOperator
-      include Competitor::Optimistic
+      include Disposition::Optimistic
 
       def initialize
         super('⇐')
@@ -98,7 +98,7 @@ module Proinsias
     end
 
     class Implication < BinaryOperator
-      include Competitor::Pessimistic
+      include Disposition::Pessimistic
 
       def initialize
         super('⇒')
@@ -107,7 +107,7 @@ module Proinsias
     end
 
     class Equality < BinaryOperator
-      include Competitor::Optimistic
+      include Disposition::Optimistic
 
       def initialize
         super('=')
@@ -116,7 +116,7 @@ module Proinsias
     end
 
     class Disjunction < BinaryOperator
-      include Competitor::Optimistic
+      include Disposition::Optimistic
 
       def initialize
         super('∨')
@@ -125,7 +125,7 @@ module Proinsias
     end
 
     class Conjunction < BinaryOperator
-      include Competitor::Optimistic
+      include Disposition::Optimistic
 
       def initialize
         super('∧')
