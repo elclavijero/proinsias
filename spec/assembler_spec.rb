@@ -7,10 +7,6 @@ RSpec.describe Proinsias::Assembler do
     it 'exposes #feed' do
       expect(the_assembler).to respond_to(:feed)
     end
-
-    it 'exposes #connect' do
-      expect(the_assembler).to respond_to(:connect)
-    end
   end
 
   describe 'Assembling hierarchies from Atoms and Operators ' do

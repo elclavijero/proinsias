@@ -10,6 +10,8 @@ module Proinsias
       look_for_opening(incoming)
     end
 
+    private
+    
     def connect(incoming)
       @receiver = route(incoming)
     end
