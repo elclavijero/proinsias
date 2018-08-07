@@ -2,7 +2,7 @@ RSpec.describe Proinsias::Receiver do
   let(:the_receiver) do
     Object.new.tap do |rcv|
       rcv.extend(Proinsias::Receiver)
-      rcv.instance_variable_set(:@capacity, 2)
+      rcv.capacity = 2
     end
   end
 
@@ -73,13 +73,19 @@ RSpec.describe Proinsias::Receiver do
       let(:other) do
         Object.new.tap do |rcv|
           rcv.extend(Proinsias::Receiver)
-          rcv.instance_variable_set(:@capacity, the_receiver.capacity)
+          rcv.capacity = the_receiver.capacity
         end
       end
 
       it 'will have #received those #received by the subject' do
         expect(the_receiver.received).to eq(other.received)
       end
+    end
+  end
+
+  describe '#splice' do
+    describe 'the subject post-splice' do
+      it '#last will be other'
     end
   end
 end
