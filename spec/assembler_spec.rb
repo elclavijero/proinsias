@@ -34,6 +34,39 @@ RSpec.describe Proinsias::Assembler do
     end
   end
 
+  describe 'Mixed fixity and arity assembly' do
+    before do
+      the_assembler.feed(Proinsias::Operators::Negation.new)
+      the_assembler.feed(Proinsias::Atoms::Variable.new('p'))
+      the_assembler.feed(Proinsias::Operators::Conjunction.new)
+      the_assembler.feed(Proinsias::Operators::Negation.new)
+      the_assembler.feed(Proinsias::Atoms::Variable.new('q'))
+  
+      the_assembler.feed(Proinsias::Operators::Equivalence.new)
+  
+      the_assembler.feed(Proinsias::Operators::Negation.new)
+      the_assembler.feed(Proinsias::Operators::Negation.new)
+      the_assembler.feed(Proinsias::Operators::Negation.new)
+      the_assembler.feed(Proinsias::Atoms::Variable.new('p'))
+      the_assembler.feed(Proinsias::Operators::Conjunction.new)
+      the_assembler.feed(Proinsias::Operators::Negation.new)
+      the_assembler.feed(Proinsias::Operators::Negation.new)
+      the_assembler.feed(Proinsias::Operators::Negation.new)
+      the_assembler.feed(Proinsias::Atoms::Variable.new('q'))
+    end
+
+    
+    it 'will assemble the elements into a proper hierarchy' do
+      expect(the_assembler.receiver.to_ast).to eq(
+        {"≡"=>[
+            {"∧"=>[{"¬"=>["p"]}, {"¬"=>["q"]}]}, 
+            {"∧"=>[{"¬"=>[{"¬"=>[{"¬"=>["p"]}]}]}, {"¬"=>[{"¬"=>[{"¬"=>["q"]}]}]}]}
+          ]
+        }
+      )
+    end
+  end
+
   describe 'Right associativity' do
     before do
       the_assembler.feed(Proinsias::Atoms::Variable.new('p'))
