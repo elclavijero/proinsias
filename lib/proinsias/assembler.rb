@@ -5,7 +5,7 @@ module Proinsias
     def feed(incoming)
       receiver ?
         connect(incoming) :
-        @receiver = incoming
+        establish(incoming)
 
       look_for_opening(incoming)
     end
@@ -25,6 +25,10 @@ module Proinsias
 
     def look_for_opening(incoming)
       @opening = incoming.expectant? ? incoming : nil
+    end
+
+    def establish(incoming)
+      @receiver = incoming
     end
   end
 end
