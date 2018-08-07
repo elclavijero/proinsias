@@ -23,13 +23,31 @@ RSpec.describe Proinsias::Assembler do
     let(:r)   { Proinsias::Atoms::Variable.new('r')   }
     let(:e)   { Proinsias::Atoms::Variable.new('e')   }
 
-    it 'will ...' do
+    it 'will assemble the elements into a proper hierarchy' do
       [ p, eqv, q, dis, r, equ, e ].each do |x|
         the_assembler.feed(x)
       end
 
       expect(the_assembler.receiver.to_ast).to eq(
         {"≡"=>["p", {"∨"=>["q", {"="=>["r", "e"]}]}]}
+      )
+    end
+  end
+
+  describe 'Right associativity' do
+    before do
+      the_assembler.feed(Proinsias::Atoms::Variable.new('p'))
+      the_assembler.feed(Proinsias::Operators::Implication.new)
+      the_assembler.feed(Proinsias::Atoms::Variable.new('q'))
+      the_assembler.feed(Proinsias::Operators::Implication.new)
+      the_assembler.feed(Proinsias::Atoms::Variable.new('r'))
+      the_assembler.feed(Proinsias::Operators::Implication.new)
+      the_assembler.feed(Proinsias::Atoms::Variable.new('s'))
+    end
+
+    it 'will assemble the elements into a proper hierarchy' do
+      expect(the_assembler.receiver.to_ast).to eq(
+        {"⇒"=>["p", {"⇒"=>["q", {"⇒"=>["r", "s"]}]}]}
       )
     end
   end
