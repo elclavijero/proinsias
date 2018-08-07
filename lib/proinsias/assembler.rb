@@ -20,7 +20,7 @@ module Proinsias
         return @receiver = incoming
       end
       if incoming < receiver
-        receiver.absorb(incoming)
+        receiver.insert(incoming)
         return @receiver
       end
     end
