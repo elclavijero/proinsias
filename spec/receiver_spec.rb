@@ -2,7 +2,12 @@ RSpec.describe Proinsias::Receiver do
   let(:the_receiver) do
     Object.new.tap do |rcv|
       rcv.extend(Proinsias::Receiver)
-      rcv.capacity = 2
+    end
+  end
+
+  let(:other) do
+    Object.new.tap do |rcv|
+      rcv.extend(Proinsias::Receiver)
     end
   end
 
@@ -50,6 +55,10 @@ RSpec.describe Proinsias::Receiver do
 
   describe '#receive' do
     context 'providing there is capacity' do
+      before do
+        the_receiver.capacity = 2
+      end
+
       it 'will return the received guest' do
         expect(the_receiver.receive(a_guest)).to equal(a_guest)
       end
@@ -65,16 +74,12 @@ RSpec.describe Proinsias::Receiver do
   describe '#superpose' do
     describe 'the other Receiver after superposition' do
       before do
+        the_receiver.capacity = 2
         the_receiver.receive(a_guest)
         the_receiver.receive(another_guest)
-        the_receiver.superpose(other)
-      end
 
-      let(:other) do
-        Object.new.tap do |rcv|
-          rcv.extend(Proinsias::Receiver)
-          rcv.capacity = the_receiver.capacity
-        end
+        other.capacity = the_receiver.capacity
+        the_receiver.superpose(other)
       end
 
       it 'will have #received those #received by the subject' do
