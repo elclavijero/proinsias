@@ -89,8 +89,26 @@ RSpec.describe Proinsias::Receiver do
   end
 
   describe '#splice' do
-    describe 'the subject post-splice' do
-      it '#last will be other'
+    context 'providing the subject has received a guest,' do
+      before do
+        the_receiver.capacity = 1
+        the_receiver.receive(a_guest)
+      end
+
+      context 'and the other has capacity' do
+        before do
+          other.capacity = 1
+        end
+
+        describe 'the subject post-splice,' do
+          it '#last will reference other' do
+            the_receiver.splice(other)
+
+            expect(the_receiver.last).to equal(other)
+          end
+        end
+      end
+      
     end
   end
 end
