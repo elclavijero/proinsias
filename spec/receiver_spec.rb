@@ -56,7 +56,7 @@ RSpec.describe Proinsias::Receiver do
   describe '#receive' do
     context 'providing there is capacity' do
       before do
-        the_receiver.capacity = 2
+        the_receiver.make_room
       end
 
       it 'will return the received guest' do
@@ -74,15 +74,13 @@ RSpec.describe Proinsias::Receiver do
   describe '#superpose' do
     describe 'the other Receiver after superposition' do
       before do
-        the_receiver.capacity = 2
         the_receiver.receive(a_guest)
         the_receiver.receive(another_guest)
 
-        other.capacity = the_receiver.capacity
         the_receiver.superpose(other)
       end
 
-      it 'will have #received those #received by the subject' do
+      it 'will have #received those first #received by the subject' do
         expect(the_receiver.received).to eq(other.received)
       end
     end
@@ -91,24 +89,33 @@ RSpec.describe Proinsias::Receiver do
   describe '#splice' do
     context 'providing the subject has received a guest,' do
       before do
-        the_receiver.capacity = 1
+        the_receiver.make_room
         the_receiver.receive(a_guest)
       end
 
       context 'and the other has capacity' do
         before do
-          other.capacity = 1
+          other.make_room
         end
 
-        describe 'the subject post-splice,' do
+        describe 'the subject - post-splice,' do
           it '#last will reference other' do
             the_receiver.splice(other)
 
             expect(the_receiver.last).to equal(other)
           end
         end
+
+        describe 'the other -- post-splice' do
+          it '#last will reference the object previously held by the subject.#last' do
+            taken_from_subject = the_receiver.last
+
+            the_receiver.splice(other)
+
+            expect(other.last).to equal(taken_from_subject)
+          end
+        end
       end
-      
     end
   end
 end

@@ -9,7 +9,9 @@ module Proinsias
       @received ||= []
     end
 
-    def receive(guest)
+    def receive(guest, expand=false)
+      make_room if expand
+      
       (received << guest
       guest) unless full?
     end
@@ -20,6 +22,16 @@ module Proinsias
 
     def expectant?
       received.count < capacity
+    end
+
+    def make_room(count=1)
+      @capacity = expectant? ? 
+          capacity :
+          capacity + count
+    end
+
+    def capacity
+      @capacity ||= 0
     end
 
     def last
