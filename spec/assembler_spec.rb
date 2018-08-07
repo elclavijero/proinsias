@@ -13,7 +13,7 @@ RSpec.describe Proinsias::Assembler do
     end
   end
 
-  describe 'Fixity and precedence assembly' do
+  describe 'Precedence assembly' do
     let(:eqv) { Proinsias::Operators::Equivalence.new }
     let(:equ) { Proinsias::Operators::Equality.new    }
     let(:neg) { Proinsias::Operators::Negation.new    }
