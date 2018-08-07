@@ -14,20 +14,17 @@ RSpec.describe Proinsias::Assembler do
   end
 
   describe 'Precedence assembly' do
-    let(:eqv) { Proinsias::Operators::Equivalence.new }
-    let(:equ) { Proinsias::Operators::Equality.new    }
-    let(:neg) { Proinsias::Operators::Negation.new    }
-    let(:dis) { Proinsias::Operators::Disjunction.new }
-    let(:p)   { Proinsias::Atoms::Variable.new('p')   }
-    let(:q)   { Proinsias::Atoms::Variable.new('q')   }
-    let(:r)   { Proinsias::Atoms::Variable.new('r')   }
-    let(:e)   { Proinsias::Atoms::Variable.new('e')   }
+    before do
+      the_assembler.feed(Proinsias::Atoms::Variable.new('p'))
+      the_assembler.feed(Proinsias::Operators::Equivalence.new)
+      the_assembler.feed(Proinsias::Atoms::Variable.new('q'))
+      the_assembler.feed(Proinsias::Operators::Disjunction.new)
+      the_assembler.feed(Proinsias::Atoms::Variable.new('r'))
+      the_assembler.feed(Proinsias::Operators::Equality.new)
+      the_assembler.feed(Proinsias::Atoms::Variable.new('e'))
+    end
 
     it 'will assemble the elements into a proper hierarchy' do
-      [ p, eqv, q, dis, r, equ, e ].each do |x|
-        the_assembler.feed(x)
-      end
-
       expect(the_assembler.receiver.to_ast).to eq(
         {"≡"=>["p", {"∨"=>["q", {"="=>["r", "e"]}]}]}
       )
