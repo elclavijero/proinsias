@@ -1,4 +1,4 @@
 module Proinsias
-  class Interpreter
+  class Director
   end
 end

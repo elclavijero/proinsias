@@ -4,8 +4,8 @@ require "proinsias/decoder"
 require "proinsias/configurations"
 require "proinsias/receiver"
 require "proinsias/operators"
-require "proinsias/interpreter"
 require "proinsias/assembler"
+require "proinsias/director"
 
 module Proinsias
   # Your code goes here...
