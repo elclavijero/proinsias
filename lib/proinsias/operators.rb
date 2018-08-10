@@ -28,6 +28,8 @@ module Proinsias
       include Receiver
       include Disposition::Pessimistic
 
+      attr_reader :role
+
       def initialize(glyph)
         @glyph = glyph
         @capacity = 0
@@ -39,13 +41,26 @@ module Proinsias
       end
     end
     
-    Constant = Atom
-    Variable = Atom
+    class Constant < Atom
+      def initialize(glyph)
+        super
+        @role = 'constant'
+      end
+    end
+
+    class Variable < Atom
+      def initialize(glyph)
+        super
+        @role = 'variable'
+      end
+    end
   end
 
   module Operators
     class Operator
       include Proinsias::Receiver
+
+      attr_reader :role
       
       alias arguments received
       
@@ -76,6 +91,7 @@ module Proinsias
       def initialize(glyph='¬')
         super
         @strength = 2
+        @role = 'prefix'
       end
     end
 
@@ -85,6 +101,7 @@ module Proinsias
       def initialize(glyph='≡')
         super
         @strength = 12
+        @role = 'infix'
       end
     end
 
@@ -94,6 +111,7 @@ module Proinsias
       def initialize(glyph='⇐')
         super
         @strength = 11
+        @role = 'infix'
       end
     end
 
@@ -103,6 +121,7 @@ module Proinsias
       def initialize(glyph='⇒')
         super
         @strength = 11
+        @role = 'infix'
       end
     end
 
@@ -112,6 +131,7 @@ module Proinsias
       def initialize(glyph='=')
         super
         @strength = 9
+        @role = 'infix'
       end
     end
 
@@ -121,6 +141,7 @@ module Proinsias
       def initialize(glyph='∨')
         super
         @strength = 10
+        @role = 'infix'
       end
     end
 
@@ -130,6 +151,7 @@ module Proinsias
       def initialize(glyph='∧')
         super
         @strength = 10
+        @role = 'infix'
       end
     end
   end
