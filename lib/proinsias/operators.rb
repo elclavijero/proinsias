@@ -73,8 +73,8 @@ module Proinsias
     class Negation < UnaryOperator
       include Disposition::Pessimistic
 
-      def initialize
-        super('¬')
+      def initialize(glyph='¬')
+        super
         @strength = 2
       end
     end
@@ -82,8 +82,8 @@ module Proinsias
     class Equivalence < BinaryOperator
       include Disposition::Optimistic
 
-      def initialize
-        super('≡')
+      def initialize(glyph='≡')
+        super
         @strength = 12
       end
     end
@@ -91,8 +91,8 @@ module Proinsias
     class Consequence < BinaryOperator
       include Disposition::Optimistic
 
-      def initialize
-        super('⇐')
+      def initialize(glyph='⇐')
+        super
         @strength = 11
       end
     end
@@ -100,8 +100,8 @@ module Proinsias
     class Implication < BinaryOperator
       include Disposition::Pessimistic
 
-      def initialize
-        super('⇒')
+      def initialize(glyph='⇒')
+        super
         @strength = 11
       end
     end
@@ -109,8 +109,8 @@ module Proinsias
     class Equality < BinaryOperator
       include Disposition::Optimistic
 
-      def initialize
-        super('=')
+      def initialize(glyph='=')
+        super
         @strength = 9
       end
     end
@@ -118,8 +118,8 @@ module Proinsias
     class Disjunction < BinaryOperator
       include Disposition::Optimistic
 
-      def initialize
-        super('∨')
+      def initialize(glyph='∨')
+        super
         @strength = 10
       end
     end
@@ -127,8 +127,8 @@ module Proinsias
     class Conjunction < BinaryOperator
       include Disposition::Optimistic
 
-      def initialize
-        super('∧')
+      def initialize(glyph='∧')
+        super
         @strength = 10
       end
     end
