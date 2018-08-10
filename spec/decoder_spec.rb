@@ -154,13 +154,7 @@ RSpec.describe Proinsias::Decoder::Automaton do
     context "given a stimulus not in the decoder's alphabet" do
       let(:foreign_stimulus) { '£' }
 
-      it 'will return a token with a missing role' do
-        the_decoder.issue(foreign_stimulus)
-
-        expect(the_consumer).to have_received(:call).with(
-          Proinsias::Token.new(role:nil,   glyph: foreign_stimulus )
-        )
-      end
+      it 'will return a token with a missing role'
     end
   end
 end
