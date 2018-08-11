@@ -1,9 +1,6 @@
-RSpec.describe Moory::Filter do
+RSpec.describe Proinsias::Filter do
   let(:the_filter) do
-    Moory::Filter.new(
-      rules:    Proinsias::Configurations::FILTER,
-      consumer: the_consumer
-    )
+    Proinsias::Filter.create(the_consumer)
   end
 
   let(:the_consumer) do
