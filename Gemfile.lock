@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    proinsias (0.2.0)
+    proinsias (0.3.0)
       moory (~> 1.2.0)
 
 GEM
