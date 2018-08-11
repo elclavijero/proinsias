@@ -2,10 +2,15 @@ require 'moory'
 
 module Proinsias
   class Director
-    attr_accessor :consumer
+    attr_accessor :consumer, :quarantine
 
-    def initialize(consumer:nil)
-      @consumer = consumer
+    DEFAULT_QUARANTINE = proc { |particle| 
+      fail "Received unexpected particle: #{particle}"
+    }
+
+    def initialize(consumer:, quarantine:nil)
+      @consumer   = consumer
+      @quarantine = quarantine
     end
 
     def controller
@@ -22,6 +27,9 @@ module Proinsias
             commands: result
           )
         )
+      else
+        quarantine ?
+          quarantine.call(particle) : nil
       end
     end
 

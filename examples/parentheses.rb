@@ -1,14 +1,14 @@
 assembly_line = Proinsias::AssemblyLine.new
 
 director = Proinsias::Director.new(
-  consumer: assembly_line.method(:issue)
+  consumer:   assembly_line.method(:issue)
 )
 
 scanner = Proinsias::Scanner.new(
   consumer: director.method(:issue)
 )
 
-"p ⇒ q ⇒ r".each_char do |c|
+")p ⇒ q ⇒ r".each_char do |c|
   scanner.issue(c)
 end
 
