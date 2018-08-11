@@ -3,7 +3,7 @@ require "proinsias/token"
 require "proinsias/decoder"
 require "proinsias/configurations"
 require "proinsias/receiver"
-require "proinsias/operators"
+require "proinsias/particle"
 require "proinsias/assembler"
 require "proinsias/director"
 
