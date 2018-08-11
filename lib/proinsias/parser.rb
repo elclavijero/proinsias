@@ -1,5 +1,9 @@
 module Proinsias
   class Parser
+    def Parser.one_shot(str)
+      new.tap { |psr| psr.analyse(str) }
+    end
+
     def analyse(str)
       str.each_char { |c| issue(c) }
     end

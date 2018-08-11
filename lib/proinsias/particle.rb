@@ -138,6 +138,16 @@ module Proinsias
       end
     end
 
+    class Inequivalence < BinaryOperator
+      include Disposition::Optimistic
+
+      def initialize(glyph='≢')
+        super
+        @strength = 12
+        @role = 'infix'
+      end
+    end
+
     class Consequence < BinaryOperator
       include Disposition::Optimistic
 

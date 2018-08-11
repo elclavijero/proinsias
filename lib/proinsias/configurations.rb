@@ -9,6 +9,7 @@ module Proinsias
     ^ : ¬ / ¬ / produce : ^
 
     ^ : ≡ / ≡ / produce : ^
+    ^ : ≢ / ≢ / produce : ^
     ^ : ∧ / ∧ / produce : ^
     ^ : ∨ / ∨ / produce : ^
     ^ : ⇒ / ⇒ / produce : ^

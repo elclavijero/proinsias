@@ -26,6 +26,7 @@ module Proinsias
         'false' => 'Constant',
         '¬'     => 'Negation',
         '≡'     => 'Equivalence',
+        '≢'     => 'Inequivalence',
         '⇐'     => 'Consequence',
         '⇒'     => 'Implication',
         '='     => 'Equality',
