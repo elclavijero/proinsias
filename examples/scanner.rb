@@ -1,11 +1,11 @@
-cns = Array.new
+trace = Array.new
 
-scn = Proinsias::Scanner.new(
-  consumer: cns.method(:<<)
+scanner = Proinsias::Scanner.new(
+  consumer: trace.method(:<<)
 )
 
 "p ≡ p ≡ true".each_char do |c|
-  scn.issue(c)
+  scanner.issue(c)
 end
 
-pp cns
+pp trace
