@@ -95,7 +95,7 @@ module Proinsias
       end
 
       def to_ast
-        arguments.collect { |a| a.to_ast }
+        arguments.first.to_ast
       end
 
       def receive(rparen)
