@@ -6,6 +6,8 @@ require "proinsias/particle"
 require "proinsias/scanner"
 require "proinsias/assembler"
 require "proinsias/director"
+require "proinsias/assemblyline"
+
 
 module Proinsias
   # Your code goes here...

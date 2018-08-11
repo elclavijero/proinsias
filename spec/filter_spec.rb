@@ -151,12 +151,4 @@ RSpec.describe Proinsias::Filter do
       expect(the_consumer).to have_received(:call).with('true' )
     end
   end
-
-  context 'response to foreign stimuli' do
-    context "given a stimulus not in the decoder's alphabet" do
-      let(:foreign_stimulus) { '£' }
-
-      it 'will return a token with a missing role'
-    end
-  end
 end
