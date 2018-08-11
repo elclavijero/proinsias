@@ -94,6 +94,10 @@ module Proinsias
         @role = 'lparen'
       end
 
+      def to_ast
+        arguments.collect { |a| a.to_ast }
+      end
+
       def receive(rparen)
         if rparen.is_a?(Proinsias::Particle::RParen)
           @glyph = '()'
