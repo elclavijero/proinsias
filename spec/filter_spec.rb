@@ -1,6 +1,8 @@
 RSpec.describe Proinsias::Filter do
   let(:the_filter) do
-    Proinsias::Filter.create(the_consumer)
+    Proinsias::Filter.create(
+      consumer: the_consumer
+    )
   end
 
   let(:the_consumer) do

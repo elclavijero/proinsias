@@ -11,7 +11,9 @@ module Proinsias
     end
 
     def filter
-      @filter ||= Proinsias::Filter.create(method(:forward))
+      @filter ||= Proinsias::Filter.create(
+        consumer: method(:forward)
+      )
     end
 
     def translate(glyph)
