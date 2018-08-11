@@ -4,25 +4,24 @@ director = Proinsias::Director.new(
 
 def translate(glyph)
   map = {
-    'p' => Proinsias::Particle::Variable,
-    'q' => Proinsias::Particle::Variable,
-    'r' => Proinsias::Particle::Variable,
-    's' => Proinsias::Particle::Variable,
-
-    'true'  => Proinsias::Particle::Constant,
-    'false' => Proinsias::Particle::Constant,
-  
-    '¬' => Proinsias::Particle::Negation,
-
-    '≡' => Proinsias::Particle::Equivalence,
-    '⇐' => Proinsias::Particle::Consequence,
-    '⇒' => Proinsias::Particle::Implication,
-    '=' => Proinsias::Particle::Equality,
-    '∨' => Proinsias::Particle::Disjunction,
-    '∧' => Proinsias::Particle::Conjunction,
+    'p'     => 'Variable',
+    'q'     => 'Variable',
+    'r'     => 'Variable',
+    's'     => 'Variable',
+    'true'  => 'Constant',
+    'false' => 'Constant',
+    '¬'     => 'Negation',
+    '≡'     => 'Equivalence',
+    '⇐'     => 'Consequence',
+    '⇒'     => 'Implication',
+    '='     => 'Equality',
+    '∨'     => 'Disjunction',
+    '∧'     => 'Conjunction',
   }
-
-  map[glyph].send(:new, glyph)
+  
+  Proinsias::Particle
+    .const_get(map[glyph])
+    .send(:new, glyph)
 end
 
 %w{
