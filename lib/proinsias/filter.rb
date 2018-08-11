@@ -5,7 +5,7 @@ module Proinsias
     class Automaton < Moory::Logistic::Unit
       IGNORE = [' ', "\t", "\n"]
 
-      def initialize(consumer,rules)
+      def initialize(rules:, consumer:)
         @buffer = ""
         @consumer = consumer
         super(rules: rules)
@@ -27,9 +27,7 @@ module Proinsias
         return if IGNORE.include?(stimulus)
         
         @buffer << stimulus
-        unless success = super(stimulus)
-          produce(nil)
-        end
+        super
       end
     end
   end
