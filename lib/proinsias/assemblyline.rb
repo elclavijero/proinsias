@@ -23,9 +23,7 @@ module Proinsias
     end
 
     def reconvene
-      tmp = deferrals.pop
-
-      @active = tmp.feed(active.receiver)
+      @active = deferrals.pop.feed(active.receiver)
     end
 
     def product
