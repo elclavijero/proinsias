@@ -4,13 +4,13 @@ director = Proinsias::Director.new(
 
 def translate(glyph)
   map = {
-    'p' => Proinsias::Atoms::Variable,
-    'q' => Proinsias::Atoms::Variable,
-    'r' => Proinsias::Atoms::Variable,
-    's' => Proinsias::Atoms::Variable,
+    'p' => Proinsias::Particle::Variable,
+    'q' => Proinsias::Particle::Variable,
+    'r' => Proinsias::Particle::Variable,
+    's' => Proinsias::Particle::Variable,
 
-    'true'  => Proinsias::Atoms::Constant,
-    'false' => Proinsias::Atoms::Constant,
+    'true'  => Proinsias::Particle::Constant,
+    'false' => Proinsias::Particle::Constant,
   
     '¬' => Proinsias::Operators::Negation,
 
