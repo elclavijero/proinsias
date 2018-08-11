@@ -4,7 +4,7 @@ module Proinsias
   class Director
     attr_accessor :consumer
 
-    def initialize(consumer=nil)
+    def initialize(consumer:nil)
       @consumer = consumer
     end
 

@@ -1,31 +1,15 @@
+trace = Array.new
+
 director = Proinsias::Director.new(
-  $stdout.method(:puts)
+  consumer: trace.method(:<<)
 )
 
-def translate(glyph)
-  map = {
-    'p'     => 'Variable',
-    'q'     => 'Variable',
-    'r'     => 'Variable',
-    's'     => 'Variable',
-    'true'  => 'Constant',
-    'false' => 'Constant',
-    '¬'     => 'Negation',
-    '≡'     => 'Equivalence',
-    '⇐'     => 'Consequence',
-    '⇒'     => 'Implication',
-    '='     => 'Equality',
-    '∨'     => 'Disjunction',
-    '∧'     => 'Conjunction',
-  }
-  
-  Proinsias::Particle
-    .const_get(map[glyph])
-    .send(:new, glyph)
+scanner = Proinsias::Scanner.new(
+  consumer: director.method(:issue)
+)
+
+"p ≡ p ≡ true".each_char do |c|
+  scanner.issue(c)
 end
 
-%w{
-  ¬ p ∧ ¬ q ≡ ¬ ¬ p ∧ ¬ ¬ q 
-}.each do |e|
-  director.issue(translate(e))
-end
+pp trace
