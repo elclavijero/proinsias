@@ -8,7 +8,7 @@ scanner = Proinsias::Scanner.new(
   consumer: director.method(:issue)
 )
 
-")p ⇒ q ⇒ r".each_char do |c|
+"(p ⇒ q) ⇒ r".each_char do |c|
   scanner.issue(c)
 end
 
