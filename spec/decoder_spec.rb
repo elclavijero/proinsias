@@ -8,12 +8,12 @@ RSpec.describe Proinsias::Decoder::Automaton do
   end
 
   describe '#issue' do
-    context 'producing a variable' do
+    context 'producing "p"' do
       it 'can be achieved by issuing the character "p"' do
         the_decoder.issue('p')
 
         expect(the_consumer).to have_received(:call).with(
-          Proinsias::Token.new(role: 'variable', glyph: 'p')
+          'p'
         )
       end
 
@@ -21,7 +21,7 @@ RSpec.describe Proinsias::Decoder::Automaton do
         the_decoder.issue('q')
 
         expect(the_consumer).to have_received(:call).with(
-          Proinsias::Token.new( role: 'variable', glyph: 'q' )
+          'q'
         )
       end
 
@@ -29,7 +29,7 @@ RSpec.describe Proinsias::Decoder::Automaton do
         the_decoder.issue('r')
 
         expect(the_consumer).to have_received(:call).with(
-          Proinsias::Token.new( role: 'variable', glyph: 'r' )
+          'r'
         )
       end
 
@@ -37,7 +37,7 @@ RSpec.describe Proinsias::Decoder::Automaton do
         the_decoder.issue('s')
 
         expect(the_consumer).to have_received(:call).with(
-          Proinsias::Token.new( role: 'variable', glyph: 's' )
+          's'
         )
       end
     end
@@ -47,7 +47,7 @@ RSpec.describe Proinsias::Decoder::Automaton do
         the_decoder.issue('¬')
 
         expect(the_consumer).to have_received(:call).with(
-          Proinsias::Token.new( role: 'prefix', glyph: '¬' )
+          '¬'
         )
       end
     end
@@ -57,7 +57,7 @@ RSpec.describe Proinsias::Decoder::Automaton do
         the_decoder.issue('≡')
 
         expect(the_consumer).to have_received(:call).with(
-          Proinsias::Token.new( role: 'infix', glyph: '≡' )
+          "≡"
         )
       end
 
@@ -65,7 +65,7 @@ RSpec.describe Proinsias::Decoder::Automaton do
         the_decoder.issue('∧')
 
         expect(the_consumer).to have_received(:call).with(
-          Proinsias::Token.new( role: 'infix', glyph: '∧' )
+          "∧"
         )
       end
 
@@ -73,7 +73,7 @@ RSpec.describe Proinsias::Decoder::Automaton do
         the_decoder.issue('∨')
 
         expect(the_consumer).to have_received(:call).with(
-          Proinsias::Token.new( role: 'infix', glyph: '∨' )
+          "∨"
         )
       end
 
@@ -81,7 +81,7 @@ RSpec.describe Proinsias::Decoder::Automaton do
         the_decoder.issue('⇒')
 
         expect(the_consumer).to have_received(:call).with(
-          Proinsias::Token.new( role: 'infix', glyph: '⇒' )
+          "⇒"
         )
       end
 
@@ -89,7 +89,7 @@ RSpec.describe Proinsias::Decoder::Automaton do
         the_decoder.issue('⇐')
 
         expect(the_consumer).to have_received(:call).with(
-          Proinsias::Token.new( role: 'infix', glyph: '⇐' )
+          "⇐"
         )
       end
     end
@@ -99,7 +99,7 @@ RSpec.describe Proinsias::Decoder::Automaton do
         the_decoder.issue('(')
 
         expect(the_consumer).to have_received(:call).with(
-          Proinsias::Token.new( role: 'lparen', glyph: '(' )
+          "("
         )
       end
     end
@@ -109,7 +109,7 @@ RSpec.describe Proinsias::Decoder::Automaton do
         the_decoder.issue(')')
 
         expect(the_consumer).to have_received(:call).with(
-          Proinsias::Token.new( role: 'rparen', glyph: ')' )
+          ")"
         )
       end
     end
@@ -121,7 +121,7 @@ RSpec.describe Proinsias::Decoder::Automaton do
         end
 
         expect(the_consumer).to have_received(:call).with(
-          Proinsias::Token.new( role:'constant', glyph: 'true' )
+          "true"
         )
       end
 
@@ -131,7 +131,7 @@ RSpec.describe Proinsias::Decoder::Automaton do
         end
 
         expect(the_consumer).to have_received(:call).with(
-          Proinsias::Token.new( role:'constant', glyph: 'false' )
+          "false"
         )
       end
     end
@@ -143,10 +143,10 @@ RSpec.describe Proinsias::Decoder::Automaton do
         the_decoder.issue(c)
       end
 
-      expect(the_consumer).to have_received(:call).with(Proinsias::Token.new(role:'prefix',   glyph: '¬' ))
-      expect(the_consumer).to have_received(:call).with(Proinsias::Token.new(role:'variable', glyph: 'p' ))
-      expect(the_consumer).to have_received(:call).with(Proinsias::Token.new(role:'infix',    glyph: '∨' ))
-      expect(the_consumer).to have_received(:call).with(Proinsias::Token.new(role:'constant', glyph: 'true' ))
+      expect(the_consumer).to have_received(:call).with('¬' )
+      expect(the_consumer).to have_received(:call).with('p' )
+      expect(the_consumer).to have_received(:call).with('∨' )
+      expect(the_consumer).to have_received(:call).with('true' )
     end
   end
 
