@@ -1,7 +1,7 @@
 require 'moory'
 
 module Proinsias
-  module Decoder
+  module Filter
     RULES = """
     ^ : p / p / produce : ^
     ^ : q / q / produce : ^

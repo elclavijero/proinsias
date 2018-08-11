@@ -1,6 +1,6 @@
-RSpec.describe Proinsias::Decoder::Automaton do
-  let(:the_decoder) do
-    Proinsias::Decoder::Automaton.new(the_consumer)
+RSpec.describe Proinsias::Filter::Automaton do
+  let(:the_filter) do
+    Proinsias::Filter::Automaton.new(the_consumer)
   end
 
   let(:the_consumer) do
@@ -10,7 +10,7 @@ RSpec.describe Proinsias::Decoder::Automaton do
   describe '#issue' do
     context 'producing "p"' do
       it 'can be achieved by issuing the character "p"' do
-        the_decoder.issue('p')
+        the_filter.issue('p')
 
         expect(the_consumer).to have_received(:call).with(
           'p'
@@ -18,7 +18,7 @@ RSpec.describe Proinsias::Decoder::Automaton do
       end
 
       it 'can be achieved by issuing the character "q"' do
-        the_decoder.issue('q')
+        the_filter.issue('q')
 
         expect(the_consumer).to have_received(:call).with(
           'q'
@@ -26,7 +26,7 @@ RSpec.describe Proinsias::Decoder::Automaton do
       end
 
       it 'can be achieved by issuing the character "r"' do
-        the_decoder.issue('r')
+        the_filter.issue('r')
 
         expect(the_consumer).to have_received(:call).with(
           'r'
@@ -34,7 +34,7 @@ RSpec.describe Proinsias::Decoder::Automaton do
       end
 
       it 'can be achieved by issuing the character "s"' do
-        the_decoder.issue('s')
+        the_filter.issue('s')
 
         expect(the_consumer).to have_received(:call).with(
           's'
@@ -44,7 +44,7 @@ RSpec.describe Proinsias::Decoder::Automaton do
 
     context 'producing a prefix' do
       it 'can be achieved by issuing the character "¬"' do
-        the_decoder.issue('¬')
+        the_filter.issue('¬')
 
         expect(the_consumer).to have_received(:call).with(
           '¬'
@@ -54,7 +54,7 @@ RSpec.describe Proinsias::Decoder::Automaton do
 
     context 'producing an infix' do
       it 'can be achieved by issuing the character "≡"' do
-        the_decoder.issue('≡')
+        the_filter.issue('≡')
 
         expect(the_consumer).to have_received(:call).with(
           "≡"
@@ -62,7 +62,7 @@ RSpec.describe Proinsias::Decoder::Automaton do
       end
 
       it 'can be achieved by issuing the character "∧"' do
-        the_decoder.issue('∧')
+        the_filter.issue('∧')
 
         expect(the_consumer).to have_received(:call).with(
           "∧"
@@ -70,7 +70,7 @@ RSpec.describe Proinsias::Decoder::Automaton do
       end
 
       it 'can be achieved by issuing the character "∨"' do
-        the_decoder.issue('∨')
+        the_filter.issue('∨')
 
         expect(the_consumer).to have_received(:call).with(
           "∨"
@@ -78,7 +78,7 @@ RSpec.describe Proinsias::Decoder::Automaton do
       end
 
       it 'can be achieved by issuing the character "⇒"' do
-        the_decoder.issue('⇒')
+        the_filter.issue('⇒')
 
         expect(the_consumer).to have_received(:call).with(
           "⇒"
@@ -86,7 +86,7 @@ RSpec.describe Proinsias::Decoder::Automaton do
       end
 
       it 'can be achieved by issuing the character "⇐"' do
-        the_decoder.issue('⇐')
+        the_filter.issue('⇐')
 
         expect(the_consumer).to have_received(:call).with(
           "⇐"
@@ -96,7 +96,7 @@ RSpec.describe Proinsias::Decoder::Automaton do
 
     context 'producing lparen' do
       it 'can be achieved by issuing the character "("' do
-        the_decoder.issue('(')
+        the_filter.issue('(')
 
         expect(the_consumer).to have_received(:call).with(
           "("
@@ -106,7 +106,7 @@ RSpec.describe Proinsias::Decoder::Automaton do
 
     context 'producing rparen' do
       it 'can be achieved by issuing the character ")"' do
-        the_decoder.issue(')')
+        the_filter.issue(')')
 
         expect(the_consumer).to have_received(:call).with(
           ")"
@@ -117,7 +117,7 @@ RSpec.describe Proinsias::Decoder::Automaton do
     context 'producing a constant' do
       it 'can be achieved by issuing, successively, the characters: %w{ t r u e }' do
         %w{ t r u e }.each do |c|
-          the_decoder.issue(c)
+          the_filter.issue(c)
         end
 
         expect(the_consumer).to have_received(:call).with(
@@ -127,7 +127,7 @@ RSpec.describe Proinsias::Decoder::Automaton do
 
       it 'can be achieved by issuing, successively, the characters: %w{ f a l s e }' do
         %w{ f a l s e }.each do |c|
-          the_decoder.issue(c)
+          the_filter.issue(c)
         end
 
         expect(the_consumer).to have_received(:call).with(
@@ -140,7 +140,7 @@ RSpec.describe Proinsias::Decoder::Automaton do
   context 'handling whitespace' do
     it 'ignores whitespace between productions' do
       " ¬\tp  ∨\t\ttrue\t \t ".each_char do |c|
-        the_decoder.issue(c)
+        the_filter.issue(c)
       end
 
       expect(the_consumer).to have_received(:call).with('¬' )
