@@ -12,14 +12,14 @@ def translate(glyph)
     'true'  => Proinsias::Particle::Constant,
     'false' => Proinsias::Particle::Constant,
   
-    '¬' => Proinsias::Operators::Negation,
+    '¬' => Proinsias::Particle::Negation,
 
-    '≡' => Proinsias::Operators::Equivalence,
-    '⇐' => Proinsias::Operators::Consequence,
-    '⇒' => Proinsias::Operators::Implication,
-    '=' => Proinsias::Operators::Equality,
-    '∨' => Proinsias::Operators::Disjunction,
-    '∧' => Proinsias::Operators::Conjunction,
+    '≡' => Proinsias::Particle::Equivalence,
+    '⇐' => Proinsias::Particle::Consequence,
+    '⇒' => Proinsias::Particle::Implication,
+    '=' => Proinsias::Particle::Equality,
+    '∨' => Proinsias::Particle::Disjunction,
+    '∧' => Proinsias::Particle::Conjunction,
   }
 
   map[glyph].send(:new, glyph)

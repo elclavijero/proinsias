@@ -13,11 +13,11 @@ RSpec.describe Proinsias::Assembler do
     describe 'Precedence assembly' do
       before do
         the_assembler.feed(Proinsias::Particle::Variable.new('p'))
-        the_assembler.feed(Proinsias::Operators::Equivalence.new)
+        the_assembler.feed(Proinsias::Particle::Equivalence.new)
         the_assembler.feed(Proinsias::Particle::Variable.new('q'))
-        the_assembler.feed(Proinsias::Operators::Disjunction.new)
+        the_assembler.feed(Proinsias::Particle::Disjunction.new)
         the_assembler.feed(Proinsias::Particle::Variable.new('r'))
-        the_assembler.feed(Proinsias::Operators::Equality.new)
+        the_assembler.feed(Proinsias::Particle::Equality.new)
         the_assembler.feed(Proinsias::Particle::Variable.new('e'))
       end
   
@@ -30,22 +30,22 @@ RSpec.describe Proinsias::Assembler do
   
     describe 'Mixed fixity and arity assembly' do
       before do
-        the_assembler.feed(Proinsias::Operators::Negation.new)
+        the_assembler.feed(Proinsias::Particle::Negation.new)
         the_assembler.feed(Proinsias::Particle::Variable.new('p'))
-        the_assembler.feed(Proinsias::Operators::Conjunction.new)
-        the_assembler.feed(Proinsias::Operators::Negation.new)
+        the_assembler.feed(Proinsias::Particle::Conjunction.new)
+        the_assembler.feed(Proinsias::Particle::Negation.new)
         the_assembler.feed(Proinsias::Particle::Variable.new('q'))
     
-        the_assembler.feed(Proinsias::Operators::Equivalence.new)
+        the_assembler.feed(Proinsias::Particle::Equivalence.new)
     
-        the_assembler.feed(Proinsias::Operators::Negation.new)
-        the_assembler.feed(Proinsias::Operators::Negation.new)
-        the_assembler.feed(Proinsias::Operators::Negation.new)
+        the_assembler.feed(Proinsias::Particle::Negation.new)
+        the_assembler.feed(Proinsias::Particle::Negation.new)
+        the_assembler.feed(Proinsias::Particle::Negation.new)
         the_assembler.feed(Proinsias::Particle::Variable.new('p'))
-        the_assembler.feed(Proinsias::Operators::Conjunction.new)
-        the_assembler.feed(Proinsias::Operators::Negation.new)
-        the_assembler.feed(Proinsias::Operators::Negation.new)
-        the_assembler.feed(Proinsias::Operators::Negation.new)
+        the_assembler.feed(Proinsias::Particle::Conjunction.new)
+        the_assembler.feed(Proinsias::Particle::Negation.new)
+        the_assembler.feed(Proinsias::Particle::Negation.new)
+        the_assembler.feed(Proinsias::Particle::Negation.new)
         the_assembler.feed(Proinsias::Particle::Variable.new('q'))
       end
   
@@ -64,11 +64,11 @@ RSpec.describe Proinsias::Assembler do
     describe 'Right associativity' do
       before do
         the_assembler.feed(Proinsias::Particle::Variable.new('p'))
-        the_assembler.feed(Proinsias::Operators::Implication.new)
+        the_assembler.feed(Proinsias::Particle::Implication.new)
         the_assembler.feed(Proinsias::Particle::Variable.new('q'))
-        the_assembler.feed(Proinsias::Operators::Implication.new)
+        the_assembler.feed(Proinsias::Particle::Implication.new)
         the_assembler.feed(Proinsias::Particle::Variable.new('r'))
-        the_assembler.feed(Proinsias::Operators::Implication.new)
+        the_assembler.feed(Proinsias::Particle::Implication.new)
         the_assembler.feed(Proinsias::Particle::Variable.new('s'))
       end
   

@@ -23,7 +23,7 @@ module Proinsias
     end
   end
 
-  module Atoms
+  module Particle
     class Atom
       include Receiver
       include Disposition::Pessimistic
@@ -56,7 +56,7 @@ module Proinsias
     end
   end
 
-  module Operators
+  module Particle
     class Operator
       include Proinsias::Receiver
 
