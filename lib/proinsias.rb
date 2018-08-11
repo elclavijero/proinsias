@@ -7,6 +7,7 @@ require "proinsias/scanner"
 require "proinsias/assembler"
 require "proinsias/director"
 require "proinsias/assemblyline"
+require "proinsias/parser"
 
 
 module Proinsias
