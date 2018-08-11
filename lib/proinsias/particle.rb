@@ -93,6 +93,15 @@ module Proinsias
         @strength = 0
         @role = 'lparen'
       end
+
+      def receive(rparen)
+        if rparen.is_a?(Proinsias::Particle::RParen)
+          @glyph = '()'
+          @received = rparen.received
+        else
+          fail "Argument is not an RParen" unless rparen.is_a?(Proinsias::Particle::RParen)
+        end
+      end
     end
 
     class RParen < UnaryOperator
