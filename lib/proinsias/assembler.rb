@@ -8,6 +8,8 @@ module Proinsias
         establish(incoming)
 
       look_for_opening(incoming)
+
+      self
     end
 
     private

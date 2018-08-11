@@ -14,11 +14,13 @@ module Proinsias
       )
     end
 
-    def issue(element)
-      if result = controller.issue(element.role)
+    def issue(particle)
+      if result = controller.issue(particle.role)
         forward(
-          element:  element,
-          commands: result
+          Directive.new(
+            particle:  particle,
+            commands: result
+          )
         )
       end
     end
@@ -29,4 +31,6 @@ module Proinsias
       consumer.call(directive) if consumer
     end
   end
+
+  Directive = Struct.new(:particle, :commands, keyword_init: true)
 end
