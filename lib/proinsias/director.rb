@@ -8,7 +8,7 @@ module Proinsias
       fail "Received unexpected particle: #{particle}"
     }
 
-    def initialize(consumer:, quarantine:nil)
+    def initialize(consumer:, quarantine:DEFAULT_QUARANTINE)
       @consumer   = consumer
       @quarantine = quarantine
     end
