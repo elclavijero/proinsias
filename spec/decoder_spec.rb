@@ -1,6 +1,9 @@
 RSpec.describe Proinsias::Filter::Automaton do
   let(:the_filter) do
-    Proinsias::Filter::Automaton.new(the_consumer)
+    Proinsias::Filter::Automaton.new(
+      the_consumer,
+      Proinsias::Configurations::FILTER
+    )
   end
 
   let(:the_consumer) do

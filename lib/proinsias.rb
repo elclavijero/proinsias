@@ -1,5 +1,5 @@
 require "proinsias/version"
-require "proinsias/decoder"
+require "proinsias/filter"
 require "proinsias/configurations"
 require "proinsias/receiver"
 require "proinsias/particle"
