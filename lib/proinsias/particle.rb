@@ -85,6 +85,26 @@ module Proinsias
       end
     end
 
+    class LParen < UnaryOperator
+      include Disposition::Pessimistic
+
+      def initialize(glyph='(')
+        super
+        @strength = 0
+        @role = 'lparen'
+      end
+    end
+
+    class RParen < UnaryOperator
+      include Disposition::Optimistic
+
+      def initialize(glyph=')')
+        super
+        @strength = 12
+        @role = 'rparen'
+      end
+    end
+
     class Negation < UnaryOperator
       include Disposition::Pessimistic
 

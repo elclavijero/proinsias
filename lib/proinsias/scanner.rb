@@ -31,6 +31,8 @@ module Proinsias
         '='     => 'Equality',
         '∨'     => 'Disjunction',
         '∧'     => 'Conjunction',
+        '('     => 'LParen',
+        ')'     => 'RParen',
       }
       
       Proinsias::Particle
