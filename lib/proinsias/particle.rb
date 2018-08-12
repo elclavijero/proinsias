@@ -44,6 +44,10 @@ module Proinsias
     class Constant
       include Atom
 
+      def self.create(*args)
+        new(*args)
+      end
+
       def initialize(glyph)
         @glyph = glyph
         @capacity = 0
@@ -54,6 +58,10 @@ module Proinsias
 
     class Variable
       include Atom
+
+      def self.create(*args)
+        new(*args)
+      end
       
       def initialize(glyph)
         @glyph = glyph
@@ -83,6 +91,10 @@ module Proinsias
       include Operator
       include Disposition::Pessimistic
 
+      def self.create(*args)
+        new
+      end
+
       def initialize(glyph='(')
         @glyph = glyph
         @capacity = 1
@@ -108,6 +120,10 @@ module Proinsias
       include Operator
       include Disposition::Optimistic
 
+      def self.create(*args)
+        new
+      end
+
       def initialize(glyph=')')
         @glyph = glyph
         @capacity = 1
@@ -119,6 +135,10 @@ module Proinsias
     class Negation
       include Operator
       include Disposition::Pessimistic
+
+      def self.create(*args)
+        new
+      end
 
       def initialize(glyph='¬')
         @glyph = glyph
@@ -132,6 +152,10 @@ module Proinsias
       include Operator
       include Disposition::Optimistic
 
+      def self.create(*args)
+        new
+      end
+
       def initialize(glyph='≡')
         @glyph = glyph
         @capacity = 2
@@ -143,6 +167,10 @@ module Proinsias
     class Inequivalence
       include Operator
       include Disposition::Optimistic
+
+      def self.create(*args)
+        new
+      end
 
       def initialize(glyph='≢')
         @glyph = glyph
@@ -156,6 +184,10 @@ module Proinsias
       include Operator
       include Disposition::Optimistic
 
+      def self.create(*args)
+        new
+      end
+
       def initialize(glyph='⇐')
         @glyph = glyph
         @capacity = 2
@@ -167,6 +199,10 @@ module Proinsias
     class Implication
       include Operator
       include Disposition::Pessimistic
+
+      def self.create(*args)
+        new
+      end
 
       def initialize(glyph='⇒')
         @glyph = glyph
@@ -180,6 +216,10 @@ module Proinsias
       include Operator
       include Disposition::Optimistic
 
+      def self.create(*args)
+        new
+      end
+
       def initialize(glyph='=')
         @glyph = glyph
         @capacity = 2
@@ -192,6 +232,10 @@ module Proinsias
       include Operator
       include Disposition::Optimistic
 
+      def self.create(*args)
+        new
+      end
+
       def initialize(glyph='∨')
         @glyph = glyph
         @capacity = 2
@@ -203,6 +247,10 @@ module Proinsias
     class Conjunction
       include Operator
       include Disposition::Optimistic
+
+      def self.create(*args)
+        new
+      end
 
       def initialize(glyph='∧')
         @glyph = glyph

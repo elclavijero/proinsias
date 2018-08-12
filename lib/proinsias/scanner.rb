@@ -23,7 +23,7 @@ module Proinsias
     def translate(glyph)
       Proinsias::Particle
         .const_get(@dictionary[glyph])
-        .send(:new, glyph)
+        .send(:create, glyph)
     end
 
     def forward(glyph)
