@@ -35,12 +35,6 @@ module Proinsias
       include Fundamental
       include Disposition::Pessimistic
 
-      def initialize(glyph)
-        @glyph = glyph
-        @capacity = 0
-        @strength = 0
-      end
-
       def to_ast
         @glyph
       end
