@@ -24,11 +24,16 @@ module Proinsias
   end
 
   module Particle
-    module Atom
+    module Fundamental
       include Receiver
-      include Disposition::Pessimistic
-
       attr_reader :role
+    end
+  end
+
+  module Particle
+    module Atom
+      include Fundamental
+      include Disposition::Pessimistic
 
       def initialize(glyph)
         @glyph = glyph
@@ -74,10 +79,7 @@ module Proinsias
 
   module Particle
     module Operator
-      include Proinsias::Receiver
-
-      attr_reader :role
-      
+      include Fundamental
       alias arguments received
       
       def to_ast
