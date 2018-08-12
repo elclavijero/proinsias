@@ -2,9 +2,12 @@ module Proinsias
   class Scanner
     attr_accessor :consumer
 
-    def initialize(map:Configurations::MAP,consumer:)
-      @consumer = consumer
-      @map      = map
+    def initialize(
+      consumer:,
+      dictionary:Configurations::Scanner::DICTIONARY
+    )
+      @consumer   = consumer
+      @dictionary = dictionary
     end
 
     def issue(char)
@@ -19,7 +22,7 @@ module Proinsias
 
     def translate(glyph)
       Proinsias::Particle
-        .const_get(@map[glyph])
+        .const_get(@dictionary[glyph])
         .send(:new, glyph)
     end
 

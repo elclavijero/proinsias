@@ -33,24 +33,26 @@ module Proinsias
       """
     end
 
-    MAP = {
-      'p'     => 'Variable',
-      'q'     => 'Variable',
-      'r'     => 'Variable',
-      's'     => 'Variable',
-      'true'  => 'Constant',
-      'false' => 'Constant',
-      '¬'     => 'Negation',
-      '≡'     => 'Equivalence',
-      '≢'     => 'Inequivalence',
-      '⇐'     => 'Consequence',
-      '⇒'     => 'Implication',
-      '='     => 'Equality',
-      '∨'     => 'Disjunction',
-      '∧'     => 'Conjunction',
-      '('     => 'LParen',
-      ')'     => 'RParen',
-    }
+    module Scanner
+      DICTIONARY = {
+        'p'     => 'Variable',
+        'q'     => 'Variable',
+        'r'     => 'Variable',
+        's'     => 'Variable',
+        'true'  => 'Constant',
+        'false' => 'Constant',
+        '¬'     => 'Negation',
+        '≡'     => 'Equivalence',
+        '≢'     => 'Inequivalence',
+        '⇐'     => 'Consequence',
+        '⇒'     => 'Implication',
+        '='     => 'Equality',
+        '∨'     => 'Disjunction',
+        '∧'     => 'Conjunction',
+        '('     => 'LParen',
+        ')'     => 'RParen',
+      }
+    end
     
     PIP = # PIP: Prefix Infix Parenthetical
     {
