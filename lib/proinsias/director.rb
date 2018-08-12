@@ -15,7 +15,7 @@ module Proinsias
 
     def controller
       @controller ||= Moory::Logistic::Controller.new(
-        Configurations::PIP
+        Configurations::Controller::PIP
       )
     end
 
