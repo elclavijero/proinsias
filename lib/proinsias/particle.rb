@@ -57,7 +57,7 @@ module Proinsias
   end
 
   module Particle
-    class Operator
+    module Operator
       include Proinsias::Receiver
 
       attr_reader :role
@@ -71,14 +71,18 @@ module Proinsias
       end
     end
 
-    class BinaryOperator < Operator
+    class BinaryOperator
+      include Operator
+      
       def initialize(glyph)
         @glyph = glyph
         @capacity = 2
       end
     end
 
-    class UnaryOperator < Operator
+    class UnaryOperator
+      include Operator
+
       def initialize(glyph)
         @glyph = glyph
         @capacity = 1
@@ -137,6 +141,9 @@ module Proinsias
         @role = 'infix'
       end
     end
+
+
+
 
     class Inequivalence < BinaryOperator
       include Disposition::Optimistic
