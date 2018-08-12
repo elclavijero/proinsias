@@ -256,4 +256,18 @@ module Proinsias
       end
     end
   end
+
+  module Particle
+    Foundation = Struct.new(
+      :glyph,
+      :capacity,
+      :strength,
+      :role,
+      keyword_init: true
+    ) do
+      include Receiver
+    end
+
+    def Particle.from_glyph(glyph);end
+  end
 end
