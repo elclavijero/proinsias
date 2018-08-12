@@ -56,6 +56,44 @@ RSpec.describe Proinsias::Parser do
           )
         end
       end
+
+      describe 'the syntrax trees for left associative operators' do
+        it 'will produce the proper AST for the "p ⇐ q ⇐ r ⇐ s"' do
+          the_parser.analyse("p ⇐ q ⇐ r ⇐ s")
+
+          expect(the_parser.ast).to eq(
+            {"⇐"=>[{"⇐"=>[{"⇐"=>["p", "q"]}, "r"]}, "s"]}
+          )
+        end
+      end
+
+      describe 'the syntrax trees for right associative operators' do
+        it 'will produce the proper AST for the "p ⇒ q ⇒ r ⇒ s"' do
+          the_parser.analyse("p ⇒ q ⇒ r ⇒ s")
+
+          expect(the_parser.ast).to eq(
+            {"⇒"=>["p", {"⇒"=>["q", {"⇒"=>["r", "s"]}]}]}
+          )
+        end
+      end
+
+      describe 'the syntrax trees of some mixed associativity expressions' do
+        it 'will produce the proper AST for the "Definition of Implication"' do
+          the_parser.analyse("p ⇒ q ≡ p ∨ q ≡ q")
+
+          expect(the_parser.ast).to eq(
+            {"≡"=>[{"≡"=>[{"⇒"=>["p", "q"]}, {"∨"=>["p", "q"]}]}, "q"]}
+          )
+        end
+
+        it 'will produce the proper AST for the "Axiom, Consequence"' do
+          the_parser.analyse("p ⇐ q ≡ q ⇒ p")
+
+          expect(the_parser.ast).to eq(
+            {"≡"=>[{"⇐"=>["p", "q"]}, {"⇒"=>["q", "p"]}]}
+          )
+        end
+      end
     end
   end
 end
