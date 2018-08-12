@@ -57,6 +57,24 @@ RSpec.describe Proinsias::Parser do
         end
       end
 
+      describe 'the syntrax trees of some parenthetical expressions' do
+        it 'will produce the proper AST for "Associativity of Equivalence"' do
+          the_parser.analyse("((p ≡ q) ≡ r) ≡ (p ≡ (q ≡ r))")
+
+          expect(the_parser.ast).to eq(
+            {"≡"=>[{"≡"=>[{"≡"=>["p", "q"]}, "r"]}, {"≡"=>["p", {"≡"=>["q", "r"]}]}]}
+          )
+        end
+
+        it 'will produce the proper AST for "Antisymmetry"' do
+          the_parser.analyse("(p ⇒ q) ∧ (q ⇒ p) ⇒ (p ≡ q)")
+
+          expect(the_parser.ast).to eq(
+            {"⇒"=>[{"∧"=>[{"⇒"=>["p", "q"]}, {"⇒"=>["q", "p"]}]}, {"≡"=>["p", "q"]}]}
+          )
+        end
+      end
+
       describe 'the syntrax trees for left associative operators' do
         it 'will produce the proper AST for the "p ⇐ q ⇐ r ⇐ s"' do
           the_parser.analyse("p ⇐ q ⇐ r ⇐ s")
