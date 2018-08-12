@@ -71,15 +71,6 @@ module Proinsias
       end
     end
 
-    class BinaryOperator
-      include Operator
-
-      def initialize(glyph)
-        @glyph = glyph
-        @capacity = 2
-      end
-    end
-
     class UnaryOperator
       include Operator
 
@@ -134,7 +125,6 @@ module Proinsias
 
     class Equivalence
       include Operator
-      
       include Disposition::Optimistic
 
       def initialize(glyph='≡')
@@ -145,64 +135,73 @@ module Proinsias
       end
     end
 
-
-
-
-    class Inequivalence < BinaryOperator
+    class Inequivalence
+      include Operator
       include Disposition::Optimistic
 
       def initialize(glyph='≢')
-        super
+        @glyph = glyph
+        @capacity = 2
         @strength = 12
         @role = 'infix'
       end
     end
 
-    class Consequence < BinaryOperator
+    class Consequence
+      include Operator
       include Disposition::Optimistic
 
       def initialize(glyph='⇐')
-        super
+        @glyph = glyph
+        @capacity = 2
         @strength = 11
         @role = 'infix'
       end
     end
 
-    class Implication < BinaryOperator
+    class Implication
+      include Operator
       include Disposition::Pessimistic
 
       def initialize(glyph='⇒')
-        super
+        @glyph = glyph
+        @capacity = 2
         @strength = 11
         @role = 'infix'
       end
     end
 
-    class Equality < BinaryOperator
+    class Equality
+      include Operator
       include Disposition::Optimistic
 
       def initialize(glyph='=')
-        super
+        @glyph = glyph
+        @capacity = 2
         @strength = 9
         @role = 'infix'
       end
     end
 
-    class Disjunction < BinaryOperator
+    class Disjunction
+      include Operator
       include Disposition::Optimistic
 
       def initialize(glyph='∨')
-        super
+        @glyph = glyph
+        @capacity = 2
         @strength = 10
         @role = 'infix'
       end
     end
 
-    class Conjunction < BinaryOperator
+    class Conjunction
+      include Operator
       include Disposition::Optimistic
 
       def initialize(glyph='∧')
-        super
+        @glyph = glyph
+        @capacity = 2
         @strength = 10
         @role = 'infix'
       end
