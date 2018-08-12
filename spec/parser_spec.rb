@@ -13,6 +13,14 @@ RSpec.describe Proinsias::Parser do
             "p"
           )
         end
+
+        it 'will produce an AST for "true"' do
+          the_parser.analyse("true")
+  
+          expect(the_parser.ast).to eq(
+            "true"
+          )
+        end
   
         it 'will produce an AST for "(p)"' do
           the_parser.analyse("(p)")
@@ -35,6 +43,14 @@ RSpec.describe Proinsias::Parser do
   
           expect(the_parser.ast).to eq(
             {"∧"=>["p", "q"]}
+          )
+        end
+
+        it 'will produce an AST for "true ≡ p ≡ p"' do
+          the_parser.analyse("true ≡ p ≡ p")
+  
+          expect(the_parser.ast).to eq(
+            {"≡"=>[{"≡"=>["true", "p"]}, "p"]}
           )
         end
       end
