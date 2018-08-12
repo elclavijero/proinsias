@@ -4,7 +4,7 @@ module Proinsias
   module Filter
     def Filter.create(consumer:)
       Moory::Filter.new(
-        rules:    Proinsias::Configurations::FILTER,
+        rules:    Proinsias::Configurations::Filter::RULES,
         consumer: consumer
       )
     end
