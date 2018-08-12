@@ -24,7 +24,7 @@ module Proinsias
   end
 
   module Particle
-    class Atom
+    module Atom
       include Receiver
       include Disposition::Pessimistic
 
@@ -41,16 +41,24 @@ module Proinsias
       end
     end
     
-    class Constant < Atom
+    class Constant
+      include Atom
+
       def initialize(glyph)
-        super
+        @glyph = glyph
+        @capacity = 0
+        @strength = 0
         @role = 'constant'
       end
     end
 
-    class Variable < Atom
+    class Variable
+      include Atom
+      
       def initialize(glyph)
-        super
+        @glyph = glyph
+        @capacity = 0
+        @strength = 0
         @role = 'variable'
       end
     end
