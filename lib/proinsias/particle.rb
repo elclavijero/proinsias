@@ -73,7 +73,7 @@ module Proinsias
 
     class BinaryOperator
       include Operator
-      
+
       def initialize(glyph)
         @glyph = glyph
         @capacity = 2
@@ -132,11 +132,14 @@ module Proinsias
       end
     end
 
-    class Equivalence < BinaryOperator
+    class Equivalence
+      include Operator
+      
       include Disposition::Optimistic
 
       def initialize(glyph='≡')
-        super
+        @glyph = glyph
+        @capacity = 2
         @strength = 12
         @role = 'infix'
       end
