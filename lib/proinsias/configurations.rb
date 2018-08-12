@@ -30,6 +30,25 @@ module Proinsias
     5 : s : 6
     6 : e / false / produce : ^
     """
+
+    MAP = {
+      'p'     => 'Variable',
+      'q'     => 'Variable',
+      'r'     => 'Variable',
+      's'     => 'Variable',
+      'true'  => 'Constant',
+      'false' => 'Constant',
+      '¬'     => 'Negation',
+      '≡'     => 'Equivalence',
+      '≢'     => 'Inequivalence',
+      '⇐'     => 'Consequence',
+      '⇒'     => 'Implication',
+      '='     => 'Equality',
+      '∨'     => 'Disjunction',
+      '∧'     => 'Conjunction',
+      '('     => 'LParen',
+      ')'     => 'RParen',
+    }
     
     PIP = # PIP: Prefix Infix Parenthetical
     {
