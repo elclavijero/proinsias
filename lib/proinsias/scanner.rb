@@ -4,7 +4,7 @@ module Proinsias
 
     def initialize(
       consumer:,
-      dictionary:Configurations::Scanner::DICTIONARY
+      dictionary:
     )
       @consumer   = consumer
       @dictionary = dictionary
