@@ -61,16 +61,6 @@ module Proinsias
   end
 
   module Particle
-    Foundation = Struct.new(
-      :glyph,
-      :capacity,
-      :strength,
-      :role,
-      keyword_init: true
-    ) do
-      include Receiver
-    end
-
     Foundation = Class.new do
       include Receiver
 
