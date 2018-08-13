@@ -10,7 +10,7 @@ RSpec.describe Proinsias::Filter do
   end
 
   describe '#issue' do
-    context 'producing "p"' do
+    context 'producing a variable' do
       it 'can be achieved by issuing the character "p"' do
         the_filter.issue('p')
 
