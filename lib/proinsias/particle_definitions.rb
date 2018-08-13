@@ -7,14 +7,14 @@ module Proinsias
         role:        'constant',
         capacity:    0,
         strength:    0,
-        disposition: 'Pessimistic'
+        disposition: 'Pessimistic',
       },
       {
         glyph:       'false',
         role:        'constant',
         capacity:    0,
         strength:    0,
-        disposition: 'Pessimistic'
+        disposition: 'Pessimistic',
       },
       # - VARIABLES
       {
@@ -22,35 +22,35 @@ module Proinsias
         role:        'variable',
         capacity:    0,
         strength:    0,
-        disposition: 'Pessimistic'
+        disposition: 'Pessimistic',
       },
       {
         glyph:       'q',
         role:        'variable',
         capacity:    0,
         strength:    0,
-        disposition: 'Pessimistic'
+        disposition: 'Pessimistic',
       },
       {
         glyph:       'r',
         role:        'variable',
         capacity:    0,
         strength:    0,
-        disposition: 'Pessimistic'
+        disposition: 'Pessimistic',
       },
       {
         glyph:       's',
         role:        'variable',
         capacity:    0,
         strength:    0,
-        disposition: 'Pessimistic'
+        disposition: 'Pessimistic',
       },
       {
         glyph:       'e',
         role:        'variable',
         capacity:    0,
         strength:    0,
-        disposition: 'Pessimistic'
+        disposition: 'Pessimistic',
       },
 
       # - OPERATORS
@@ -59,56 +59,66 @@ module Proinsias
         role:        'prefix',
         capacity:    1,
         strength:    2,
-        disposition: 'Pessimistic'
+        disposition: 'Pessimistic',
       },
       {
-        glyph: '⇒',
-        role: 'infix',
-        capacity: 2,
-        strength: 11,
-        disposition: 'Pessimistic'
+        glyph:       '⇒',
+        role:        'infix',
+        capacity:    2,
+        strength:    11,
+        disposition: 'Pessimistic',
       },
       {
-        glyph: '⇐',
-        role: 'infix',
-        capacity: 2,
-        strength: 11,
-        disposition: 'Optimistic'
+        glyph:       '⇐',
+        role:        'infix',
+        capacity:    2,
+        strength:    11,
+        disposition: 'Optimistic',
       },
       {
-        glyph: '≡',
-        role: 'infix',
-        capacity: 2,
-        strength: 12,
-        disposition: 'Optimistic'
+        glyph:       '≡',
+        role:        'infix',
+        capacity:     2,
+        strength:     12,
+        disposition: 'Optimistic',
       },
       {
-        glyph: '≢',
-        role: 'infix',
-        capacity: 2,
-        strength: 12,
-        disposition: 'Optimistic'
+        glyph:       '≢',
+        role:        'infix',
+        capacity:    2,
+        strength:    12,
+        disposition: 'Optimistic',
       },
       {
-        glyph: '∨',
-        role: 'infix',
-        capacity: 2,
-        strength: 10,
-        disposition: 'Optimistic'
+        glyph:       '∨',
+        role:        'infix',
+        capacity:     2,
+        strength:     10,
+        disposition: 'Optimistic',
       },
       {
-        glyph: '∧',
-        role: 'infix',
-        capacity: 2,
-        strength: 9,
-        disposition: 'Optimistic'
+        glyph:       '∧',
+        role:        'infix',
+        capacity:    2,
+        strength:    9,
+        disposition: 'Optimistic',
       },
       {
-        glyph: '=',
-        role: 'infix',
-        capacity: 2,
-        strength: 9,
-        disposition: 'Optimistic'
+        glyph:       '=',
+        role:        'infix',
+        capacity:    2,
+        strength:    9,
+        disposition: 'Optimistic',
+      },
+
+      # -- OUTFIX
+      {
+        glyph:        '(',
+        role:         'lparen',
+        capacity:     1,
+        strength:     0,
+        disposition: 'Pessimistic',
+        mate:        'rparen',
       },
 
       # -- SENTINELS
@@ -117,7 +127,7 @@ module Proinsias
         role:        'rparen',
         capacity:    1,
         strength:    12,
-        disposition: 'Optimistic'
+        disposition: 'Optimistic',
       },
     ]
   end

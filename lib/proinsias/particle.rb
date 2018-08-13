@@ -43,16 +43,16 @@ module Proinsias
   end
 
   module Particle
-    module Parenthetical
+    module Outfix
       def receive(particle)             # LParen-specific
         # Perhaps another map could reference a module that encapsulates this behvaviour?
-        #   { 'lparen' => Proinsias::Parenthetical }
+        #   { 'lparen' => Proinsias::Outfix }
         # You like maps, now.  Don't you?!
-        if particle.role == @mate
-          @glyph = "#{@glyph} #{@mate}"
+        if particle.role == @sentinel
+          @glyph = "#{@glyph} #{@sentinel}"
           @received = particle.received
         else
-          fail "Particle is not a proper mate.  Expected: #{@mate}"
+          fail "Particle is not a proper sentinel.  Expected: #{@sentinel}"
         end
       end
     end
@@ -67,9 +67,9 @@ module Proinsias
         @strength = 0                   # DEFINITION
         @role = 'lparen'                # DEFINITION
 
-        @mate = 'rparen'                # LParen-specific
+        @sentinel = 'rparen'                # LParen-specific
         extend(AST::Ephemeral)          # LParen-specific
-        extend(Parenthetical)           # LParen-specific
+        extend(Outfix)                  # LParen-specific
       end
     end
   end
