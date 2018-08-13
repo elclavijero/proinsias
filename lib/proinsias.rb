@@ -1,15 +1,12 @@
 require "proinsias/version"
-require "proinsias/filter"
 require "proinsias/configurations"
 require "proinsias/receiver"
 require "proinsias/disposition"
 require "proinsias/ast"
-require "proinsias/particle/particle"
-require "proinsias/scanner"
 require "proinsias/assembler"
-require "proinsias/director"
 require "proinsias/assemblyline"
-require "proinsias/parser"
+require "proinsias/particle/particle"
+require "proinsias/parser/parser"
 
 
 module Proinsias
