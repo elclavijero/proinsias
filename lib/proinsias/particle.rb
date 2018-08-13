@@ -104,22 +104,6 @@ module Proinsias
       end
     end
 
-    class Inequivalence
-      include Operator
-      include Disposition::Optimistic
-
-      def self.create(*args)
-        new
-      end
-
-      def initialize(glyph='≢')
-        @glyph = glyph
-        @capacity = 2
-        @strength = 12
-        @role = 'infix'
-      end
-    end
-
     class Consequence
       include Operator
       include Disposition::Optimistic
@@ -251,6 +235,13 @@ module Proinsias
       },
       {
         glyph: '≡',
+        role: 'infix',
+        capacity: 2,
+        strength: 12,
+        disposition: 'Optimistic'
+      },
+      {
+        glyph: '≢',
         role: 'infix',
         capacity: 2,
         strength: 12,

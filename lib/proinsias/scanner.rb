@@ -26,7 +26,7 @@ module Proinsias
         p q r s e
         ¬
         ⇒
-        ≡
+        ≡ ≢
         ∨ ∧
         =
       }
