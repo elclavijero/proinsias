@@ -4,6 +4,7 @@ module Proinsias
       include Receiver
 
       attr_reader :glyph, :capacity, :strength, :role, :disposition
+      attr_reader :sentinel
 
       def initialize(definition)
         @glyph    = definition.fetch(:glyph)
@@ -11,6 +12,7 @@ module Proinsias
         @strength = definition.fetch(:strength)
         @role     = definition.fetch(:role)
         @disposition = definition.fetch(:disposition)
+        @sentinel = definition.fetch(:sentinel,nil)
 
         extend(
           Disposition.const_get(disposition)

@@ -27,9 +27,7 @@ module Proinsias
       if lparen?(glyph)
         lparen
       else
-        Fundamental.new(
-          glyph_properties(glyph)
-        )
+        Fundamental.new( glyph_properties(glyph) )
       end
     end
 
@@ -42,38 +40,22 @@ module Proinsias
     end
 
     def Particle.lparen
-      LParen.new
+      left = Fundamental.new( glyph_properties('(') )
+      left.extend(AST::Ephemeral)
+      left.extend(Outfix)
+      left
     end
   end
 
   module Particle
     module Outfix
-      def receive(particle)             # LParen-specific
-        # Perhaps another map could reference a module that encapsulates this behvaviour?
-        #   { 'lparen' => Proinsias::Outfix }
-        # You like maps, now.  Don't you?!
+      def receive(particle)
         if particle.role == @sentinel
           @glyph = "#{@glyph} #{@sentinel}"
           @received = particle.received
         else
           fail "Particle is not the expected sentinel.  We wanted: #{@sentinel}"
         end
-      end
-    end
-    # Fundamentally this is a Fundamental :-)
-    class LParen
-      include Operator                  # DEFINITION
-      include Disposition::Pessimistic  # DEFINITION
-
-      def initialize(glyph='(')
-        @glyph = glyph                  # DEFINITION
-        @capacity = 1                   # DEFINITION
-        @strength = 0                   # DEFINITION
-        @role = 'lparen'                # DEFINITION
-
-        @sentinel = 'rparen'            # LParen-specific
-        extend(AST::Ephemeral)          # LParen-specific
-        extend(Outfix)                  # LParen-specific
       end
     end
   end
