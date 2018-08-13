@@ -1,3 +1,6 @@
+require_relative './definitions'
+require_relative './fundamental'
+
 module Proinsias
   module Particle
     module Foundation
