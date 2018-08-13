@@ -15,9 +15,9 @@ RSpec.describe Proinsias::Assembler do
         the_assembler.feed(Proinsias::Particle.from_glyph('p'))
         the_assembler.feed(Proinsias::Particle.from_glyph('≡'))
         the_assembler.feed(Proinsias::Particle.from_glyph('q'))
-        the_assembler.feed(Proinsias::Particle::Disjunction.new)
+        the_assembler.feed(Proinsias::Particle.from_glyph('∨'))
         the_assembler.feed(Proinsias::Particle.from_glyph('r'))
-        the_assembler.feed(Proinsias::Particle::Equality.new)
+        the_assembler.feed(Proinsias::Particle.from_glyph('='))
         the_assembler.feed(Proinsias::Particle.from_glyph('e'))
       end
   

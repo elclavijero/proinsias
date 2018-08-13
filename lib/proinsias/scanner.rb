@@ -28,6 +28,7 @@ module Proinsias
         ⇒
         ≡
         ∨
+        =
       }
       
       if ary.include?(glyph)

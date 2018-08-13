@@ -200,38 +200,6 @@ module Proinsias
       end
     end
 
-    class Equality
-      include Operator
-      include Disposition::Optimistic
-
-      def self.create(*args)
-        new
-      end
-
-      def initialize(glyph='=')
-        @glyph = glyph
-        @capacity = 2
-        @strength = 9
-        @role = 'infix'
-      end
-    end
-
-    class Disjunction
-      include Operator
-      include Disposition::Optimistic
-
-      def self.create(*args)
-        new
-      end
-
-      def initialize(glyph='∨')
-        @glyph = glyph
-        @capacity = 2
-        @strength = 10
-        @role = 'infix'
-      end
-    end
-
     class Conjunction
       include Operator
       include Disposition::Optimistic
@@ -373,6 +341,13 @@ module Proinsias
         role: 'infix',
         capacity: 2,
         strength: 10,
+        disposition: 'Optimistic'
+      },
+      {
+        glyph: '=',
+        role: 'infix',
+        capacity: 2,
+        strength: 9,
         disposition: 'Optimistic'
       },
     ]
