@@ -51,30 +51,29 @@ module Proinsias
   module Particle
     # Fundamentally this is a Fundamental :-)
     class LParen
-      include Operator
-      include Disposition::Pessimistic
+      include Operator                  # DEFINITION
+      include Disposition::Pessimistic  # DEFINITION
 
+      # We won't need this method soon :-)
       def self.create(*args)
-        # This method can do the extra extensions, alluded to below.
-        new # <--- Fundamental
+        new
       end
 
       def initialize(glyph='(')
-        @glyph = glyph
-        @capacity = 1
-        @strength = 0
-        @role = 'lparen'
+        @glyph = glyph                  # DEFINITION
+        @capacity = 1                   # DEFINITION
+        @strength = 0                   # DEFINITION
+        @role = 'lparen'                # DEFINITION
 
-        @mate = 'rparen'
-
-        extend(AST::Ephemeral)
+        @mate = 'rparen'                # LParen-specific
+        extend(AST::Ephemeral)          # LParen-specific
       end
 
 
-      # Perhaps another map could reference a module that encapsulates this behvaviour?
-      #   { 'lparen' => Proinsias::Parenthetical }
-      # You like maps, now.  Don't you?!
-      def receive(particle)
+      def receive(particle)             # LParen-specific
+        # Perhaps another map could reference a module that encapsulates this behvaviour?
+        #   { 'lparen' => Proinsias::Parenthetical }
+        # You like maps, now.  Don't you?!
         if particle.role == @mate
           @glyph = "#{@glyph} #{@mate}"
           @received = particle.received
