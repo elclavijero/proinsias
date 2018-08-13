@@ -24,10 +24,8 @@ module Proinsias
 
   module Particle
     def Particle.from_glyph(glyph)
-      if leader?(glyph)
-        Proinsias::Particle
-          .const_get('LParen')
-          .send(:create, glyph)
+      if lparen?(glyph)
+        LParen.new
       else
         Fundamental.new(
           glyph_properties(glyph)
@@ -36,10 +34,10 @@ module Proinsias
     end
 
     def Particle.lone?(glyph)
-      ! leader?(glyph)
+      ! lparen?(glyph)
     end
 
-    def Particle.leader?(glyph)
+    def Particle.lparen?(glyph)
       glyph == '('
     end
 
