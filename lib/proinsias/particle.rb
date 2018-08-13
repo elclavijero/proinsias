@@ -24,7 +24,7 @@ module Proinsias
   end
 
   module Particle
-    module Fundamental
+    module Foundation
       include Receiver
       attr_reader :role
     end
@@ -46,7 +46,7 @@ module Proinsias
 
   module Particle
     module Atom
-      include Fundamental
+      include Foundation
       include Nonparous
       include Disposition::Pessimistic
     end
@@ -54,14 +54,14 @@ module Proinsias
 
   module Particle
     module Operator
-      include Fundamental
+      include Foundation
       include Parous
       alias   arguments received
     end
   end
 
   module Particle
-    Foundation = Class.new do
+    Fundamental = Class.new do
       include Receiver
 
       attr_reader :glyph, :capacity, :strength, :role
@@ -89,7 +89,7 @@ module Proinsias
     end
 
     def Particle.from_glyph(glyph)
-      Foundation.new(
+      Fundamental.new(
         glyph_properties(glyph)
       )
     end
