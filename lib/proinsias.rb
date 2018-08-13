@@ -1,5 +1,5 @@
 require "proinsias/version"
-require "proinsias/configurations"
+require "proinsias/configurations/configurations"
 require "proinsias/receiver/receiver"
 require "proinsias/particle/particle"
 require "proinsias/assemblyline/assemblyline"
