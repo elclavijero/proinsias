@@ -3,25 +3,46 @@ require_relative './scanner'
 require_relative './director'
 
 module Proinsias
+  module NilExtension
+    refine NilClass do
+      def to_ast;end
+    end
+  end
+
   class Parser
+    attr_accessor :consumer
+
+    using NilExtension
+
     def Parser.one_shot(str)
       new.tap { |psr| psr.analyse(str) }
+    end
+
+    def initialize(consumer:nil)
+      @consumer = consumer
     end
 
     def analyse(str)
       str.each_char { |c| issue(c) }
     end
 
-    def ast
-      assembly_line.product ?
-      assembly_line.product.to_ast :
-      nil
-    end
-    
-    private
-
     def issue(char)
       scanner.issue(char)
+      forward
+    end
+
+    def ast
+      product.to_ast
+    end
+
+    def product
+      assembly_line.product
+    end
+
+    private
+
+    def forward
+      consumer.call(product) if product && consumer
     end
 
     def scanner
