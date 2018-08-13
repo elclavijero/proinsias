@@ -6,24 +6,26 @@ module Proinsias
     end
   end
 
-  module Parous
-    def to_ast
-      {
-        @glyph => received.collect { |a| a.to_ast }
-      }
+  module AST
+    module Parous
+      def to_ast
+        {
+          @glyph => received.collect { |a| a.to_ast }
+        }
+      end
     end
-  end
-
-  module Nonparous
-    def to_ast
-      @glyph
+  
+    module Nonparous
+      def to_ast
+        @glyph
+      end
     end
   end
 
   module Particle
     module Atom
       include Foundation
-      include Nonparous
+      include AST::Nonparous
       include Disposition::Pessimistic
     end
   end
@@ -31,7 +33,7 @@ module Proinsias
   module Particle
     module Operator
       include Foundation
-      include Parous
+      include AST::Parous
       alias   arguments received
     end
   end
@@ -59,8 +61,8 @@ module Proinsias
         )
 
         capacity > 0 ?
-          extend(Parous) : 
-          extend(Nonparous)
+          extend(AST::Parous) : 
+          extend(AST::Nonparous)
       end
     end
 
