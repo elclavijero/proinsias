@@ -103,22 +103,6 @@ module Proinsias
         @role = 'rparen'
       end
     end
-
-    class Consequence
-      include Operator
-      include Disposition::Optimistic
-
-      def self.create(*args)
-        new
-      end
-
-      def initialize(glyph='⇐')
-        @glyph = glyph
-        @capacity = 2
-        @strength = 11
-        @role = 'infix'
-      end
-    end
   end
 
   module Particle
@@ -232,6 +216,13 @@ module Proinsias
         capacity: 2,
         strength: 11,
         disposition: 'Pessimistic'
+      },
+      {
+        glyph: '⇐',
+        role: 'infix',
+        capacity: 2,
+        strength: 11,
+        disposition: 'Optimistic'
       },
       {
         glyph: '≡',

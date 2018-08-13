@@ -25,7 +25,7 @@ module Proinsias
         true false 
         p q r s e
         ¬
-        ⇒
+        ⇒ ⇐
         ≡ ≢
         ∨ ∧
         =
