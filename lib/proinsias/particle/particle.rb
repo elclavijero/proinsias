@@ -1,5 +1,6 @@
 require_relative './definitions'
 require_relative './fundamental'
+require_relative './ast'
 
 module Proinsias
   module Particle
