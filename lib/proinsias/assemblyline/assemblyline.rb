@@ -1,3 +1,5 @@
+require_relative './assembler'
+
 module Proinsias
   class AssemblyLine
     attr_writer :active
