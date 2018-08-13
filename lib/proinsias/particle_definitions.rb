@@ -106,6 +106,15 @@ module Proinsias
         strength: 9,
         disposition: 'Optimistic'
       },
+
+      # Sentinels
+      {
+        glyph:       ')',
+        role:        'rparen',
+        capacity:    1,
+        strength:    12,
+        disposition: 'Optimistic'
+      },
     ]
   end
 end

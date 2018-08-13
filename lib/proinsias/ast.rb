@@ -13,5 +13,11 @@ module Proinsias
         @glyph
       end
     end
+
+    module Ephemeral
+      def to_ast
+        received.first.to_ast
+      end
+    end
   end
 end
