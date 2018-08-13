@@ -43,6 +43,19 @@ module Proinsias
   end
 
   module Particle
+    module Parenthetical
+      def receive(particle)             # LParen-specific
+        # Perhaps another map could reference a module that encapsulates this behvaviour?
+        #   { 'lparen' => Proinsias::Parenthetical }
+        # You like maps, now.  Don't you?!
+        if particle.role == @mate
+          @glyph = "#{@glyph} #{@mate}"
+          @received = particle.received
+        else
+          fail "Particle is not a proper mate.  Expected: #{@mate}"
+        end
+      end
+    end
     # Fundamentally this is a Fundamental :-)
     class LParen
       include Operator                  # DEFINITION
@@ -61,19 +74,7 @@ module Proinsias
 
         @mate = 'rparen'                # LParen-specific
         extend(AST::Ephemeral)          # LParen-specific
-      end
-
-
-      def receive(particle)             # LParen-specific
-        # Perhaps another map could reference a module that encapsulates this behvaviour?
-        #   { 'lparen' => Proinsias::Parenthetical }
-        # You like maps, now.  Don't you?!
-        if particle.role == @mate
-          @glyph = "#{@glyph} #{@mate}"
-          @received = particle.received
-        else
-          fail "Particle is not a proper mate.  Expected: #{@mate}"
-        end
+        extend(Parenthetical)
       end
     end
   end
