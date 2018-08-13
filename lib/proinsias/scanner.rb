@@ -23,10 +23,11 @@ module Proinsias
     def translate(glyph)
       ary = %w{
         true false 
-        p q r s
+        p q r s e
         ¬
         ⇒
         ≡
+        ∨
       }
       
       if ary.include?(glyph)

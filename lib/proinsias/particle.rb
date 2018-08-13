@@ -51,20 +51,6 @@ module Proinsias
       include Disposition::Pessimistic
     end
     
-    class Constant
-      include Atom
-
-      def self.create(*args)
-        new(*args)
-      end
-
-      def initialize(glyph)
-        @glyph = glyph
-        @capacity = 0
-        @strength = 0
-        @role = 'constant'
-      end
-    end
 
     class Variable
       include Atom
@@ -355,6 +341,13 @@ module Proinsias
         disposition: 'Pessimistic'
       },
       {
+        glyph:       'e',
+        role:        'variable',
+        capacity:    0,
+        strength:    0,
+        disposition: 'Pessimistic'
+      },
+      {
         glyph:       '¬',
         role:        'prefix',
         capacity:    1,
@@ -373,6 +366,13 @@ module Proinsias
         role: 'infix',
         capacity: 2,
         strength: 12,
+        disposition: 'Optimistic'
+      },
+      {
+        glyph: '∨',
+        role: 'infix',
+        capacity: 2,
+        strength: 10,
         disposition: 'Optimistic'
       },
     ]
