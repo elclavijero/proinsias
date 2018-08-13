@@ -286,12 +286,14 @@ module Proinsias
         role:,
         disposition:
       )
-        @glyph = glyph
+        @glyph    = glyph
         @capacity = capacity
         @strength = strength
-        @role = role
+        @role     = role
 
-        extend(Disposition::Pessimistic)
+        extend(
+          Disposition.const_get(disposition)
+        )
 
         capacity > 0 ?
           extend(Parous) : 
@@ -365,6 +367,13 @@ module Proinsias
         capacity: 2,
         strength: 11,
         disposition: 'Pessimistic'
+      },
+      {
+        glyph: '≡',
+        role: 'infix',
+        capacity: 2,
+        strength: 12,
+        disposition: 'Optimistic'
       },
     ]
   end
