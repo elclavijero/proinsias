@@ -59,7 +59,8 @@ module Proinsias
       include Disposition::Pessimistic
 
       def self.create(*args)
-        new
+        # This method can do the extra extensions, alluded to below.
+        new # <--- Fundamental
       end
 
       def initialize(glyph='(')
