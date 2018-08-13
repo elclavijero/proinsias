@@ -32,17 +32,17 @@ RSpec.describe Proinsias::Assembler do
       before do
         the_assembler.feed(Proinsias::Particle::Negation.new)
         the_assembler.feed(Proinsias::Particle::Variable.new('p'))
-        the_assembler.feed(Proinsias::Particle::Conjunction.new)
+        the_assembler.feed(Proinsias::Particle.from_glyph('∧'))
         the_assembler.feed(Proinsias::Particle::Negation.new)
         the_assembler.feed(Proinsias::Particle::Variable.new('q'))
     
-        the_assembler.feed(Proinsias::Particle::Equivalence.new)
+        the_assembler.feed(Proinsias::Particle.from_glyph('≡'))
     
         the_assembler.feed(Proinsias::Particle::Negation.new)
         the_assembler.feed(Proinsias::Particle::Negation.new)
         the_assembler.feed(Proinsias::Particle::Negation.new)
         the_assembler.feed(Proinsias::Particle::Variable.new('p'))
-        the_assembler.feed(Proinsias::Particle::Conjunction.new)
+        the_assembler.feed(Proinsias::Particle.from_glyph('∧'))
         the_assembler.feed(Proinsias::Particle::Negation.new)
         the_assembler.feed(Proinsias::Particle::Negation.new)
         the_assembler.feed(Proinsias::Particle::Negation.new)

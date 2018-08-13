@@ -27,7 +27,7 @@ module Proinsias
         ¬
         ⇒
         ≡
-        ∨
+        ∨ ∧
         =
       }
       
