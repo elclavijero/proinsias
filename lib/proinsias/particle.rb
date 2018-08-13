@@ -24,9 +24,28 @@ module Proinsias
 
   module Particle
     def Particle.from_glyph(glyph)
-      Fundamental.new(
-        glyph_properties(glyph)
-      )
+      ary = %w{
+        true false 
+        p q r s e
+        ¬
+        ⇒ ⇐
+        ≡ ≢
+        ∨ ∧
+        =
+      }
+      dictionary = {
+        '('     => 'LParen',
+        ')'     => 'RParen',
+      }
+      if ary.include?(glyph)
+        Fundamental.new(
+          glyph_properties(glyph)
+        )
+      else
+        Proinsias::Particle
+          .const_get(dictionary[glyph])
+          .send(:create, glyph)
+      end
     end
 
     def Particle.glyph_properties(glyph)

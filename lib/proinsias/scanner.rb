@@ -21,23 +21,7 @@ module Proinsias
     end
 
     def translate(glyph)
-      ary = %w{
-        true false 
-        p q r s e
-        ¬
-        ⇒ ⇐
-        ≡ ≢
-        ∨ ∧
-        =
-      }
-      
-      if ary.include?(glyph)
-        Proinsias::Particle.from_glyph(glyph)
-      else
-        Proinsias::Particle
-          .const_get(@dictionary[glyph])
-          .send(:create, glyph)
-      end
+      Proinsias::Particle.from_glyph(glyph)
     end
 
     def forward(glyph)
