@@ -61,11 +61,6 @@ module Proinsias
       include Operator                  # DEFINITION
       include Disposition::Pessimistic  # DEFINITION
 
-      # We won't need this method soon :-)
-      def self.create(*args)
-        new
-      end
-
       def initialize(glyph='(')
         @glyph = glyph                  # DEFINITION
         @capacity = 1                   # DEFINITION
@@ -74,7 +69,7 @@ module Proinsias
 
         @mate = 'rparen'                # LParen-specific
         extend(AST::Ephemeral)          # LParen-specific
-        extend(Parenthetical)
+        extend(Parenthetical)           # LParen-specific
       end
     end
   end
