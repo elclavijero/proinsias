@@ -24,24 +24,11 @@ module Proinsias
 
   module Particle
     def Particle.from_glyph(glyph)
-      if lparen?(glyph)
-        lparen
-      else
-        Fundamental.new( glyph_properties(glyph) )
-      end
-    end
-
-    def Particle.lparen?(glyph)
-      glyph == '('
+      Fundamental.new( glyph_properties(glyph) )
     end
 
     def Particle.glyph_properties(glyph)
       DEFINITIONS.detect { |p| p[:glyph] == glyph }
-    end
-
-    def Particle.lparen
-      left = Fundamental.new( glyph_properties('(') )
-      left
     end
   end
 
