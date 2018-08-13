@@ -25,7 +25,7 @@ module Proinsias
   module Particle
     def Particle.from_glyph(glyph)
       if lparen?(glyph)
-        LParen.new
+        lparen
       else
         Fundamental.new(
           glyph_properties(glyph)
@@ -40,6 +40,10 @@ module Proinsias
     def Particle.glyph_properties(glyph)
       DEFINITIONS.detect { |p| p[:glyph] == glyph }
     end
+
+    def Particle.lparen
+      LParen.new
+    end
   end
 
   module Particle
@@ -52,7 +56,7 @@ module Proinsias
           @glyph = "#{@glyph} #{@sentinel}"
           @received = particle.received
         else
-          fail "Particle is not a proper sentinel.  Expected: #{@sentinel}"
+          fail "Particle is not the expected sentinel.  We wanted: #{@sentinel}"
         end
       end
     end
@@ -67,7 +71,7 @@ module Proinsias
         @strength = 0                   # DEFINITION
         @role = 'lparen'                # DEFINITION
 
-        @sentinel = 'rparen'                # LParen-specific
+        @sentinel = 'rparen'            # LParen-specific
         extend(AST::Ephemeral)          # LParen-specific
         extend(Outfix)                  # LParen-specific
       end
