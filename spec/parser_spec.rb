@@ -57,6 +57,14 @@ RSpec.describe Proinsias::Parser do
 
       describe 'the syntrax trees of some mixed precedence expressions' do
         it 'will produce the proper AST for the "Golden Rule"' do
+          the_parser.analyse("false ≡ ¬true")
+
+          expect(the_parser.ast).to eq(
+            {"≡"=>["false", {"¬"=>["true"]}]}
+          )
+        end
+
+        it 'will produce the proper AST for the "Golden Rule"' do
           the_parser.analyse("p ∧ q ≡ p ≡ q ≡ p ∨ q")
 
           expect(the_parser.ast).to eq(

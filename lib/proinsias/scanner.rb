@@ -21,9 +21,13 @@ module Proinsias
     end
 
     def translate(glyph)
-      Proinsias::Particle
-        .const_get(@dictionary[glyph])
-        .send(:create, glyph)
+      if glyph == "true" #|| glyph == "false"
+        Proinsias::Particle.from_glyph(glyph)
+      else
+        Proinsias::Particle
+          .const_get(@dictionary[glyph])
+          .send(:create, glyph)
+      end
     end
 
     def forward(glyph)

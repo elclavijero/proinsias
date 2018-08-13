@@ -268,6 +268,47 @@ module Proinsias
       include Receiver
     end
 
-    def Particle.from_glyph(glyph);end
+    Foundation = Class.new do
+      include Receiver
+
+      attr_reader :glyph, :capacity, :strength, :role
+
+      def initialize(
+        glyph:,
+        capacity:,
+        strength:,
+        role:,
+        disposition:
+      )
+        @glyph = glyph
+        @capacity = capacity
+        @strength = strength
+        @role = role
+
+        extend(Disposition::Pessimistic)
+      end
+
+      def to_ast
+        @glyph
+      end
+    end
+
+    def Particle.from_glyph(glyph)
+      glyph_properties = PROPERTIES.detect { |p| p[:glyph] == glyph }
+
+      Foundation.new(
+        glyph_properties
+      )
+    end
+
+    PROPERTIES = [
+      {
+        glyph:       'true',
+        role:        'constant',
+        capacity:    0,
+        strength:    0,
+        disposition: 'Pessimistic'
+      }
+    ]
   end
 end
