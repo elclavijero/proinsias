@@ -30,14 +30,25 @@ module Proinsias
     end
   end
 
+  module Parous
+    def to_ast
+      {
+        @glyph => arguments.collect { |a| a.to_ast }
+      }
+    end
+  end
+
+  module Nonparous
+    def to_ast
+      @glyph
+    end
+  end
+
   module Particle
     module Atom
       include Fundamental
+      include Nonparous
       include Disposition::Pessimistic
-
-      def to_ast
-        @glyph
-      end
     end
     
     class Constant
@@ -75,12 +86,7 @@ module Proinsias
     module Operator
       include Fundamental
       alias arguments received
-      
-      def to_ast
-        {
-          @glyph => arguments.collect { |a| a.to_ast }
-        }
-      end
+      include Parous
     end
 
     class LParen
@@ -286,19 +292,18 @@ module Proinsias
         @role = role
 
         extend(Disposition::Pessimistic)
-      end
-
-      def to_ast
-        @glyph
+        extend(Nonparous)
       end
     end
 
     def Particle.from_glyph(glyph)
-      glyph_properties = PROPERTIES.detect { |p| p[:glyph] == glyph }
-
       Foundation.new(
-        glyph_properties
+        glyph_properties(glyph)
       )
+    end
+
+    def Particle.glyph_properties(glyph)
+      PROPERTIES.detect { |p| p[:glyph] == glyph }
     end
 
     PROPERTIES = [
@@ -342,6 +347,13 @@ module Proinsias
         role:        'variable',
         capacity:    0,
         strength:    0,
+        disposition: 'Pessimistic'
+      },
+      {
+        glyph: '¬',
+        role: 'prefix',
+        capacity: 1,
+        strength: 2,
         disposition: 'Pessimistic'
       }
     ]
