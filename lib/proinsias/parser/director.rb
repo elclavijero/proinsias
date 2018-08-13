@@ -20,23 +20,30 @@ module Proinsias
     end
 
     def issue(particle)
-      if result = controller.issue(particle.role)
-        forward(
-          Directive.new(
-            particle:  particle,
-            commands: result
-          )
-        )
-      else
-        quarantine ?
-          quarantine.call(particle) : nil
-      end
+      controller.understand?(particle.role) ?
+        distribute(particle) :
+        withdraw(particle)
     end
 
     private
 
+    def distribute(particle)
+      controller.issue(particle.role).tap do |result|
+        forward(
+          Directive.new(
+            particle: particle,
+            commands: result
+          )
+        )
+      end
+    end
+
     def forward(directive)
       consumer.call(directive) if consumer
+    end
+
+    def withdraw(particle)
+      quarantine.call(particle) if quarantine
     end
   end
 
