@@ -24,18 +24,14 @@ module Proinsias
 
   module Particle
     def Particle.from_glyph(glyph)
-      dictionary = {
-        '('     => 'LParen',
-        ')'     => 'RParen',
-      }
-      if lone?(glyph)
+      if leader?(glyph)
+        Proinsias::Particle
+          .const_get('LParen')
+          .send(:create, glyph)
+      else
         Fundamental.new(
           glyph_properties(glyph)
         )
-      else
-        Proinsias::Particle
-          .const_get(dictionary[glyph])
-          .send(:create, glyph)
       end
     end
 
