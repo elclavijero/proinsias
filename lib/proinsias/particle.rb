@@ -135,22 +135,6 @@ module Proinsias
         @role = 'infix'
       end
     end
-
-    class Implication
-      include Operator
-      include Disposition::Pessimistic
-
-      def self.create(*args)
-        new
-      end
-
-      def initialize(glyph='⇒')
-        @glyph = glyph
-        @capacity = 2
-        @strength = 11
-        @role = 'infix'
-      end
-    end
   end
 
   module Particle
