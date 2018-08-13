@@ -23,6 +23,8 @@ module Proinsias
             AST::Parous :
             AST::Nonparous
         )
+
+        extend(Outfix) if sentinel
       end
     end
   end
