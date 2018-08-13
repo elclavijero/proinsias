@@ -30,23 +30,23 @@ RSpec.describe Proinsias::Assembler do
   
     describe 'Mixed fixity and arity assembly' do
       before do
-        the_assembler.feed(Proinsias::Particle::Negation.new)
-        the_assembler.feed(Proinsias::Particle::Variable.new('p'))
+        the_assembler.feed(Proinsias::Particle.from_glyph('¬'))
+        the_assembler.feed(Proinsias::Particle.from_glyph('p'))
         the_assembler.feed(Proinsias::Particle.from_glyph('∧'))
-        the_assembler.feed(Proinsias::Particle::Negation.new)
-        the_assembler.feed(Proinsias::Particle::Variable.new('q'))
+        the_assembler.feed(Proinsias::Particle.from_glyph('¬'))
+        the_assembler.feed(Proinsias::Particle.from_glyph('q'))
     
         the_assembler.feed(Proinsias::Particle.from_glyph('≡'))
     
-        the_assembler.feed(Proinsias::Particle::Negation.new)
-        the_assembler.feed(Proinsias::Particle::Negation.new)
-        the_assembler.feed(Proinsias::Particle::Negation.new)
-        the_assembler.feed(Proinsias::Particle::Variable.new('p'))
+        the_assembler.feed(Proinsias::Particle.from_glyph('¬'))
+        the_assembler.feed(Proinsias::Particle.from_glyph('¬'))
+        the_assembler.feed(Proinsias::Particle.from_glyph('¬'))
+        the_assembler.feed(Proinsias::Particle.from_glyph('p'))
         the_assembler.feed(Proinsias::Particle.from_glyph('∧'))
-        the_assembler.feed(Proinsias::Particle::Negation.new)
-        the_assembler.feed(Proinsias::Particle::Negation.new)
-        the_assembler.feed(Proinsias::Particle::Negation.new)
-        the_assembler.feed(Proinsias::Particle::Variable.new('q'))
+        the_assembler.feed(Proinsias::Particle.from_glyph('¬'))
+        the_assembler.feed(Proinsias::Particle.from_glyph('¬'))
+        the_assembler.feed(Proinsias::Particle.from_glyph('¬'))
+        the_assembler.feed(Proinsias::Particle.from_glyph('q'))
       end
   
       
@@ -63,13 +63,13 @@ RSpec.describe Proinsias::Assembler do
   
     describe 'Right associativity' do
       before do
-        the_assembler.feed(Proinsias::Particle::Variable.new('p'))
+        the_assembler.feed(Proinsias::Particle.from_glyph('p'))
         the_assembler.feed(Proinsias::Particle::Implication.new)
-        the_assembler.feed(Proinsias::Particle::Variable.new('q'))
+        the_assembler.feed(Proinsias::Particle.from_glyph('q'))
         the_assembler.feed(Proinsias::Particle::Implication.new)
-        the_assembler.feed(Proinsias::Particle::Variable.new('r'))
+        the_assembler.feed(Proinsias::Particle.from_glyph('r'))
         the_assembler.feed(Proinsias::Particle::Implication.new)
-        the_assembler.feed(Proinsias::Particle::Variable.new('s'))
+        the_assembler.feed(Proinsias::Particle.from_glyph('s'))
       end
   
       it 'will assemble the elements into a proper hierarchy' do

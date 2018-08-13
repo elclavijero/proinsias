@@ -50,22 +50,6 @@ module Proinsias
       include Nonparous
       include Disposition::Pessimistic
     end
-    
-
-    class Variable
-      include Atom
-
-      def self.create(*args)
-        new(*args)
-      end
-      
-      def initialize(glyph)
-        @glyph = glyph
-        @capacity = 0
-        @strength = 0
-        @role = 'variable'
-      end
-    end
   end
 
   module Particle
@@ -117,22 +101,6 @@ module Proinsias
         @capacity = 1
         @strength = 12
         @role = 'rparen'
-      end
-    end
-
-    class Negation
-      include Operator
-      include Disposition::Pessimistic
-
-      def self.create(*args)
-        new
-      end
-
-      def initialize(glyph='¬')
-        @glyph = glyph
-        @capacity = 1
-        @strength = 2
-        @role = 'prefix'
       end
     end
 
