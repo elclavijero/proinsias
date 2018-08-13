@@ -1,6 +1,7 @@
 module Proinsias
   module Particle
     DEFINITIONS = [
+      # - CONSTANTS
       {
         glyph:       'true',
         role:        'constant',
@@ -15,6 +16,7 @@ module Proinsias
         strength:    0,
         disposition: 'Pessimistic'
       },
+      # - VARIABLES
       {
         glyph:       'p',
         role:        'variable',
@@ -50,6 +52,8 @@ module Proinsias
         strength:    0,
         disposition: 'Pessimistic'
       },
+
+      # - OPERATORS
       {
         glyph:       '¬',
         role:        'prefix',
@@ -107,7 +111,7 @@ module Proinsias
         disposition: 'Optimistic'
       },
 
-      # Sentinels
+      # -- SENTINELS
       {
         glyph:       ')',
         role:        'rparen',
