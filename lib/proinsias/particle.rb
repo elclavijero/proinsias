@@ -33,10 +33,6 @@ module Proinsias
       end
     end
 
-    def Particle.lone?(glyph)
-      ! lparen?(glyph)
-    end
-
     def Particle.lparen?(glyph)
       glyph == '('
     end
