@@ -5,8 +5,7 @@ director = Proinsias::Director.new(
 )
 
 scanner = Proinsias::Scanner.new(
-  consumer:   director.method(:issue),
-  dictionary: Proinsias::Configurations::Scanner::DICTIONARY
+  consumer:   director.method(:issue)
 )
 
 "p ⇒ q ⇒ r ⇒ s".each_char do |c|

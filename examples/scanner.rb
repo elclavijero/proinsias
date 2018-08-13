@@ -1,8 +1,7 @@
 trace = Array.new
 
 scanner = Proinsias::Scanner.new(
-  consumer: trace.method(:<<),
-  dictionary: Proinsias::Configurations::Scanner::DICTIONARY
+  consumer: trace.method(:<<)
 )
 
 "p ≡ p ≡ true".each_char do |c|
