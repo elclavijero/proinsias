@@ -306,10 +306,10 @@ module Proinsias
     end
 
     def Particle.glyph_properties(glyph)
-      PROPERTIES.detect { |p| p[:glyph] == glyph }
+      DEFINITIONS.detect { |p| p[:glyph] == glyph }
     end
 
-    PROPERTIES = [
+    DEFINITIONS = [
       {
         glyph:       'true',
         role:        'constant',
