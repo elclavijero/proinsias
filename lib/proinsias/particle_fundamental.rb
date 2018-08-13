@@ -21,9 +21,11 @@ module Proinsias
           Disposition.const_get(disposition)
         )
 
-        capacity > 0 ?
-          extend(AST::Parous) : 
-          extend(AST::Nonparous)
+        extend(
+          capacity > 0 ?
+            AST::Parous :
+            AST::Nonparous
+        )
       end
     end
   end
