@@ -315,6 +315,34 @@ module Proinsias
         capacity:    0,
         strength:    0,
         disposition: 'Pessimistic'
+      },
+      {
+        glyph:       'p',
+        role:        'variable',
+        capacity:    0,
+        strength:    0,
+        disposition: 'Pessimistic'
+      },
+      {
+        glyph:       'q',
+        role:        'variable',
+        capacity:    0,
+        strength:    0,
+        disposition: 'Pessimistic'
+      },
+      {
+        glyph:       'r',
+        role:        'variable',
+        capacity:    0,
+        strength:    0,
+        disposition: 'Pessimistic'
+      },
+      {
+        glyph:       's',
+        role:        'variable',
+        capacity:    0,
+        strength:    0,
+        disposition: 'Pessimistic'
       }
     ]
   end

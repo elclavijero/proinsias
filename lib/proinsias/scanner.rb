@@ -21,7 +21,12 @@ module Proinsias
     end
 
     def translate(glyph)
-      if glyph == "true" || glyph == "false"
+      ary = %w{
+        true false 
+        p q r s
+      }
+      
+      if ary.include?(glyph)
         Proinsias::Particle.from_glyph(glyph)
       else
         Proinsias::Particle
