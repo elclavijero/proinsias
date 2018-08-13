@@ -1,13 +1,5 @@
 module Proinsias
   module Particle
-    def Particle.from_glyph(glyph)
-      Fundamental.new( glyph_properties(glyph) )
-    end
-
-    def Particle.glyph_properties(glyph)
-      DEFINITIONS.detect { |p| p[:glyph] == glyph }
-    end
-
     module Foundation
       include Receiver
       attr_reader :role
