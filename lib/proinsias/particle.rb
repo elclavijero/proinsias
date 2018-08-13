@@ -53,6 +53,7 @@ module Proinsias
   end
 
   module Particle
+    # Fundamentally this is a Fundamental :-)
     class LParen
       include Operator
       include Disposition::Pessimistic
@@ -68,10 +69,13 @@ module Proinsias
         @role = 'lparen'
       end
 
+      # extend AST::Ephemeral?
       def to_ast
         arguments.first.to_ast
       end
 
+      # Perhaps another map could reference a module that encapsulates this behvaviour?
+      # You like maps, now.  Don't you?!
       def receive(rparen)
         if rparen.is_a?(Proinsias::Particle::RParen)
           @glyph = '()'
@@ -82,6 +86,7 @@ module Proinsias
       end
     end
 
+    # This can be directly represented as a Fundamental
     class RParen
       include Operator
       include Disposition::Optimistic
