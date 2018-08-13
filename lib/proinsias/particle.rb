@@ -23,16 +23,6 @@ module Proinsias
   end
 
   module Particle
-    def Particle.from_glyph(glyph)
-      Fundamental.new( glyph_properties(glyph) )
-    end
-
-    def Particle.glyph_properties(glyph)
-      DEFINITIONS.detect { |p| p[:glyph] == glyph }
-    end
-  end
-
-  module Particle
     module Outfix
       def receive(particle)
         if particle.role == @sentinel
@@ -42,6 +32,16 @@ module Proinsias
           fail "Particle is not the expected sentinel.  We wanted: #{@sentinel}"
         end
       end
+    end
+  end
+
+  module Particle
+    def Particle.from_glyph(glyph)
+      Fundamental.new( glyph_properties(glyph) )
+    end
+
+    def Particle.glyph_properties(glyph)
+      DEFINITIONS.detect { |p| p[:glyph] == glyph }
     end
   end
 end
