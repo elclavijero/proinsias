@@ -353,12 +353,19 @@ module Proinsias
         disposition: 'Pessimistic'
       },
       {
-        glyph: '¬',
-        role: 'prefix',
-        capacity: 1,
-        strength: 2,
+        glyph:       '¬',
+        role:        'prefix',
+        capacity:    1,
+        strength:    2,
         disposition: 'Pessimistic'
-      }
+      },
+      {
+        glyph: '⇒',
+        role: 'infix',
+        capacity: 2,
+        strength: 11,
+        disposition: 'Pessimistic'
+      },
     ]
   end
 end
