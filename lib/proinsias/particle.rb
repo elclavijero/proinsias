@@ -41,7 +41,6 @@ module Proinsias
 
     def Particle.lparen
       left = Fundamental.new( glyph_properties('(') )
-      left.extend(AST::Ephemeral)
       left
     end
   end

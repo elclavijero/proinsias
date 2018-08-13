@@ -118,6 +118,7 @@ module Proinsias
         capacity:     1,
         strength:     0,
         disposition: 'Pessimistic',
+        ephemeral:   true,
         sentinel:    'rparen',
       },
 
