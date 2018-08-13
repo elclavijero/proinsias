@@ -65,18 +65,20 @@ module Proinsias
         @strength = 0
         @role = 'lparen'
 
+        @mate = 'rparen'
+
         extend(AST::Ephemeral)
       end
 
 
       # Perhaps another map could reference a module that encapsulates this behvaviour?
       # You like maps, now.  Don't you?!
-      def receive(rparen)
-        if rparen.role == 'rparen'
-          @glyph = '()'
-          @received = rparen.received
+      def receive(particle)
+        if particle.role == @mate
+          @glyph = "#{@glyph} #{@mate}"
+          @received = particle.received
         else
-          fail "Argument is not an RParen" unless rparen.is_a?(Proinsias::Particle::RParen)
+          fail "Particle is not a proper mate.  Expected: #{@mate}"
         end
       end
     end
