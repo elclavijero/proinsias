@@ -22,8 +22,7 @@ module Proinsias
 
     def scanner
       @scanner ||= Proinsias::Scanner.new(
-        consumer: director.method(:issue),
-        dictionary: Configurations::Scanner::DICTIONARY
+        consumer: director.method(:issue)
       )
     end
 

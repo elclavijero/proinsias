@@ -32,27 +32,6 @@ module Proinsias
       6 : e / false / produce : ^
       """
     end
-
-    module Scanner
-      DICTIONARY = {
-        'p'     => 'Variable',
-        'q'     => 'Variable',
-        'r'     => 'Variable',
-        's'     => 'Variable',
-        'true'  => 'Constant',
-        'false' => 'Constant',
-        '¬'     => 'Negation',
-        '≡'     => 'Equivalence',
-        '≢'     => 'Inequivalence',
-        '⇐'     => 'Consequence',
-        '⇒'     => 'Implication',
-        '='     => 'Equality',
-        '∨'     => 'Disjunction',
-        '∧'     => 'Conjunction',
-        '('     => 'LParen',
-        ')'     => 'RParen',
-      }
-    end
     
     module Controller
       PIP = # PIP: Prefix Infix Parenthetical

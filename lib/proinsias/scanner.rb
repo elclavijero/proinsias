@@ -2,12 +2,8 @@ module Proinsias
   class Scanner
     attr_accessor :consumer
 
-    def initialize(
-      consumer:,
-      dictionary:
-    )
+    def initialize(consumer:)
       @consumer   = consumer
-      @dictionary = dictionary
     end
 
     def issue(char)
