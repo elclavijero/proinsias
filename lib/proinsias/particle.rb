@@ -308,6 +308,13 @@ module Proinsias
         capacity:    0,
         strength:    0,
         disposition: 'Pessimistic'
+      },
+      {
+        glyph:       'false',
+        role:        'constant',
+        capacity:    0,
+        strength:    0,
+        disposition: 'Pessimistic'
       }
     ]
   end
