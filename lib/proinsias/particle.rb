@@ -33,7 +33,7 @@ module Proinsias
   module Parous
     def to_ast
       {
-        @glyph => arguments.collect { |a| a.to_ast }
+        @glyph => received.collect { |a| a.to_ast }
       }
     end
   end
@@ -85,8 +85,8 @@ module Proinsias
   module Particle
     module Operator
       include Fundamental
-      alias arguments received
       include Parous
+      alias   arguments received
     end
 
     class LParen
@@ -292,7 +292,10 @@ module Proinsias
         @role = role
 
         extend(Disposition::Pessimistic)
-        extend(Nonparous)
+
+        capacity > 0 ?
+          extend(Parous) : 
+          extend(Nonparous)
       end
     end
 

@@ -24,6 +24,7 @@ module Proinsias
       ary = %w{
         true false 
         p q r s
+        ¬
       }
       
       if ary.include?(glyph)
