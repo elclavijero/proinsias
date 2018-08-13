@@ -1,7 +1,6 @@
 require "proinsias/version"
 require "proinsias/configurations"
-require "proinsias/receiver"
-require "proinsias/disposition"
+require "proinsias/receiver/receiver"
 require "proinsias/ast"
 require "proinsias/assemblyline/assemblyline"
 require "proinsias/particle/particle"

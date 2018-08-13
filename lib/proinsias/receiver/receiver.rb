@@ -1,3 +1,5 @@
+require_relative './disposition'
+
 module Proinsias
   module Receiver
     attr_accessor :received, :capacity, :flexible
