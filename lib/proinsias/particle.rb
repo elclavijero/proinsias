@@ -72,6 +72,7 @@ module Proinsias
 
 
       # Perhaps another map could reference a module that encapsulates this behvaviour?
+      #   { 'lparen' => Proinsias::Parenthetical }
       # You like maps, now.  Don't you?!
       def receive(particle)
         if particle.role == @mate
