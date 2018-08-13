@@ -97,6 +97,15 @@ RSpec.describe Proinsias::Parser do
             {"⇒"=>[{"∧"=>[{"⇒"=>["p", "q"]}, {"⇒"=>["q", "p"]}]}, {"≡"=>["p", "q"]}]}
           )
         end
+
+        it 'will produce the proper AST for "Mutual Associativity"' do
+          the_parser.analyse("((p ≢ q) ≡ r) ≡ (p ≢ (q ≡ r))")
+
+          expect(the_parser.ast).to eq(
+            {"≡"=>[{"≡"=>[{"≢"=>["p", "q"]}, "r"]}, {"≢"=>["p", {"≡"=>["q", "r"]}]}]}
+          )
+        end
+
       end
 
       describe 'the syntrax trees for left associative operators' do
