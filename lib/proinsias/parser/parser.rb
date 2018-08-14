@@ -10,7 +10,7 @@ module Proinsias
   end
 
   class Parser
-    attr_accessor :consumer
+    attr_accessor :consumer, :quarantine
 
     using NilExtension
 
@@ -18,8 +18,11 @@ module Proinsias
       new.tap { |psr| psr.analyse(str) }
     end
 
-    def initialize(consumer:nil)
-      @consumer = consumer
+    SKIP = proc {}
+
+    def initialize(consumer:nil, quarantine:SKIP)
+      @consumer   = consumer
+      @quarantine = quarantine
     end
 
     def analyse(str)
@@ -53,7 +56,8 @@ module Proinsias
 
     def director
       @director ||= Proinsias::Director.new(
-        consumer: assembly_line.method(:issue)
+        consumer: assembly_line.method(:issue),
+        quarantine: quarantine
       )
     end
 

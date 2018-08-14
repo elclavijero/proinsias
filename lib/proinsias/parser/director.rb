@@ -4,9 +4,9 @@ module Proinsias
   class Director
     attr_accessor :consumer, :quarantine
 
-    DEFAULT_QUARANTINE = proc {}
+    SKIP = proc {}
 
-    def initialize(consumer:, quarantine:DEFAULT_QUARANTINE)
+    def initialize(consumer:, quarantine:SKIP)
       @consumer   = consumer
       @quarantine = quarantine
     end
@@ -41,7 +41,7 @@ module Proinsias
     end
 
     def withdraw(particle)
-      quarantine.call(particle) if quarantine
+      quarantine.call(particle)
     end
   end
 
