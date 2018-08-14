@@ -4,9 +4,7 @@ module Proinsias
   class Director
     attr_accessor :consumer, :quarantine
 
-    DEFAULT_QUARANTINE = proc { |particle| 
-      fail "Received unexpected particle: #{particle}"
-    }
+    DEFAULT_QUARANTINE = proc {}
 
     def initialize(consumer:, quarantine:DEFAULT_QUARANTINE)
       @consumer   = consumer
