@@ -2,13 +2,13 @@ PATH
   remote: .
   specs:
     proinsias (1.0.1)
-      moory (~> 1.2.2)
+      moory (~> 1.2.3)
 
 GEM
   remote: https://rubygems.org/
   specs:
     diff-lcs (1.3)
-    moory (1.2.2)
+    moory (1.2.3)
     rake (10.5.0)
     rspec (3.8.0)
       rspec-core (~> 3.8.0)
