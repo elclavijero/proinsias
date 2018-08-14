@@ -151,4 +151,16 @@ RSpec.describe Proinsias::Filter do
       expect(the_consumer).to have_received(:call).with('true' )
     end
   end
+
+  context 'handling bad characters' do
+    it 'complains (via stderr) about bad characters' do
+      expect{
+        "t?rue".each_char do |c|
+          the_filter.issue(c)
+        end
+      }.to output(
+        /Warning! Ignoring unknown character:/
+      ).to_stderr
+    end
+  end
 end
