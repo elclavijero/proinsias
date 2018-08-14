@@ -2,7 +2,7 @@ PATH
   remote: .
   specs:
     proinsias (1.0.1)
-      moory (~> 1.2.1)
+      moory
 
 GEM
   remote: https://rubygems.org/
