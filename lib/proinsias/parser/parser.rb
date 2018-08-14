@@ -56,7 +56,7 @@ module Proinsias
 
     def director
       @director ||= Proinsias::Director.new(
-        consumer: assembly_line.method(:issue),
+        consumer:   assembly_line.method(:issue),
         quarantine: quarantine
       )
     end
