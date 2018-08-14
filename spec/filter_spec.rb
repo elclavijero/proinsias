@@ -153,14 +153,38 @@ RSpec.describe Proinsias::Filter do
   end
 
   context 'handling bad characters' do
-    it 'complains (via stderr) about bad characters' do
-      expect{
+    context 'if the Filter is missing a quarantine' do
+      before do
+        the_filter.quarantine = nil
+      end
+      
+      it 'complains (via stderr) about bad characters' do
+        expect{
+          "t?rue".each_char do |c|
+            the_filter.issue(c)
+          end
+        }.to output(
+          /Warning! Ignoring unknown character:/
+        ).to_stderr
+      end
+    end
+
+    context 'if the Filter has been assigned a quarantine' do
+      before do
+        the_filter.quarantine = the_quarantine
+      end
+
+      let(:the_quarantine) do
+        spy('the quarantine')
+      end
+
+      it 'calls the quarantine with the bad character' do
         "t?rue".each_char do |c|
           the_filter.issue(c)
         end
-      }.to output(
-        /Warning! Ignoring unknown character:/
-      ).to_stderr
+        
+        expect(the_quarantine).to have_received(:call).with('?')
+      end
     end
   end
 end
