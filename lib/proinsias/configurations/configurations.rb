@@ -15,7 +15,7 @@ module Proinsias
       FORM[language]
     end
 
-    def Configurations.get_filter_rules(language='Propositions')
+    def Configurations.get_filter_rules(language)
       const_get(language)
         .const_get('Filter')
         .const_get('RULES')
