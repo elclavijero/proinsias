@@ -4,15 +4,13 @@ require_relative './particle'
 
 module Proinsias
   module Configurations
+    FORM = {
+      'Propositions' => 'PIP'
+    }
+
     def Configurations.get_controller(language)
-      dictionary = {
-        'Propositions' => 'PIP'
-      }
-
-      form = dictionary[language]
-
-      Controller::const_get(
-        form
+      Controller::const_get( 
+        FORM[language]
       )
     end
 
