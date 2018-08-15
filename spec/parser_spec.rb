@@ -1,6 +1,6 @@
 RSpec.describe Proinsias::Parser do
   let(:the_parser) do
-    Proinsias::Parser.new
+    Proinsias::Parser.new(language:'Propositions')
   end
 
   describe '#analyse' do

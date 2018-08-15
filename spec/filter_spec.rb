@@ -1,7 +1,8 @@
 RSpec.describe Proinsias::Filter do
   let(:the_filter) do
     Proinsias::Filter.create(
-      consumer: the_consumer
+      consumer: the_consumer,
+      language: 'Propositions'
     )
   end
 
