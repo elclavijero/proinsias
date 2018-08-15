@@ -1,10 +1,6 @@
 module Proinsias
   module Configurations
     module Controller
-      def Controller.get(form_name)
-        const_get(form_name)
-      end
-
       PIP = # PIP: Prefix Infix Parenthetical
       {
         basis: 'basis',
