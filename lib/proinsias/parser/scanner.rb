@@ -2,7 +2,7 @@ module Proinsias
   class Scanner
     attr_accessor :consumer
 
-    def initialize(consumer:)
+    def initialize(consumer:, language:'Propositions')
       @consumer   = consumer
     end
 
