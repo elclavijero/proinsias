@@ -4,11 +4,13 @@ module Proinsias
 
     def initialize(consumer:, language:'Propositions')
       @consumer   = consumer
+      @language   = language
     end
 
     def filter
       @filter ||= Proinsias::Filter.create(
-        consumer: method(:forward)
+        consumer: method(:forward),
+        language: @language
       )
     end
 

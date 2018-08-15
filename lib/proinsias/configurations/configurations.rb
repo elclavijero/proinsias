@@ -4,8 +4,8 @@ require_relative './particle'
 
 module Proinsias
   module Configurations
-    def Configurations.get_controller(syntactic_form)
-      Controller::const_get(syntactic_form)
+    def Configurations.get_controller(language)
+      Controller::const_get(language)
     end
 
     def Configurations.get_filter_rules(language='Propositions')

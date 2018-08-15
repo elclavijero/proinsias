@@ -2,19 +2,19 @@ require 'moory'
 
 module Proinsias
   class Director
-    attr_accessor :consumer, :quarantine, :syntactic_form
+    attr_accessor :consumer, :quarantine, :language
 
     SKIP = proc {}
 
-    def initialize(consumer:, quarantine:SKIP, syntactic_form: 'PIP')
-      @consumer       = consumer
-      @quarantine     = quarantine
-      @syntactic_form = syntactic_form
+    def initialize(consumer:, quarantine:SKIP, language: 'PIP')
+      @consumer   = consumer
+      @quarantine = quarantine
+      @language   = language
     end
 
     def controller
       @controller ||= Moory::Logistic::Controller.new(
-        Configurations::get_controller(syntactic_form)
+        Configurations::get_controller(language)
       )
     end
 
