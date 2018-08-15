@@ -5,7 +5,7 @@ module Proinsias
     end
 
     def Particle.glyph_properties(glyph)
-      Configurations::PARTICLE.detect { |p| p[:glyph] == glyph }
+      Configurations::Propositions::PARTICLE.detect { |p| p[:glyph] == glyph }
     end
   end
 end
