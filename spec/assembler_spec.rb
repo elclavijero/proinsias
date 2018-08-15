@@ -61,7 +61,7 @@ RSpec.describe Proinsias::Assembler do
       end
     end
   
-    describe 'Right associativity' do
+    describe 'Right associativity (i.e. Pessimism)' do
       before do
         the_assembler.feed(Proinsias::Particle.from_glyph('p'))
         the_assembler.feed(Proinsias::Particle.from_glyph('⇒'))
