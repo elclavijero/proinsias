@@ -10,7 +10,7 @@ module Proinsias
   end
 
   class Parser
-    attr_accessor :consumer, :quarantine
+    attr_accessor :consumer, :quarantine, :language
 
     using NilExtension
 
@@ -20,9 +20,10 @@ module Proinsias
 
     SKIP = proc {}
 
-    def initialize(consumer:nil, quarantine:SKIP)
+    def initialize(consumer:nil, quarantine:SKIP,language:'Propositions')
       @consumer   = consumer
       @quarantine = quarantine
+      @language   = language
     end
 
     def analyse(str)
@@ -50,14 +51,16 @@ module Proinsias
 
     def scanner
       @scanner ||= Proinsias::Scanner.new(
-        consumer: director.method(:issue)
+        consumer: director.method(:issue),
+        language: language
       )
     end
 
     def director
       @director ||= Proinsias::Director.new(
         consumer:   assembly_line.method(:issue),
-        quarantine: quarantine
+        quarantine: quarantine,
+        language:   language
       )
     end
 
