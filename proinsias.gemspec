@@ -9,7 +9,7 @@ Gem::Specification.new do |spec|
   spec.authors       = ["Adam W. Grant"]
   spec.email         = ["adam_grnt@yahoo.co.uk"]
 
-  spec.summary       = %q{Manipulate formulae of the Propositional Calculus.}
+  spec.summary       = %q{Parse formulae of the Propositional Calculus.}
   spec.homepage      = "https://github.com/elclavijero/proinsias"
   spec.license       = "MIT"
 
