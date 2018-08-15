@@ -14,7 +14,7 @@ module Proinsias
 
     def controller
       @controller ||= Moory::Logistic::Controller.new(
-        Configurations::get_controller_for(syntactic_form)
+        Configurations::get_controller(syntactic_form)
       )
     end
 
