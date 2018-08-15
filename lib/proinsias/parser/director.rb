@@ -6,7 +6,7 @@ module Proinsias
 
     SKIP = proc {}
 
-    def initialize(consumer:, quarantine:SKIP, language: 'PIP')
+    def initialize(consumer:, quarantine:SKIP, language: 'Propositions')
       @consumer   = consumer
       @quarantine = quarantine
       @language   = language
