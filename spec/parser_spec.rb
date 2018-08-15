@@ -56,7 +56,7 @@ RSpec.describe Proinsias::Parser do
       end
 
       describe 'the syntrax trees of some mixed precedence expressions' do
-        it 'will produce the proper AST for the "Golden Rule"' do
+        it 'will produce the proper AST for the "Definition of false"' do
           the_parser.analyse("false ≡ ¬true")
 
           expect(the_parser.ast).to eq(
@@ -108,7 +108,7 @@ RSpec.describe Proinsias::Parser do
 
       end
 
-      describe 'the syntrax trees for left associative operators' do
+      describe 'the syntrax trees for left associative (Optimistic) operators' do
         it 'will produce the proper AST for the "p ⇐ q ⇐ r ⇐ s"' do
           the_parser.analyse("p ⇐ q ⇐ r ⇐ s")
 
@@ -118,7 +118,7 @@ RSpec.describe Proinsias::Parser do
         end
       end
 
-      describe 'the syntrax trees for right associative operators' do
+      describe 'the syntrax trees for right associative (Pessimistic) operators' do
         it 'will produce the proper AST for the "p ⇒ q ⇒ r ⇒ s"' do
           the_parser.analyse("p ⇒ q ⇒ r ⇒ s")
 
