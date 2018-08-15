@@ -10,8 +10,12 @@ module Proinsias
 
     def Configurations.get_controller(language)
       Controller::const_get( 
-        FORM[language]
+        get_form(language)
       )
+    end
+
+    def Configurations.get_form(language)
+      FORM[language]
     end
 
     def Configurations.get_filter_rules(language='Propositions')
