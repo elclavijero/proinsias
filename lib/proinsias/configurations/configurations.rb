@@ -1,13 +1,10 @@
 require_relative './filter'
 require_relative './controller'
 require_relative './particle'
+require_relative './form'
 
 module Proinsias
   module Configurations
-    FORM = {
-      'Propositions' => 'PIP'
-    }
-
     def Configurations.get_controller(language)
       Controller::const_get( 
         get_form(language)
