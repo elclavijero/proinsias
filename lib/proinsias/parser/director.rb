@@ -2,18 +2,19 @@ require 'moory'
 
 module Proinsias
   class Director
-    attr_accessor :consumer, :quarantine
+    attr_accessor :consumer, :quarantine, :form
 
     SKIP = proc {}
 
-    def initialize(consumer:, quarantine:SKIP)
+    def initialize(consumer:, quarantine:SKIP, form: 'PIP')
       @consumer   = consumer
       @quarantine = quarantine
+      @form       = form
     end
 
     def controller
       @controller ||= Moory::Logistic::Controller.new(
-        Configurations::Controller::PIP
+        Configurations::Controller.get(form)
       )
     end
 
