@@ -94,6 +94,10 @@ RSpec.describe Proinsias::Assembler do
         Proinsias::Particle.from_glyph('·', language='Lambda')
       end
 
+      let(:another_var) do
+        Proinsias::Particle.from_glyph('x', language='Lambda')
+      end
+
       context 'having not been fed a Particle,' do
         context 'feeding a lambda' do
           before do
@@ -133,7 +137,7 @@ RSpec.describe Proinsias::Assembler do
         context 'having been fed a lambda, and a var' do
           before do
             the_assembler.feed(a_lambda)
-            the_assembler.feed(a_lambda)
+            the_assembler.feed(a_var)
           end
 
           context 'feeding a dot' do
@@ -147,6 +151,28 @@ RSpec.describe Proinsias::Assembler do
 
             it 'the opening will become a_dot' do
               expect(the_assembler.opening).to equal(a_dot)
+            end
+          end
+        end
+
+        context 'having been fed a lambda, a var, and a dot' do
+          before do
+            the_assembler.feed(a_lambda)
+            the_assembler.feed(a_var)
+            the_assembler.feed(a_dot)
+          end
+
+          context 'feeding another var' do
+            before do
+              the_assembler.feed(another_var)
+            end
+
+            it 'the receiver will remain a_lambda' do
+              expect(the_assembler.receiver).to equal(a_lambda)
+            end
+
+            it 'the opening will become nil' do
+              expect(the_assembler.opening).to be_nil
             end
           end
         end
