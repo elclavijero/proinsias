@@ -2,7 +2,8 @@ require 'moory'
 
 module Proinsias
   class Director
-    attr_accessor :consumer, :quarantine, :language
+    attr_accessor :consumer, :quarantine
+    attr_reader   :language
 
     SKIP = proc {}
 
