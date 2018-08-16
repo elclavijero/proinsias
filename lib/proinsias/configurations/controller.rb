@@ -76,12 +76,6 @@ module Proinsias
             rules: """
             ^    : var                            : var
 
-            ^    : lambda                         : L
-            L    : var                            : LV
-            LV   : dot    / expr+ / defer         : Δ
-
-            ^    : lparen / parenthetical / defer : Δ
-
             var  : rparen / expr / reconvene      : $
 
             Δ    : expr   / expr / reconvene      : var
