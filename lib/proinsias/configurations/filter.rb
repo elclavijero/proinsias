@@ -34,5 +34,15 @@ module Proinsias
         """
       end
     end
+
+    module Lambda
+      module Filter
+        RULES = """
+        ^ : λ / λ / produce : ^
+        ^ : x / x / produce : ^
+        ^ : . / . / produce : ^
+        """
+      end
+    end
   end
 end
