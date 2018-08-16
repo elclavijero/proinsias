@@ -13,7 +13,7 @@ module Proinsias
     end
 
     def controller
-      @controller ||= Moory::Logistic::Controller.new(
+      @controller ||= Proinsias::Logistic::Controller.new(
         Configurations::get_controller(language)
       )
     end
