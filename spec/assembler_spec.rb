@@ -82,15 +82,20 @@ RSpec.describe Proinsias::Assembler do
     end
 
     context 'from Lambda,' do
+      let(:a_lambda) do
+        Proinsias::Particle.from_glyph('λ', language='Lambda')
+      end
+
+      let(:a_var) do
+        Proinsias::Particle.from_glyph('x', language='Lambda')
+      end
+
       context 'having not been fed a Particle,' do
         context 'feeding a lambda' do
           before do
             the_assembler.feed(a_lambda)
           end
 
-          let(:a_lambda) do
-            Proinsias::Particle.from_glyph('λ', language='Lambda')
-          end
 
           it 'the #receiver will become the given lambda' do
             expect(the_assembler.receiver).to equal(a_lambda)
@@ -101,7 +106,22 @@ RSpec.describe Proinsias::Assembler do
           end
         end
 
-        context 'having been fed a lambda'
+        context 'having been fed a lambda' do
+          before do
+            the_assembler.feed(a_lambda)
+          end
+
+          context 'feeding a var' do
+            before do
+              the_assembler.feed(a_var)
+            end
+
+            it 'the opening will remain as a_lambda' do
+              pp the_assembler.opening
+              expect(the_assembler.opening).to equal(a_lambda)
+            end
+          end
+        end
       end
     end
   end

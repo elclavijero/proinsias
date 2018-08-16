@@ -28,7 +28,11 @@ module Proinsias
     end
 
     def look_for_opening(incoming)
-      @opening = incoming.expectant? ? incoming : nil
+      if receiver.expectant?
+        @opening = receiver
+      else
+        @opening = incoming.expectant? ? incoming : nil
+      end
     end
 
     def establish(incoming)
