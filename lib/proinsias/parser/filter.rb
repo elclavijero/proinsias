@@ -49,6 +49,7 @@ module Proinsias
       # when either the @buffer.last, or the stimulus 
       # is not inculuded in COLLAPSE.
       @buffer << stimulus
+      # ...then do something about this inheritance nonsense :-)
     end
 
     def bad_stimulus(stimulus)
