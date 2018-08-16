@@ -4,7 +4,7 @@ module Proinsias
     attr_writer :quarantine
     attr_reader :buffer
 
-    IGNORE = [' ', "\t", "\n"]
+    IGNORE = [' ', "\t", "\n"]  # Should be optional
     DEFAULT_CONSUMER = $stdout.method(:puts)
     IGNORE_UNKNOWN   = proc { |c| warn "Warning! Ignoring unknown character: #{c}" }
 
@@ -42,6 +42,12 @@ module Proinsias
     private
 
     def save(stimulus)
+      # We need an additional configuration option to guide
+      # the collapsing of successive whitespace (important for
+      # lambda calculus), COLLAPSE, perhaps?
+      # When this option is set, stimuli will only be saved 
+      # when either the @buffer.last, or the stimulus 
+      # is not inculuded in COLLAPSE.
       @buffer << stimulus
     end
 
