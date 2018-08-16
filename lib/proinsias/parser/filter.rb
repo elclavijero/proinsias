@@ -30,7 +30,7 @@ module Proinsias
     def issue(stimulus)
       return if IGNORE.include?(stimulus)
       
-      @buffer << stimulus
+      save(stimulus)
       super
     end
 
@@ -40,6 +40,10 @@ module Proinsias
     end
 
     private
+
+    def save(stimulus)
+      @buffer << stimulus
+    end
 
     def bad_stimulus(stimulus)
       quarantine.call(stimulus)
