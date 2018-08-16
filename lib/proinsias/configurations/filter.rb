@@ -41,6 +41,7 @@ module Proinsias
         ^ : λ / λ / produce : ^
         ^ : · / · / produce : ^
         ^ : x / x / produce : ^
+        ^ : y / y / produce : ^
         """
       end
     end

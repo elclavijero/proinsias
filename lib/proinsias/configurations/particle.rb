@@ -143,6 +143,13 @@ module Proinsias
           strength:    0,
           disposition: 'Pessimistic',
         },
+        {
+          glyph:       'y',
+          role:        'var',
+          capacity:    0,
+          strength:    0,
+          disposition: 'Pessimistic',
+        },
   
         # - LAMBDA
         {
@@ -160,7 +167,6 @@ module Proinsias
           capacity:    1,
           strength:    1,
           disposition: 'Pessimistic',
-          ephemeral:   true,
         },
       ]
     end

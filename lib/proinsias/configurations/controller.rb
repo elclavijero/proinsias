@@ -59,7 +59,13 @@ module Proinsias
           },
           'expr+' => {
             rules: """
-            ^ : var / expr / reconvene : $
+            ^       : var / expr / reconvene  : $
+
+            ^       : lambda                  : λ
+            λ       : var                     : λvar
+            λvar    : dot / expr+ / defer     : Δ
+
+            Δ       : expr / expr / reconvene : $
             """
           }
         }
