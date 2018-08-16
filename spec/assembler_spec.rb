@@ -91,7 +91,7 @@ RSpec.describe Proinsias::Assembler do
       end
 
       let(:a_dot) do
-        Proinsias::Particle.from_glyph('·', language='Lambda')
+        Proinsias::Particle.from_glyph('.', language='Lambda')
       end
 
       let(:another_var) do

@@ -24,7 +24,7 @@ module Proinsias
     module Outfix
       def receive(particle)
         if particle.role == @sentinel
-          @glyph = "#{@glyph} #{@sentinel}"
+          @glyph = "#{@glyph} #{particle.glyph}"
           @received = particle.received
         else
           fail "Particle is not the expected sentinel.  We wanted: #{@sentinel}"

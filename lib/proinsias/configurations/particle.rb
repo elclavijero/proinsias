@@ -133,6 +133,7 @@ module Proinsias
         },
       ]
     end
+    
     module Lambda
       PARTICLE = [
         # - VAR
@@ -162,11 +163,31 @@ module Proinsias
 
         # - DOT
         {
-          glyph:       '·',
+          glyph:       '.',
           role:        'dot',
           capacity:    1,
           strength:    1,
           disposition: 'Pessimistic',
+        },
+
+        # -- OUTFIX
+        {
+          glyph:        '(',
+          role:         'lparen',
+          capacity:     1,
+          strength:     0,
+          disposition: 'Pessimistic',
+          # ephemeral:   true,
+          sentinel:    'rparen',
+        },
+  
+        # -- SENTINELS
+        {
+          glyph:       ')',
+          role:        'rparen',
+          capacity:    1,
+          strength:    2,
+          disposition: 'Optimistic',
         },
       ]
     end

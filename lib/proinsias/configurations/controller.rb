@@ -48,27 +48,46 @@ module Proinsias
         specs: {
           'expr' => {
             rules: """
-            ^       : var                 : $
+            ^    : var                            : $
 
-            ^       : lambda              : λ
-            λ       : var                 : λvar
-            λvar    : dot / expr+ / defer : Δ
+            ^    : lambda                         : L
+            L    : var                            : LV
+            LV   : dot / expr+ / defer            : Δ
 
-            Δ       : expr                : $
+            ^    : lparen / parenthetical / defer : Δ
+
+            Δ    : expr                           : $
             """
           },
           'expr+' => {
             rules: """
-            ^       : var / expr / reconvene  : $
+            ^    : var    / expr / reconvene      : $
 
-            ^       : lambda                  : λ
-            λ       : var                     : λvar
-            λvar    : dot / expr+ / defer     : Δ
+            ^    : lambda                         : L
+            L    : var                            : LV
+            LV   : dot    / expr+ / defer         : Δ
 
-            Δ       : expr / expr / reconvene : $
+            ^    : lparen / parenthetical / defer : Δ
+
+            Δ    : expr   / expr / reconvene      : $
             """
-          }
+          },
+          'parenthetical' => {
+            rules: """
+            ^    : var                            : var
+
+            ^    : lambda                         : L
+            L    : var                            : LV
+            LV   : dot    / expr+ / defer         : Δ
+
+            ^    : lparen / parenthetical / defer : Δ
+
+            var  : rparen / expr / reconvene      : $
+
+            Δ    : expr   / expr / reconvene      : var
+            """
         }
+      }
       }
     end
   end

@@ -39,9 +39,11 @@ module Proinsias
       module Filter
         RULES = """
         ^ : λ / λ / produce : ^
-        ^ : · / · / produce : ^
+        ^ : . / . / produce : ^
         ^ : x / x / produce : ^
         ^ : y / y / produce : ^
+        ^ : ( / ( / produce : ^
+        ^ : ) / ) / produce : ^
         """
       end
     end
