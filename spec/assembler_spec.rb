@@ -116,6 +116,11 @@ RSpec.describe Proinsias::Assembler do
               the_assembler.feed(a_var)
             end
 
+            it 'the receiver will remain as a_lambda' do
+              pp the_assembler.opening
+              expect(the_assembler.receiver).to equal(a_lambda)
+            end
+
             it 'the opening will remain as a_lambda' do
               pp the_assembler.opening
               expect(the_assembler.opening).to equal(a_lambda)
