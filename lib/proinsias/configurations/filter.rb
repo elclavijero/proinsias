@@ -38,12 +38,13 @@ module Proinsias
     module Lambda
       module Filter
         RULES = """
-        ^ : λ / λ / produce : ^
-        ^ : . / . / produce : ^
-        ^ : x / x / produce : ^
-        ^ : y / y / produce : ^
-        ^ : ( / ( / produce : ^
-        ^ : ) / ) / produce : ^
+        ^ : λ   / λ   / produce : ^
+        ^ : .   / .   / produce : ^
+        ^ : x   / x   / produce : ^
+        ^ : y   / y   / produce : ^
+        ^ : (   / (   / produce : ^
+        ^ : )   / )   / produce : ^
+        ^ : ~s~ / ~s~ / produce : ^
         """
       end
     end

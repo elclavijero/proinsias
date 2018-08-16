@@ -57,6 +57,8 @@ module Proinsias
             ^    : lparen / parenthetical / defer : Δ
 
             Δ    : expr                           : $
+
+            $    : apply / expr+ / defer          : Δ
             """
           },
           'expr+' => {
@@ -70,6 +72,8 @@ module Proinsias
             ^    : lparen / parenthetical / defer : Δ
 
             Δ    : expr   / expr / reconvene      : $
+
+            $    : apply / expr+ / defer          : Δ
             """
           },
           'parenthetical' => {
@@ -85,9 +89,11 @@ module Proinsias
             var  : rparen / expr / reconvene      : $
 
             Δ    : expr   / expr                  : var
+
+            $    : apply / expr+ / defer          : Δ
             """
+          },
         }
-      }
       }
     end
   end
