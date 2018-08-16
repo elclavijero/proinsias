@@ -42,6 +42,34 @@ module Proinsias
           }
         }
       }
+
+      LAMBDA = {
+        basis: 'expr',
+        specs: {
+          'expr' => {
+            rules: """
+            ^    : var : $
+
+            ^    : lambda             : λ
+            λ    : var                : λvar
+            λvar : . / expr+ / defer  : Δ
+
+            Δ    : expr : $
+            """
+          },
+          'expr+' => {
+            rules: """
+            ^    : var / expr / reconvene: $
+
+            ^    : lambda                  : λ
+            λ    : var                     : λvar
+            λvar : .  / expr+ / defer      : Δ
+
+            Δ    : expr / expr / reconvene : $
+            """
+          }
+        }
+      }
     end
   end
 end
