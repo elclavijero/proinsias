@@ -134,4 +134,35 @@ module Proinsias
       ]
     end
   end
+
+  module Lambda
+    PARTICLE = [
+      # - VAR
+      {
+        glyph:       'x',
+        role:        'var',
+        capacity:    0,
+        strength:    0,
+        disposition: 'Pessimistic',
+      },
+
+      # - LAMBDA
+      {
+        glyph:       'λ',
+        role:        'lambda',
+        capacity:    1,
+        strength:    2,
+        disposition: 'Pessimistic',
+      },
+
+      # - .
+      {
+        glyph:       '.',
+        role:        '.',
+        capacity:    1,
+        strength:    1,
+        disposition: 'Pessimistic',
+      },
+    ]
+  end
 end
