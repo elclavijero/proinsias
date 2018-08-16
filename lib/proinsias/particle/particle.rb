@@ -27,7 +27,7 @@ module Proinsias
           @glyph = "#{@glyph} #{particle.glyph}"
           @received = particle.received
         else
-          fail "Particle is not the expected sentinel.  We wanted: #{@sentinel}"
+          fail "Received particle with role: #{particle.role}.  We wanted: #{@sentinel}"
         end
       end
     end
