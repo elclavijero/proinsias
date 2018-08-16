@@ -141,6 +141,10 @@ RSpec.describe Proinsias::Assembler do
               the_assembler.feed(a_dot)
             end
 
+            it 'the receiver will remain a_lambda' do
+              expect(the_assembler.receiver).to equal(a_lambda)
+            end
+
             it 'the opening will become a_dot' do
               expect(the_assembler.opening).to equal(a_dot)
             end
