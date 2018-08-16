@@ -22,6 +22,14 @@ RSpec.describe Proinsias::Director do
         Proinsias::Particle.from_glyph('λ', 'Lambda')
       end
 
+      let(:a_var) do
+        Proinsias::Particle.from_glyph('x', 'Lambda')
+      end
+
+      let(:a_dot) do
+        Proinsias::Particle.from_glyph('.', 'Lambda')
+      end
+
       context 'before a Particle has been issued,' do
         context 'when given a lambda' do
           before do
@@ -55,14 +63,38 @@ RSpec.describe Proinsias::Director do
             the_director.issue(a_var)
           end
 
-          let(:a_var) do
-            Proinsias::Particle.from_glyph('x', 'Lambda')
-          end
-
           it 'the consumer will be called with a Directive without commands' do
             expected_directive = Proinsias::Directive.new(
               particle: a_var,
               commands: []
+            )
+            
+            expect(
+              the_consumer
+            ).to have_received(
+              :call
+            ).with(
+              expected_directive
+            )
+          end
+        end
+      end
+
+      context 'when a lambda, and a var have been issued,' do
+        before do
+          the_director.issue(a_lambda)
+          the_director.issue(a_var)
+        end
+
+        context 'when given a dot' do
+          before do
+            the_director.issue(a_dot)
+          end
+
+          it 'the consumer will be called with a Directive containing a :defer command' do
+            expected_directive = Proinsias::Directive.new(
+              particle: a_dot,
+              commands: [:defer]
             )
             
             expect(
