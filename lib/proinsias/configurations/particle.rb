@@ -148,18 +148,19 @@ module Proinsias
         {
           glyph:       'λ',
           role:        'lambda',
-          capacity:    1,
-          strength:    2,
+          capacity:    2,
+          strength:    1,
           disposition: 'Pessimistic',
         },
-  
-        # - .
+
+        # - DOT
         {
-          glyph:       '.',
-          role:        '.',
+          glyph:       '·',
+          role:        'dot',
           capacity:    1,
           strength:    1,
           disposition: 'Pessimistic',
+          ephemeral:   true,
         },
       ]
     end

@@ -48,24 +48,18 @@ module Proinsias
         specs: {
           'expr' => {
             rules: """
-            ^    : var : $
+            ^       : var                 : $
 
-            ^    : lambda             : λ
-            λ    : var                : λvar
-            λvar : . / expr+ / defer  : Δ
+            ^       : lambda              : λ
+            λ       : var                 : λvar
+            λvar    : dot / expr+ / defer : Δ
 
-            Δ    : expr : $
+            Δ       : expr                : $
             """
           },
           'expr+' => {
             rules: """
-            ^    : var / expr / reconvene: $
-
-            ^    : lambda                  : λ
-            λ    : var                     : λvar
-            λvar : .  / expr+ / defer      : Δ
-
-            Δ    : expr / expr / reconvene : $
+            ^ : var / expr / reconvene : $
             """
           }
         }
