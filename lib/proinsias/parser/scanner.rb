@@ -25,7 +25,7 @@ module Proinsias
     end
 
     def translate(glyph)
-      Proinsias::Particle.from_glyph(glyph)
+      Proinsias::Particle.from_glyph(glyph, @language)
     end
   end
 end

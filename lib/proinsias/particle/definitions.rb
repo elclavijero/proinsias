@@ -1,6 +1,6 @@
 module Proinsias
   module Particle
-    def Particle.from_glyph(glyph)
+    def Particle.from_glyph(glyph,language='Propositions')
       Fundamental.new( glyph_properties(glyph) )
     end
 
