@@ -1,7 +1,8 @@
 module Proinsias
   module Configurations
     FORM = {
-      'Propositions' => 'PIP'
+      'Propositions' => 'PIP',
+      'Lambda'       => 'LAMBDA'
     }
   end
 end
